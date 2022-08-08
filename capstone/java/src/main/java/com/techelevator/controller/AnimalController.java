@@ -22,17 +22,17 @@ public class AnimalController {
         return animalDao.findAll();
     }
 
-    @GetMapping(path = "/animals/{type}")
+    @GetMapping(path = "/animals/type/{type}")
     public List<Animal> findByType(@PathVariable String type) {
         return animalDao.listAnimalByType(type);
     }
 
-    @GetMapping(path = "/animals/{animal_id}")
+    @GetMapping(path = "/animals/id/{animal_id}")
     public Animal getAnimalById(@PathVariable int animal_id) {
         return animalDao.getAnimalById(animal_id);
     }
 
-    @GetMapping(path = "/animals/{animal_name}")
+    @GetMapping(path = "/animals/name/{name}")
     public Animal getAnimalByName(@PathVariable String name) {
         return animalDao.getAnimalByName(name);
     }
