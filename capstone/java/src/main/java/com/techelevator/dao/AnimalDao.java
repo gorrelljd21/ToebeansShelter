@@ -9,7 +9,7 @@ public interface AnimalDao {
 
     List<Animal> findAll();
 
-    List<Animal> listAnimalByType(String type);
+    List<Animal> listAnimalByType(int animal_type_id);
 
     Animal getAnimalById(int animal_id);
 

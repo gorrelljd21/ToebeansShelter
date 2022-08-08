@@ -7,12 +7,10 @@
 </template>
 
 <script>
-import AnimalList from "@/components/AnimalList";
+import AnimalList from "@/components/AnimalList.vue";
 
 export default {
   name: "home",
-  components: {
-    AnimalList,
-  },
+  components: { AnimalList },
 };
 </script>
