@@ -1,13 +1,13 @@
 <template>
-  <animal-detail />
+  <animal-list />
 </template>
 
 <script>
-import AnimalDetail from "@/components/AnimalDetail";
+import AnimalList from "@/components/AnimalList";
 
 export default {
   components: {
-    AnimalDetail,
+    AnimalList,
   },
 };
 </script>
