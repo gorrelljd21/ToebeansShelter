@@ -1,4 +1,4 @@
-package com.techelevator.model.shelter;
+package com.techelevator.model;
 
 public class Animal {
 
