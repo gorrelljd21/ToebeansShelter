@@ -8,17 +8,14 @@ export default {
     getAnimals() {
         return http.get('/animals');
     },
-    getDogs() {
-        return http.get('/animals/dog');
+    getAnimalByType() {
+        return http.get('/animals/type/:type');
     },
-    getCats() {
-        return http.get('/animals/cat');
+    getAnimalById() {
+        return http.get('/animals/id/:id');
     },
-    getFarmAnimal() {
-        return http.get('/animals/FarmAnimal');
-    },
-    getSmallAnimal() {
-        return http.get('/animals/SmallAnimal');
-    },
+    getAnimalByName() {
+        return http.get('/animals/name/:name');
+    }
 
 }
