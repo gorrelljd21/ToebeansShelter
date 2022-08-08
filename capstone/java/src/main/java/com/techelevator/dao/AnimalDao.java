@@ -11,7 +11,7 @@ public interface AnimalDao {
 
     List<Animal> listAnimalByType(String type);
 
-    Animal getAnimalById(String animal_id);
+    Animal getAnimalById(int animal_id);
 
     Animal getAnimalByName(String name);
 
