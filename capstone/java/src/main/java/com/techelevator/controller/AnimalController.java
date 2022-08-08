@@ -22,9 +22,9 @@ public class AnimalController {
         return animalDao.findAll();
     }
 
-    @GetMapping(path = "/animals/type/{type}")
-    public List<Animal> findByType(@PathVariable String type) {
-        return animalDao.listAnimalByType(type);
+    @GetMapping(path = "/animals/type/{animal_type_id}")
+    public List<Animal> findByType(@PathVariable int animal_type_id) {
+        return animalDao.listAnimalByType(animal_type_id);
     }
 
     @GetMapping(path = "/animals/id/{animal_id}")

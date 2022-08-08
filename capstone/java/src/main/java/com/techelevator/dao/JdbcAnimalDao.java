@@ -35,16 +35,17 @@ public class JdbcAnimalDao implements AnimalDao {
 
 
     @Override
-    public List<Animal> listAnimalByType(String type) {
+    public List<Animal> listAnimalByType(int animal_type_id) {
         List<Animal> animals = new ArrayList<>();
 
         String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id " +
                 "FROM " +
                 "animals " +
-                "JOIN animal_types ON animal_types.animal_type_id = animals.animal_type_id " +
                 "WHERE " +
-                "type = ?; ";
-        SqlRowSet results = jdbctemplate.queryForRowSet(sql, type);
+                "animal_type_id = ? " +
+                "GROUP BY animal_id " +
+                "ORDER BY animal_id; ";
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql, animal_type_id);
         while(results.next()) {
             Animal animal = mapRowToAnimal(results);
             animals.add(animal);
