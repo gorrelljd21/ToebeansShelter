@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, animal_types, animals;
+DROP TABLE IF EXISTS users, animal_types, animals, animal_photos CASCADE;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -35,5 +35,9 @@ CREATE TABLE animal_photos (
     CONSTRAINT FK_animals FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
 );
 
+INSERT INTO animal_types (type) values('dog');
+INSERT INTO animal_types (type) values('cat');
+INSERT INTO animal_types (type) values('farm');
+INSERT INTO animal_types (type) values('small');
 
 COMMIT TRANSACTION;
