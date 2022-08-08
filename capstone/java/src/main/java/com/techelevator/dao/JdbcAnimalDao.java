@@ -54,7 +54,7 @@ public class JdbcAnimalDao implements AnimalDao {
 
     @Override
     public Animal getAnimalById(int animal_id) {
-        Animal animal = new Animal();
+        Animal animal = null;
         String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id " +
                 "FROM " +
                 "animals " +
@@ -69,7 +69,7 @@ public class JdbcAnimalDao implements AnimalDao {
 
     @Override
     public Animal getAnimalByName(String name) {
-        Animal animal = new Animal();
+        Animal animal = null;
         String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id " +
                 "FROM " +
                 "animals " +
