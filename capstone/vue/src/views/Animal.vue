@@ -1,7 +1,7 @@
 <template>
   <animal-list />
 </template>
-
+  
 <script>
 import AnimalList from "@/components/AnimalList";
 

@@ -2,17 +2,15 @@
   <div class="home">
     <h1>Home</h1>
     <p>You must be authenticated to see this</p>
-    <animal-list />
+    <animal />
   </div>
 </template>
 
 <script>
-import AnimalList from "@/components/AnimalList";
+import Animal from "@/views/Animal.vue";
 
 export default {
   name: "home",
-  components: {
-    AnimalList,
-  },
+  components: { Animal },
 };
 </script>
