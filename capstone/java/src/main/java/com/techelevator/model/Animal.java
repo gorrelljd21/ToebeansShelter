@@ -9,6 +9,8 @@ public class Animal {
     private String bio;
     private int animal_type_id;
 
+    public Animal() {};
+
     public Animal(int animal_id, String name, String breed, int age, String bio, int animal_type_id) {
         this.animal_id = animal_id;
         this.name = name;
