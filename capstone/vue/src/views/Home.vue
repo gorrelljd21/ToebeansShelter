@@ -1,16 +1,22 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
     <!-- <p>You must be authenticated to see this</p> -->
     <animal-list />
+    <nav />
   </div>
 </template>
 
 <script>
+// import Nav from "@/components/Nav";
 import AnimalList from "@/components/AnimalList.vue";
 
 export default {
   name: "home",
-  components: { AnimalList },
+  components: {
+    AnimalList,
+  },
 };
 </script>
+
+<style scoped>
+</style>
