@@ -1,16 +1,16 @@
 <template>
   <div class="home">
     <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
-    <animal />
+    <!-- <p>You must be authenticated to see this</p> -->
+    <animal-list />
   </div>
 </template>
 
 <script>
-import Animal from "@/views/Animal.vue";
+import AnimalList from "@/components/AnimalList.vue";
 
 export default {
   name: "home",
-  components: { Animal },
+  components: { AnimalList },
 };
 </script>
