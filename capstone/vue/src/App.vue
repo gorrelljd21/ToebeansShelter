@@ -8,8 +8,10 @@
       >
     </div>
     <header-comp />
-    <nav-comp />
-    <router-view />
+    <div class="center">
+      <nav-comp />
+      <router-view />
+    </div>
   </div>
 
   <!-- below may be needed when organizing layout of page -->
@@ -33,10 +35,6 @@
 </div> -->
 </template>
 
-
-
-
-
 <script>
 import NavComp from "@/components/NavComp.vue";
 import HeaderComp from "@/components/HeaderComp.vue";
@@ -51,6 +49,10 @@ export default {
 </script>
 
 <style scoped>
+.center {
+  display: flex;
+  flex-direction: row;
+}
 </style>
 
 

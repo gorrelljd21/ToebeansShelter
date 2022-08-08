@@ -16,6 +16,12 @@ export default {
     },
     getAnimalByName() {
         return http.get('/animals/name/:name');
+    },
+    getPhotoById(animalId) {
+        return http.get(`/photos/${animalId}`);
+    },
+    getAllPhotos() {
+        return http.get('/photos')
     }
 
 }
