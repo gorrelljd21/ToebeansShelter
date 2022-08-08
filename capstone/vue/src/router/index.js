@@ -30,6 +30,14 @@ const router = new Router({
       }
     },
     {
+      path: '/pets',
+      name: 'pets',
+      // component: Pets,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
       path: "/login",
       name: "login",
       component: Login,
