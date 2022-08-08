@@ -5,20 +5,20 @@ const http = axios.create({
 });
 
 export default {
-    getPets() {
-        return http.get('/pets');
+    getAnimals() {
+        return http.get('/animals');
     },
     getDogs() {
-        return http.get('/pets/dog');
+        return http.get('/animals/dog');
     },
     getCats() {
-        return http.get('/pets/cat');
+        return http.get('/animals/cat');
     },
     getFarmAnimal() {
-        return http.get('/pets/FarmAnimal');
+        return http.get('/animals/FarmAnimal');
     },
     getSmallAnimal() {
-        return http.get('/pets/SmallAnimal');
+        return http.get('/animals/SmallAnimal');
     },
 
 }
