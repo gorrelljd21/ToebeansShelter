@@ -32,18 +32,8 @@
 }
 
 #animal {
-  /* flex-direction: column-reverse;
+  flex-direction: column-reverse;
   flex-grow: 0;
-  justify-content: flex-start; */
-  display: inline-flex;
-  flex-grow: 0;
-  font-size: 15px;
-  font-weight: 500;
-  line-height: 18px;
-  border-radius: 16px;
-  height: 28px;
-  min-width: 50px;
-  width: auto;
-  padding: 0 16px;
+  justify-content: flex-start;
 }
 </style>
