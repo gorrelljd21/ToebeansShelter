@@ -3,7 +3,7 @@
     <div class="loading" v-if="isLoading">
       <img src="..\assets\3035fb76965389.5c7945b0d0567.gif" />
     </div>
-    <ul>
+    <ul class="card-container">
       <animal-card
         v-for="animal in animals"
         :key="animal.animal_id"
@@ -53,4 +53,9 @@ export default {
 </script>
 
 <style>
+.card-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
 </style>
