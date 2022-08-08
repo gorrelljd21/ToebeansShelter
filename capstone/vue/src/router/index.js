@@ -32,7 +32,7 @@ const router = new Router({
     {
       path: '/pets',
       name: 'pets',
-      component: Pets,
+      // component: Pets,
       meta: {
         requiresAuth: false
       }

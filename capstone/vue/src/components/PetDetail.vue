@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import shelterService from "../services/ShelterService";
+// import shelterService from "../services/ShelterService";
 
 export default {
   name: "pet-detail",
