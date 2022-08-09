@@ -79,11 +79,10 @@ export default {
 .main {
   grid-area: ga-main;
   border-top: black;
+  overflow-y: scroll;
 }
 
 .list-container {
-  /* min-height: 0;
-  overflow-y: scroll; */
 }
 
 .story {
@@ -103,6 +102,8 @@ export default {
     "ga-nav     ga-main   ga-story"
     "ga-feet    ga-feet   ga-feet";
   gap: 10px;
+  height: 90vh;
+  background-color: #e0dfd5;
 }
 
 /* @media screen and (max-width: 450px) {
