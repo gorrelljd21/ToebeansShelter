@@ -2,8 +2,27 @@
   <div class="header">
     <img class="logo" src="..\assets\logoblueNameFINALBG.png" alt="logo" />
     <h1 id="title">TOEBEANS SHELTER</h1>
+    <button v-on:click="goToLogin()">Login/Register</button>
   </div>
 </template>
+
+<script>
+// import  Login  from "@/views/Login.vue";
+
+export default {
+  // components: {
+  //   Login,
+  // },
+  methods: {
+    goToLogin() {
+      this.$router.push("/login");
+    },
+  },
+};
+</script>
+
+
+
 
 <style scoped>
 .header {
