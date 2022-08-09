@@ -7,8 +7,13 @@
 
 <style scoped>
 .header {
+  position: relative top;
   display: flex;
   flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  border: solid;
+  border-radius: 3px;
 }
 .logo {
   width: 10%;

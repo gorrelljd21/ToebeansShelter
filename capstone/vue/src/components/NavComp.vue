@@ -23,6 +23,7 @@
 
 <style scoped>
 .navigation {
+  position: relative left;
   display: flex;
   flex-direction: column;
   text-align: center;
