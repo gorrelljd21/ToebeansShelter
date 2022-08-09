@@ -2,21 +2,48 @@
   <div>
     <nav class="navigation">
       <h1>Navigation</h1>
-      <router-link v-bind:to="{ name: 'home' }">
-        <button id="btn" type="submit">Home</button>
-      </router-link>
+
+      <p>
+        <router-link v-bind:to="{ name: 'home' }">
+          <b><a id="link" href="default.asp" target="_blank">Home</a></b>
+        </router-link>
+      </p>
       <br />
-      <!-- <button id="btn" type="submit">About Us</button>
+      <p>
+        <b><a id="link" href="default.asp" target="_blank">About Us</a></b>
+      </p>
       <br />
-      <button id="btn" type="submit">All Animal Listings</button>
+      <p>
+        <b
+          ><a id="link" href="default.asp" target="_blank"
+            >All Animal Listings</a
+          ></b
+        >
+      </p>
       <br />
-      <button id="btn" type="submit">Animals by Category</button>
+      <p>
+        <b
+          ><a id="link" href="default.asp" target="_blank"
+            >Animals by Category</a
+          ></b
+        >
+      </p>
       <br />
-      <button id="btn" type="submit">Volunteers</button>
+      <p>
+        <b><a id="link" href="default.asp" target="_blank">Volunteers</a></b>
+      </p>
       <br />
-      <button id="btn" type="submit">Success Stories</button>
+      <p>
+        <b
+          ><a id="link" href="default.asp" target="_blank"
+            >Success Stories</a
+          ></b
+        >
+      </p>
       <br />
-      <button id="btn" type="submit">Events</button> -->
+      <p>
+        <b><a id="link" href="default.asp" target="_blank">Events</a></b>
+      </p>
     </nav>
   </div>
 </template>
@@ -30,6 +57,18 @@
   border-radius: 8px;
   border-style: solid;
   height: 100vh;
+}
+
+#link {
+  border-width: 1px;
+  border-style: solid;
+  border-color: black;
+  padding: 8px 30px 8px 30px;
+  background-color: white;
+  display: block;
+  margin: -10px 20px 0px 20px;
+  max-width: 14em;
+  border-radius: 4px;
 }
 
 #animal {
