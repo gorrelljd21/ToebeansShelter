@@ -82,7 +82,7 @@ export default {
 
 img {
   width: 180px;
-  border-radius: 8px;
+  border-radius: 10px;
   height: 150px;
   object-fit: cover;
   padding: 7px;
