@@ -15,7 +15,13 @@
     <div class="bottomComponent">
       <h3>See more pets that need a home:</h3>
       <div class="pagination">
-        <button v-for="num in numberOfPages" :key="num">{{ num }}</button>
+        <button
+          v-for="num in numberOfPages"
+          :key="num"
+          @click="offset = num * limit - limit"
+        >
+          {{ num }}
+        </button>
       </div>
     </div>
   </div>
