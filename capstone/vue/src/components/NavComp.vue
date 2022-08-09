@@ -67,7 +67,6 @@
   background-color: white;
   display: block;
   margin: -10px 20px 0px 20px;
-  max-width: 14em;
   border-radius: 4px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   text-decoration: none;
