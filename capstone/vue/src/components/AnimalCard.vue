@@ -19,8 +19,6 @@
   </div>
 </template>
 
-
-
 <script>
 import shelterService from "@/services/ShelterService";
 export default {
