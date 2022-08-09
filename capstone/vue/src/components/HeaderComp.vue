@@ -4,8 +4,7 @@
       <button v-on:click="goToLogin()">Login/Register</button>
     </div>
     <div class="header">
-      <img class="logo" src="..\assets\logoblueNameFINALBG.png" alt="logo" />
-      <h1 id="title">TOEBEANS SHELTER</h1>
+      <h1 id="title">TOEBEANS ANIMAL SHELTER</h1>
     </div>
   </div>
 </template>
