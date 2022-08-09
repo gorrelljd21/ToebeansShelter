@@ -7,44 +7,39 @@
         >Logout</router-link
       >
     </div>
-    <header-comp />
     <div class="center">
-      <nav-comp />
+<<<<<<< HEAD
       <router-view />
+=======
+      <nav-comp />
+      <animal />
+      <story-view />
+>>>>>>> d77c9aca8b156fc7acb36363e002ad10d1b8b198
     </div>
+
+    <router-view />
   </div>
-
-  <!-- below may be needed when organizing layout of page -->
-  <!-- <div class="container">
-    <header>
-        ...
-    </header>
-    <main class="container__main">
-         Left sidebar -->
-  <!-- <aside class="container__left">...</aside> -->
-
-  <!-- Main content -->
-  <!-- <article class="container__middle">...</article> -->
-
-  <!-- Right sidebar -->
-  <!-- <nav class="container__right">...</nav> -->
-  <!-- </main>
-    <footer>
-        ...
-    </footer>
-</div> -->
 </template>
 
 <script>
+<<<<<<< HEAD
+export default {
+  name: "app",
+=======
 import NavComp from "@/components/NavComp.vue";
 import HeaderComp from "@/components/HeaderComp.vue";
+import Animal from "@/views/Animal.vue";
+import StoryView from "@/views/StoryView.vue";
 
 export default {
   name: "app",
   components: {
     NavComp,
     HeaderComp,
+    Animal,
+    StoryView,
   },
+>>>>>>> d77c9aca8b156fc7acb36363e002ad10d1b8b198
 };
 </script>
 
