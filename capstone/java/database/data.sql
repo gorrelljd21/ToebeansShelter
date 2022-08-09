@@ -1,3 +1,8 @@
+INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
+INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+
+
+
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (1, 'Selene', 'Yaqui', 2, 'Open-architected analyzing model', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (2, 'Kathlin', 'Colombian', 2, 'Business-focused systematic service-desk', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (3, 'Devonne', 'Panamanian', 11, 'Seamless bottom-line leverage', 1);
