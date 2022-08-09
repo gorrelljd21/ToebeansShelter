@@ -22,6 +22,11 @@ public class AnimalController {
         return animalDao.findAll();
     }
 
+    @GetMapping(path = "/animals/limit/{limit}/offset/{offset}")
+    public List<Animal> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset){
+        return animalDao.getAnimalPage(limit, offset);
+    }
+
     @GetMapping(path = "/animals/type/{animal_type_id}")
     public List<Animal> findByType(@PathVariable int animal_type_id) {
         return animalDao.listAnimalByType(animal_type_id);
@@ -36,5 +41,6 @@ public class AnimalController {
     public Animal getAnimalByName(@PathVariable String name) {
         return animalDao.getAnimalByName(name);
     }
+
 
 }
