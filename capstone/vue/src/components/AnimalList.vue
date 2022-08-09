@@ -12,6 +12,12 @@
       >
       </animal-card>
     </ul>
+    <div class="bottomComponent">
+      <h3>See more pets that need a home:</h3>
+      <div class="pagination">
+        <button v-for="num in numberOfPages" :key="num">{{ num }}</button>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -53,6 +59,11 @@ export default {
       });
     },
   },
+  computed: {
+    numberOfPages() {
+      return Math.ceil(this.animalPhotos.length / this.limit);
+    },
+  },
   created() {
     this.getAnimalsPaginated();
     this.getPhotos();
@@ -61,6 +72,11 @@ export default {
 </script>
 
 <style>
+.bottomComponent {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
 .card-container {
   position: relative center;
   display: flex;
@@ -68,5 +84,30 @@ export default {
   flex-wrap: wrap;
   padding: 0px 10px 10px 10px;
   margin-top: 0px;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  margin: 10px;
+}
+.pagination > button {
+  margin: 5px;
+  background-color: #44a1a0;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.pagination > button:hover {
+  opacity: 50%;
 }
 </style>
