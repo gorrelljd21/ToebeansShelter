@@ -66,5 +66,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding: 0px 10px 10px 10px;
+  margin-top: 0px;
 }
 </style>

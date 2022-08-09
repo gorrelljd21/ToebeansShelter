@@ -64,7 +64,6 @@ export default {
   max-width: 200px;
   color: aliceblue;
   border-radius: 8px;
-  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -74,6 +73,7 @@ export default {
   margin: 5px;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
+  padding-left: 2px;
 }
 
 .card:hover {
