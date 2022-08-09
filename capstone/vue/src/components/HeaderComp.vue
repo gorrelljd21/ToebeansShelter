@@ -1,8 +1,12 @@
 <template>
-  <div class="header">
-    <img class="logo" src="..\assets\logoblueNameFINALBG.png" alt="logo" />
-    <h1 id="title">TOEBEANS SHELTER</h1>
-    <button v-on:click="goToLogin()">Login/Register</button>
+  <div class="main">
+    <div id="LR">
+      <button v-on:click="goToLogin()">Login/Register</button>
+    </div>
+    <div class="header">
+      <img class="logo" src="..\assets\logoblueNameFINALBG.png" alt="logo" />
+      <h1 id="title">TOEBEANS SHELTER</h1>
+    </div>
   </div>
 </template>
 
@@ -25,21 +29,31 @@ export default {
 
 
 <style scoped>
+/* .main {
+} */
+
 .header {
   position: relative top;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  border: solid;
-  border-radius: 3px;
+  border-bottom: solid;
 }
 .logo {
-  width: 10%;
-  height: 10%;
+  width: 12%;
+  height: 12%;
 }
 #title {
   align-content: center;
   justify-content: center;
+}
+
+#LR {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: start;
+  justify-content: flex-start;
+  padding: 15px 15px 0px 0px;
 }
 </style>
