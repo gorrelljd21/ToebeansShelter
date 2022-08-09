@@ -7,7 +7,7 @@
 <style scoped>
 img {
   padding: 0% 0% 0% 15%;
-  width: 70%;
-  height: 70%;
+  width: 50%;
+  height: 50%;
 }
 </style>

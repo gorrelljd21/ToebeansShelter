@@ -1,12 +1,5 @@
 <template>
-  <div class="main">
-    <div id="LR">
-      <button v-on:click="goToLogin()">Login/Register</button>
-    </div>
-    <div class="header">
-      <h1 id="title">TOEBEANS ANIMAL SHELTER</h1>
-    </div>
-  </div>
+  <div></div>
 </template>
 
 <script>
@@ -25,28 +18,7 @@ export default {
 </script>
 
 <style scoped>
-.header {
-  /* position: relative top; */
-  /* display: flex; */
-  /* flex-direction: row;
-  justify-content: space-between;
-  align-items: center; */
-  border-bottom: solid;
+.main {
+  border-bottom: black solid;
 }
-.logo {
-  width: 12%;
-  height: 12%;
-}
-#title {
-  align-content: center;
-  justify-content: center;
-}
-
-#LR {
-  /* display: flex; */
-  flex-direction: row-reverse;
-  align-items: start;
-  justify-content: flex-start;
-  padding: 15px 15px 0px 0px;
-}
-</style>
+</style>  
