@@ -83,6 +83,17 @@ public class JdbcAnimalDao implements AnimalDao {
         return animal;
     }
 
+    @Override
+    public List<Animal> getAnimalPage(int limit, int offset) {
+        List<Animal> animals = new ArrayList<>();
+        String sql = "Select animal_id, name, breed, age, bio, animal_type_id from animals order by animal_id limit ? offset ?";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
+        while(result.next()){
+            animals.add(mapRowToAnimal(result));
+        }
+        return animals;
+    }
+
 
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();

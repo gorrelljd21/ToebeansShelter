@@ -22,6 +22,9 @@ export default {
     },
     getAllPhotos() {
         return http.get('/photos')
+    },
+    getAnimalsPaginated(limit, offset) {
+        return http.get(`/animals/limit/${limit}/offset/${offset}`)
     }
 
 }

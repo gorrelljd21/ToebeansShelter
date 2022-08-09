@@ -62,12 +62,25 @@
 #link {
   border-width: 1px;
   border-style: solid;
-  border-color: black;
+  border-color: #313638;
   padding: 8px 30px 8px 30px;
   background-color: white;
   display: block;
   margin: -10px 20px 0px 20px;
   border-radius: 4px;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  text-decoration: none;
+  color: #313638;
+  font-size: 20px;
+}
+
+#link:hover {
+  color: #f78154;
+}
+
+h1 {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  color: #313638;
 }
 
 #animal {
