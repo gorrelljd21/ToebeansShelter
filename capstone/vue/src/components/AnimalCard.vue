@@ -19,8 +19,6 @@
   </div>
 </template>
 
-
-
 <script>
 import shelterService from "@/services/ShelterService";
 export default {
@@ -64,7 +62,6 @@ export default {
   max-width: 200px;
   color: aliceblue;
   border-radius: 8px;
-  margin-top: 10px;
   margin-bottom: 20px;
 }
 
@@ -74,6 +71,7 @@ export default {
   margin: 5px;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
+  padding-left: 2px;
 }
 
 .card:hover {
@@ -82,7 +80,7 @@ export default {
 
 img {
   width: 180px;
-  border-radius: 8px;
+  border-radius: 10px;
   height: 150px;
   object-fit: cover;
   padding: 7px;

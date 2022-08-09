@@ -30,6 +30,8 @@ export default {
       errorMsg: "",
       animals: [],
       animalPhotos: [],
+      offset: 0,
+      limit: 15,
     };
   },
   methods: {
@@ -44,9 +46,15 @@ export default {
         this.animalPhotos = r.data;
       });
     },
+    getAnimalsPaginated() {
+      shelterService.getAnimalsPaginated(this.limit, this.offset).then((r) => {
+        this.animals = r.data;
+        this.isLoading = false;
+      });
+    },
   },
   created() {
-    this.seeAnimals();
+    this.getAnimalsPaginated();
     this.getPhotos();
   },
 };
@@ -57,5 +65,7 @@ export default {
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
+  padding: 0px 10px 10px 10px;
+  margin-top: 0px;
 }
 </style>
