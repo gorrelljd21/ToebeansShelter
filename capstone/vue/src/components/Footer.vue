@@ -24,5 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  border-color: rgb(207, 232, 220);
+  border: 2px solid rgb(79, 185, 227);
 }
 </style>
