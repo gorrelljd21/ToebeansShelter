@@ -25,19 +25,13 @@ export default {
 };
 </script>
 
-
-
-
 <style scoped>
-/* .main {
-} */
-
 .header {
-  position: relative top;
-  display: flex;
-  flex-direction: row;
+  /* position: relative top; */
+  /* display: flex; */
+  /* flex-direction: row;
   justify-content: space-between;
-  align-items: center;
+  align-items: center; */
   border-bottom: solid;
 }
 .logo {
@@ -50,7 +44,7 @@ export default {
 }
 
 #LR {
-  display: flex;
+  /* display: flex; */
   flex-direction: row-reverse;
   align-items: start;
   justify-content: flex-start;

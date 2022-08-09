@@ -6,7 +6,7 @@
         <button id="btn" type="submit">Home</button>
       </router-link>
       <br />
-      <button id="btn" type="submit">About Us</button>
+      <!-- <button id="btn" type="submit">About Us</button>
       <br />
       <button id="btn" type="submit">All Animal Listings</button>
       <br />
@@ -16,7 +16,7 @@
       <br />
       <button id="btn" type="submit">Success Stories</button>
       <br />
-      <button id="btn" type="submit">Events</button>
+      <button id="btn" type="submit">Events</button> -->
     </nav>
   </div>
 </template>
