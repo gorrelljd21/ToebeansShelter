@@ -7,8 +7,11 @@
         >Logout</router-link
       >
     </div>
+    <!-- <header-comp></header-comp> -->
     <div class="center">
-      <router-view />
+      <!-- <nav-comp />
+      <animal />
+      <story-view /> -->
     </div>
 
     <router-view />
@@ -16,16 +19,27 @@
 </template>
 
 <script>
+// import NavComp from "@/components/NavComp.vue";
+// import HeaderComp from "@/components/HeaderComp.vue";
+// import Animal from "@/views/Animal.vue";
+// import StoryView from "@/views/StoryView.vue";
+
 export default {
   name: "app",
+  // components: {
+  //   NavComp,
+  //   HeaderComp,
+  //   Animal,
+  //   StoryView,
+  // },
 };
 </script>
 
 <style scoped>
-.center {
+/* .center {
   display: flex;
   flex-direction: row;
-}
+} */
 </style>
 
 
