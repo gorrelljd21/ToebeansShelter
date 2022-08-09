@@ -7,12 +7,15 @@
 
     <!-- Content -->
     <div class="card__content">
-      {{ animal.name }}<br />
-      {{ animal.age }} Years Old<br />
-      {{ animalType }} - {{ animal.breed }}
-      {{ photo.photo_link }}
+      <div class="petname">
+        {{ animal.name }}
+      </div>
+      <br />
+      <div class="petinfo">
+        {{ animal.age }} Years Old<br />
+        {{ animalType }} - {{ animal.breed }}<br />
+      </div>
     </div>
-    ...
   </div>
 </template>
 
@@ -60,19 +63,36 @@ export default {
   border: solid 1px black;
   max-width: 200px;
   color: aliceblue;
-}
-
-.card__cover {
-  height: 150px;
-  width: 100%;
+  border-radius: 8px;
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 .card__content {
   /* Take available height */
   flex: 1;
+  margin: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: black;
+}
+
+.card:hover {
+  opacity: 0.5;
 }
 
 img {
-  max-width: 100%;
+  width: 180px;
+  border-radius: 8px;
+  height: 150px;
+  object-fit: cover;
+  padding: 7px;
+}
+
+.petinfo {
+  font-size: 0.9em;
+}
+
+.petname {
+  font-weight: bold;
 }
 </style>
