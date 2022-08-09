@@ -1,16 +1,16 @@
 <template>
-  <div class="foot-view">
-    <Footer />
+  <div>
+    <foot-comp />
   </div>
 </template>
 
 <script>
-import Footer from "@/components/Footer.vue";
+import FootComp from "@/components/FootComp.vue";
 
 export default {
   name: "foot-view",
   components: {
-    Footer,
+    FootComp,
   },
 };
 </script>

@@ -5,7 +5,7 @@
       <ul>
         <li>Landline: 1800-TOE-BEAN</li>
         <li>Email: contact@toebeanshelter.org</li>
-        <li>Address: 999 PawPad Lane, Cincinnati, Oh</li>
+        <li>Address: Not <em>that</em> Farm, Cincinnati, Oh</li>
       </ul>
     </div>
   </div>
@@ -24,7 +24,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border-color: rgb(207, 232, 220);
+  background-color: rgb(207, 232, 220);
   border: 2px solid rgb(79, 185, 227);
 }
 </style>

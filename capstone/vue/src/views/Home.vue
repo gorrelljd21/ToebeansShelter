@@ -23,7 +23,7 @@ import AnimalList from "@/components/AnimalList.vue";
 import HeaderComp from "@/components/HeaderComp.vue";
 import NavComp from "@/components/NavComp.vue";
 import StoriesComp from "@/components/StoriesComp.vue";
-import FootView from "@/components/FootView.vue";
+import FootView from "@/views/FootView.vue";
 
 export default {
   name: "home",
@@ -64,7 +64,7 @@ export default {
   grid-template-areas:
     "ga-header  ga-header ga-header"
     "ga-nav     ga-main   ga-story"
-    "ga-nav     ga-feet   ga-feet";
+    "ga-feet     ga-feet   ga-feet";
   gap: 10px;
 }
 </style> 
