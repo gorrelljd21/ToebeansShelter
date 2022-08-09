@@ -28,7 +28,7 @@ button {
   margin: 4px 2px;
   transition-duration: 0.4s;
   cursor: pointer;
-  margin: 64px 0px 0px 85px;
+  margin: 90px 0px 0px 85px;
 }
 
 button:hover {

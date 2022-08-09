@@ -96,6 +96,7 @@ export default {
     "ga-nav     ga-main   ga-story"
     "ga-feet    ga-feet   ga-feet";
   gap: 10px;
+  background-color: #e0dfd5;
 }
 
 /* @media screen and (max-width: 450px) {
