@@ -54,7 +54,6 @@ export default {
 
 <style>
 .card-container {
-  position: relative center;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

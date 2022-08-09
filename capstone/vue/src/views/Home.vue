@@ -10,7 +10,9 @@
       <nav-comp></nav-comp>
     </div>
     <div class="main">
-      <animal-list></animal-list>
+      <div class="list-container">
+        <animal-list></animal-list>
+      </div>
     </div>
     <div class="story">
       <stories-comp></stories-comp>
@@ -59,6 +61,11 @@ export default {
   grid-area: ga-main;
 }
 
+.list-container {
+  /* min-height: 0;
+  overflow-y: scroll; */
+}
+
 .story {
   grid-area: ga-story;
 }
@@ -72,8 +79,8 @@ export default {
   grid-template-columns: 1fr 3fr 1fr;
   grid-template-areas:
     "ga-logo  ga-header ga-header"
-    "ga-nav     ga-main   ga-story"
-    "ga-feet     ga-feet   ga-feet";
+    "ga-nav   ga-main   ga-story"
+    "ga-feet  ga-feet   ga-feet";
   gap: 10px;
 }
 
