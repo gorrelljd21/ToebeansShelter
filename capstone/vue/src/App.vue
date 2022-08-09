@@ -10,8 +10,11 @@
     <header-comp />
     <div class="center">
       <nav-comp />
-      <router-view />
+      <animal />
+      <story-view />
     </div>
+
+    <router-view />
   </div>
 
   <!-- below may be needed when organizing layout of page -->
@@ -38,12 +41,16 @@
 <script>
 import NavComp from "@/components/NavComp.vue";
 import HeaderComp from "@/components/HeaderComp.vue";
+import Animal from "@/views/Animal.vue";
+import StoryView from "@/views/StoryView.vue";
 
 export default {
   name: "app",
   components: {
     NavComp,
     HeaderComp,
+    Animal,
+    StoryView,
   },
 };
 </script>

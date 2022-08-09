@@ -7,6 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Animal from '../views/Animal.vue'
 
+
 Vue.use(Router)
 
 /**
@@ -61,7 +62,7 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
-    }
+    },
   ]
 })
 
