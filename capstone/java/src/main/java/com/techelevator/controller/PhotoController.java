@@ -33,5 +33,8 @@ public class PhotoController {
         return animalPhotoDao.getPhotoByPhotoId(photo_id);
     }
 
-
+    @GetMapping(path = "/photos/limit/{limit}/offset/{offset}")
+    public List<AnimalPhoto> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset){
+        return animalPhotoDao.getPhotosPage(limit, offset);
+    }
 }

@@ -60,6 +60,22 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
         return photo;
     }
 
+    @Override
+    public List<AnimalPhoto> getPhotosPage(int limit, int offset) {
+        String sql = "select animal_id, photo_id, photo_link" +
+                " From animal_photos" +
+                " ORDER BY animal_id, photo_id" +
+                " LIMIT ?" +
+                " OFFSET ?;";
+        List<AnimalPhoto> photos = new ArrayList<>();
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql, limit, offset);
+        while(results.next()) {
+            AnimalPhoto photo = mapRowToPhoto(results);
+            photos.add(photo);
+        }
+        return photos;
+    }
+
     private AnimalPhoto mapRowToPhoto(SqlRowSet rs) {
         AnimalPhoto photo = new AnimalPhoto();
         photo.setPhoto_id(rs.getInt("photo_id"));
