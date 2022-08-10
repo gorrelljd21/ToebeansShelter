@@ -28,11 +28,12 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  background-color: rgb(207, 232, 220);
+  /* background-color: rgb(207, 232, 220); */
   border-radius: 2px;
   border-style: solid;
   border-color: rgb(79, 185, 227);
   margin-left: 15px;
+  background-color: #e0dfd5;
 }
 
 .footer-container h3 {

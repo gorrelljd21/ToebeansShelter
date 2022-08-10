@@ -49,7 +49,7 @@ export default {
   border-style: solid;
 }
 .story-card {
-  background-color: rgb(207, 232, 220);
+  /* background-color: rgb(207, 232, 220); */
   border-radius: 2px;
   border-style: solid;
   border-color: rgb(79, 185, 227);
