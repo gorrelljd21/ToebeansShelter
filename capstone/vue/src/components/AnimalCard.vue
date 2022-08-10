@@ -93,4 +93,15 @@ img {
 .petname {
   font-weight: bold;
 }
+
+@media screen and (max-width: 450px) {
+  .card {
+    max-width: 150px;
+    margin: 10px 10px 0px 10px;
+  }
+
+  img {
+    width: 135px;
+  }
+}
 </style>

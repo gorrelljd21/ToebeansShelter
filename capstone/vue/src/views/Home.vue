@@ -4,7 +4,7 @@
       <div class="logo">
         <logo-comp></logo-comp>
       </div>
-      <div class="title">
+      <div class="title" v-if="!mobileView">
         <title-comp></title-comp>
       </div>
       <div class="loginRegister">
@@ -41,6 +41,11 @@ import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
 
 export default {
   name: "home",
+  data() {
+    return {
+      mobileView: false,
+    };
+  },
   components: {
     AnimalList,
     HeaderComp,
@@ -50,6 +55,15 @@ export default {
     LogoComp,
     TitleComp,
     LoginRegisterComp,
+  },
+  methods: {
+    handleView() {
+      this.mobileView = window.innerWidth <= 450;
+    },
+  },
+  created() {
+    this.handleView();
+    window.addEventListener("resize", this.handleView);
   },
 };
 </script>
@@ -103,20 +117,30 @@ export default {
 
 @media screen and (max-width: 450px) {
   .nav {
-    height: 25vh;
+    height: 100vh;
     border-style: none;
   }
 
+  .logo {
+    width: 40vw;
+    margin: 20px;
+  }
+
+  .title {
+    margin-left: 13%;
+    margin-top: -5%;
+  }
+
   .home {
-    grid-template-columns: 1fr;
+    width: 100vw;
+    grid-template-columns: 1fr 1fr;
     grid-template-areas:
-      "ga-logo"
-      "ga-title"
-      "ga-lr"
-      "ga-nav"
-      "ga-main"
-      "ga-story"
-      "ga-feet";
+      "ga-logo ga-lr"
+      "ga-title  ga-title"
+      "ga-nav ga-nav"
+      "ga-main ga-main"
+      "ga-story ga-story"
+      "ga-feet ga-feet";
   }
 }
 </style> 

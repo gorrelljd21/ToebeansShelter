@@ -35,4 +35,11 @@ button:hover {
   background-color: white;
   color: black;
 }
+
+@media screen and (max-width: 450px) {
+  button {
+    margin: 85px 20px 0px -15px;
+    width: 35vw;
+  }
+}
 </style>

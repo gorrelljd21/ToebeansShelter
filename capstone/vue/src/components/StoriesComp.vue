@@ -48,4 +48,12 @@ export default {
   background-color: rgb(207, 232, 220);
   border: 2px solid rgb(79, 185, 227);
 }
+
+@media screen and (max-width: 450px) {
+  .story-container {
+    column-width: 210px;
+    margin-right: 10px;
+    margin-left: 20px;
+  }
+}
 </style>

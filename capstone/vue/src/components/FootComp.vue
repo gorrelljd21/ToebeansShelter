@@ -28,4 +28,12 @@ export default {
   border: 2px solid rgb(79, 185, 227);
   margin-left: 15px;
 }
+
+@media screen and (max-width: 450px) {
+  .footer-container {
+    margin-left: 15px;
+    width: 400px;
+    padding-left: 8px;
+  }
+}
 </style>
