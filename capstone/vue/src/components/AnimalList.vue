@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loading" v-if="isLoading">
-      <img src="..\assets\hopping.gif" />
+      <img id="bunny" src="..\assets\hopping.gif" />
     </div>
     <ul class="card-container">
       <animal-card
@@ -32,6 +32,7 @@
             getAnimalsPaginated();
           "
           v-show="page < 4"
+          v-if="!isLoading"
         >
           next
         </button>
@@ -99,6 +100,9 @@ export default {
 
 
 <style>
+.loading {
+  margin: 20% 10% 0% 30%;
+}
 .bottomComponent {
   display: flex;
   justify-content: flex-end;
