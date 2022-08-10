@@ -61,7 +61,7 @@ export default {
   border: solid 1px black;
   max-width: 200px;
   color: aliceblue;
-  border-radius: 8px;
+  /* border-radius: 8px; */
   margin-bottom: 20px;
 }
 
