@@ -2,30 +2,50 @@
   <div class="story-comp">
     <div class="story-container">
       <div class="story-card">
-        <h3 class="story-title">Story Headline Here</h3>
+        <h3 class="story-title">Opossum Finds New Home At ToeBeans</h3>
         <p class="story-content">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
-          assumenda possimus obcaecati at odio ad eligendi cumque placeat
-          adipisci aspernatur iure aut qui dolorum, a dolor maiores rerum atque
-          sequi!
+          By: ToeBeans Staff Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Accusantium assumenda possimus obcaecati at odio ad eligendi
+          cumque placeat adipisci aspernatur iure aut qui dolorum, a dolor
+          maiores rerum atque sequi! Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Accusantium assumenda possimus obcaecati at odio ad
+          eligendi cumque placeat adipisci aspernatur iure aut qui dolorum, a
+          dolor maiores rerum atque sequi! Lorem ipsum dolor sit amet
+          consectetur adipisicing elit. Accusantium assumenda possimus obcaecati
+          at odio ad eligendi cumque placeat adipisci aspernatur iure aut qui
+          dolorum, a dolor maiores rerum atque sequi!
         </p>
       </div>
       <div class="story-card">
-        <h3 class="story-title">Story Headline Here</h3>
+        <h3 class="story-title">ToeBeans to Host Adopt-athon This Saturday</h3>
         <p class="story-content">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Minima totam
           debitis dignissimos asperiores magnam quis! Unde, repellendus
           doloremque dicta quibusdam reiciendis quasi provident ea perferendis
-          excepturi ex commodi ad sunt?
+          excepturi ex commodi ad sunt? Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Minima totam debitis dignissimos asperiores magnam
+          quis! Unde, repellendus doloremque dicta quibusdam reiciendis quasi
+          provident ea perferendis excepturi ex commodi ad sunt?
         </p>
       </div>
       <div class="story-card">
-        <h3 class="story-title">Story Headline Here</h3>
+        <h3 class="story-title">
+          Elderly Rat Adopts Four Baby Turtles as Sons
+        </h3>
         <p class="story-content">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
           assumenda possimus obcaecati at odio ad eligendi cumque placeat
           adipisci aspernatur iure aut qui dolorum, a dolor maiores rerum atque
-          sequi!
+          sequi! Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Accusantium assumenda possimus obcaecati at odio ad eligendi cumque
+          placeat adipisci aspernatur iure aut qui dolorum, a dolor maiores
+          rerum atque sequi! Lorem ipsum dolor sit amet consectetur adipisicing
+          elit. Accusantium assumenda possimus obcaecati at odio ad eligendi
+          cumque placeat adipisci aspernatur iure aut qui dolorum, a dolor
+          maiores rerum atque sequi! Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Accusantium assumenda possimus obcaecati at odio ad
+          eligendi cumque placeat adipisci aspernatur iure aut qui dolorum, a
+          dolor maiores rerum atque sequi!
         </p>
       </div>
     </div>
