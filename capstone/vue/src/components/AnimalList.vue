@@ -15,15 +15,23 @@
     <div class="bottomComponent">
       <div class="pagination">
         <button
-          v-for="num in numberOfPages"
-          :key="num"
           @click="
-            page = num;
+            page--;
+            getAnimalsPaginated();
+            getPhotos();
+          "
+        >
+          back
+        </button>
+        <button
+          @click="
+            page++;
+
+            getPhotos();
             getAnimalsPaginated();
           "
-          :class="{ currentPage: page == num }"
         >
-          {{ num }}
+          next
         </button>
       </div>
     </div>
@@ -44,7 +52,6 @@ export default {
       isLoading: true,
       errorMsg: "",
       animalPhotos: [],
-      offset: 0,
       limit: 15,
       page: 1,
       currentAnimals: [],
@@ -52,9 +59,11 @@ export default {
   },
   methods: {
     getPhotos() {
-      shelterService.getAllPhotos().then((r) => {
-        this.animalPhotos = r.data;
-      });
+      shelterService
+        .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
+        .then((r) => {
+          this.animalPhotos = r.data;
+        });
     },
     getAnimalsPaginated() {
       this.isLoading = true;
