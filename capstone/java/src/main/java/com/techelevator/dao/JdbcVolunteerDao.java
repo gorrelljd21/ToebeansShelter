@@ -119,7 +119,15 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return volunteer;
     }
 
+    @Override
+    public boolean postVolunteerSubmission(Volunteer volunteer) {
+        String sql = "INSERT INTO volunteers (full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?); ";
 
+        return jdbcTemplate.update(sql, volunteer.getVolunteer_id(), volunteer.getFull_name(), volunteer.getPhone_number(),
+                volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getPhone_number(),
+                    volunteer.getRef_email()) == 1;
+    }
 
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {

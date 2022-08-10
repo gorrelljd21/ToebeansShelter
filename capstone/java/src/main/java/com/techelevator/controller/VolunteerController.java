@@ -2,10 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.VolunteerDao;
 import com.techelevator.model.Volunteer;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -47,6 +44,11 @@ public class VolunteerController {
     @GetMapping(path = "/volunteers/reference/{volunteer_id}")
     public Volunteer findReferenceByVolunteer(@PathVariable int volunteer_id) {
         return volunteerDao.findReferenceByVolunteer(volunteer_id);
+    }
+
+    @PostMapping(path = "/volunteers/submit")
+    public boolean postVolunteerSubmission(@RequestBody Volunteer newVolunteer) {
+        return volunteerDao.postVolunteerSubmission(newVolunteer);
     }
 
 
