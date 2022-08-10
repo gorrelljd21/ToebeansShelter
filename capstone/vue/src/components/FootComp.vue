@@ -33,15 +33,20 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   /* background-color: rgb(207, 232, 220); */
-  border-radius: 2px;
+  border-radius: 5px;
   border-style: solid;
-  border-color: rgb(79, 185, 227);
+  border-color: #44a1a0;
   margin-left: 15px;
   background-color: #e0dfd5;
+  border-width: 2px;
 }
 
 .footer-container h3 {
-  margin-left: 2%;
+  margin-left: 1%;
+}
+
+ul {
+  padding-left: 1%;
 }
 
 .footer-container > ul > li {

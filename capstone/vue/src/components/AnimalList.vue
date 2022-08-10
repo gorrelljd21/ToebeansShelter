@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loading" v-if="isLoading">
-      <img src="..\assets\3035fb76965389.5c7945b0d0567.gif" />
+      <img src="..\assets\hopping.gif" />
     </div>
     <ul class="card-container">
       <animal-card
@@ -95,8 +95,9 @@ export default {
 .bottomComponent {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
+  align-content: center;
   font-family: "Calibri", "Trebuchet MS", sans-serif;
+  margin-right: 1.5%;
 }
 .card-container {
   display: flex;

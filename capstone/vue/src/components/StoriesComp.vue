@@ -79,19 +79,25 @@ export default {
   border-width: 1px;
 }
 .story-card {
+  margin: 2px;
   /* background-color: rgb(207, 232, 220); */
-  border-radius: 2px;
+
   border-style: solid;
-  border-color: rgb(79, 185, 227);
+  border-color: #44a1a0;
 }
 
 .story-title {
-  text-align: center;
+  text-align: left;
+  padding-left: 15px;
+  padding-right: 15px;
+  font-size: 16px;
 }
 
 .story-content {
   font-size: 14px;
-  text-align: center;
+  text-align: left;
+  padding: 0px 15px 15px 15px;
+  padding-bottom: 0px;
 }
 
 @media screen and (max-width: 450px) {
