@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="loading" v-if="isLoading">
-      <img src="..\assets\hopping.gif" />
+      <img id="bunny" src="..\assets\hopping.gif" />
     </div>
     <ul class="card-container">
       <animal-card
@@ -32,6 +32,7 @@
             getAnimalsPaginated();
           "
           v-show="page < 4"
+          v-if="!isLoading"
         >
           next
         </button>
@@ -66,6 +67,7 @@ export default {
         .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.animalPhotos = r.data;
+          this.shuffleCards(this.animalPhotos);
         });
     },
     getAnimalsPaginated() {
@@ -74,8 +76,12 @@ export default {
         .getAnimalsPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.currentAnimals = r.data;
+          this.shuffleCards(this.currentAnimals);
           this.isLoading = false;
         });
+    },
+    shuffleCards(array) {
+      return array.sort(() => Math.random() - 0.5);
     },
   },
   computed: {
@@ -91,7 +97,12 @@ export default {
 };
 </script>
 
+
+
 <style>
+.loading {
+  margin: 20% 10% 0% 30%;
+}
 .bottomComponent {
   display: flex;
   justify-content: flex-end;

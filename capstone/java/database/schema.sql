@@ -1,6 +1,7 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, animal_types, animals, animal_photos, stories CASCADE;
+
+DROP TABLE IF EXISTS users, animal_types, animals, animal_photos, stories, volunteers, volunteers_users CASCADE;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -8,6 +9,27 @@ CREATE TABLE users (
 	password_hash varchar(200) NOT NULL,
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+CREATE TABLE volunteers (
+	volunteer_id SERIAL,
+	full_name varchar(100) NOT NULL,
+	phone_number varchar (20) NOT NULL,
+	email varchar(50) NOT NULL UNIQUE,
+	bio text NOT NULL,
+	ref_full_name varchar(100) NOT NULL,
+	ref_phone_number varchar (20) NOT NULL,
+	ref_email varchar(50) NOT NULL UNIQUE,
+	CONSTRAINT UQ_email UNIQUE(email),
+	CONSTRAINT UQ_ref_email UNIQUE(ref_email),
+	CONSTRAINT PK_volunteers PRIMARY KEY (volunteer_id)
+	
+);
+
+CREATE TABLE volunteers_users (
+	volunteer_id int NOT NULL,
+	user_id int NOT NULL,
+	CONSTRAINT PK_volunteers_users PRIMARY KEY (volunteer_id, user_id)
 );
 
 CREATE TABLE animal_types (
@@ -50,4 +72,8 @@ INSERT INTO animal_types (type) values('cat');
 INSERT INTO animal_types (type) values('farm');
 INSERT INTO animal_types (type) values('small');
 
+ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_volunteer FOREIGN KEY(volunteer_id) REFERENCES volunteers(volunteer_id);
+ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_user FOREIGN KEY(user_id) REFERENCES users(user_id);
+
 COMMIT TRANSACTION;
+
