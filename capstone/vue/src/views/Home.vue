@@ -100,8 +100,8 @@ export default {
   /* overflow-y: scroll; */
 }
 
-.list-container {
-}
+/* .list-container {
+} */
 
 .story {
   grid-area: ga-story;
@@ -130,18 +130,16 @@ export default {
 
 @media screen and (max-width: 450px) {
   .nav {
-    height: 100vh;
     border-style: none;
   }
 
   .logo {
+    padding: 0% 0% 0% 0%;
     width: 40vw;
-    margin: 20px;
+    margin: 10px;
   }
 
-  .title {
-    margin-left: 13%;
-    margin-top: -5%;
+  .main {
   }
 
   .home {
@@ -149,7 +147,6 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "ga-logo ga-lr"
-      "ga-title  ga-title"
       "ga-nav ga-nav"
       "ga-main ga-main"
       "ga-story ga-story"

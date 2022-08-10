@@ -57,8 +57,8 @@
   border-radius: 4px;
   border-style: solid;
   border-width: 1px;
-  height: 100vh;
   margin-left: 15px;
+  padding: 0 0 30px 0;
 }
 
 #link {
