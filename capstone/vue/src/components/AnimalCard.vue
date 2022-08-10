@@ -20,9 +20,7 @@
 </template>
 
 <script>
-import shelterService from "@/services/ShelterService";
 export default {
-  photoLink: "",
   props: ["animal", "photo"],
   computed: {
     animalType() {
@@ -36,20 +34,6 @@ export default {
         return "Small Animal";
       }
     },
-    animalPic() {
-      this.getPhoto();
-      return this.photoLink;
-    },
-  },
-  methods: {
-    getPhoto() {
-      shelterService
-        .getPhotoById(this.animal.animal_id)
-        .then((r) => (this.photoLink = r.data.photo_link));
-    },
-  },
-  created() {
-    this.getPhoto;
   },
 };
 </script>
