@@ -22,8 +22,9 @@ public class JdbcVolunteerDao implements VolunteerDao {
         List<Volunteer> volunteersList = new ArrayList<>();
 
         String volunteerSql =
-                "select volunteer_id, full_name, phone_number, email, bio, ref_full_name," +
-                        " ref_phone_number, ref_email from volunteers;";
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, " +
+                        " ref_phone_number, ref_email " +
+                        "FROM volunteers; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(volunteerSql);
         while(result.next()){
             volunteersList.add(mapRowToVolunteer(result));
@@ -36,15 +37,15 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "select full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email" +
-                        " from volunteers" +
-                        " where volunteer_id = ?;";
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email " +
+                        " FROM volunteers " +
+                        " WHERE volunteer_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, volunteer_id);
 
-        while(result.next()){
-            volunteer = mapRowToVolunteer(result);
-        }
-        return volunteer;
+       if (result.next()) {
+           volunteer = mapRowToVolunteer(result);
+       }
+       return volunteer;
     }
 
     @Override
@@ -52,12 +53,12 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "select phone_number, email, bio, ref_full_name, ref_phone_number, ref_email" +
-                        " from volunteers" +
-                        " where full_name = ?;";
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email " +
+                        " FROM volunteers" +
+                        " WHERE full_name = ?; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, full_name);
 
-        if(result.next()){
+        if (result.next()){
             volunteer = mapRowToVolunteer(result);
         }
         return volunteer;
@@ -68,9 +69,9 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "select full_name, phone_number, bio, ref_full_name, ref_phone_number, ref_email" +
-                        " from volunteers" +
-                        " where email = ?;";
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email" +
+                        " FROM volunteers " +
+                        " WHERE email = ?; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, email);
 
         if(result.next()){
@@ -105,9 +106,9 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "select ref_full_name, ref_phone_number, ref_email" +
-                        " from volunteers" +
-                        " where volunteer_id = ?;";
+                "SELECT ref_full_name, ref_phone_number, ref_email" +
+                        " FROM volunteers" +
+                        " WHERE volunteer_id = ?; ";
 
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, volunteer_id);
 
@@ -119,16 +120,17 @@ public class JdbcVolunteerDao implements VolunteerDao {
     }
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
-        Volunteer volunteer = new Volunteer();
+      Volunteer volunteer = new Volunteer();
 
-        volunteer.setVolunteer_id(rs.getInt("volunteer_id"));
-        volunteer.setFull_name(rs.getString("full_name"));
-        volunteer.setPhone_number(rs.getString("phone_number"));
-        volunteer.setEmail(rs.getString("email"));
-        volunteer.setBio(rs.getString("bio"));
-        volunteer.setRef_full_name(rs.getString("ref_full_name"));
-        volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
-        volunteer.setRef_email(rs.getString("ref_email"));
-        return volunteer;
+      volunteer.setVolunteer_id(rs.getInt("volunteer_id"));
+      volunteer.setFull_name(rs.getString("full_name"));
+      volunteer.setPhone_number(rs.getString("phone_number"));
+      volunteer.setEmail(rs.getString("email"));
+      volunteer.setBio(rs.getString("bio"));
+      volunteer.setRef_full_name(rs.getString("ref_full_name"));
+      volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
+      volunteer.setRef_email(rs.getString("ref_email"));
+
+      return volunteer;
     }
 }

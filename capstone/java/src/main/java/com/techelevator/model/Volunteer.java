@@ -15,8 +15,7 @@ public class Volunteer {
 
     }
 
-    public Volunteer(int volunteer_id, String full_name, String phone_number, String email, String bio,
-                     String ref_full_name, String ref_phone_number, String ref_email) {
+    public Volunteer(int volunteer_id, String full_name, String phone_number, String email, String bio, String ref_full_name, String ref_phone_number, String ref_email) {
         this.volunteer_id = volunteer_id;
         this.full_name = full_name;
         this.phone_number = phone_number;
