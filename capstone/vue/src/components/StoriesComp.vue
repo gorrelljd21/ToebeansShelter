@@ -47,6 +47,7 @@ export default {
   column-gap: 20px;
   border-radius: 4px;
   border-style: solid;
+  border-width: 1px;
 }
 .story-card {
   /* background-color: rgb(207, 232, 220); */
