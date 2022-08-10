@@ -83,7 +83,7 @@ export default {
 .main {
   grid-area: ga-main;
   border-top: black;
-  overflow-y: scroll;
+  /* overflow-y: scroll; */
 }
 
 .list-container {
