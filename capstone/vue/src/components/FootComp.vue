@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  background-color: #e0dfd5;
+}
 .footer {
   font-family: "Calibri", "Trebuchet MS", sans-serif;
   margin-bottom: 1%;
@@ -43,5 +46,13 @@ export default {
 
 .footer-container > ul > li {
   list-style: none;
+}
+
+@media screen and (max-width: 450px) {
+  .footer-container {
+    margin-left: 15px;
+    width: 400px;
+    padding-left: 8px;
+  }
 }
 </style>

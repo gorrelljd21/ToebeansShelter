@@ -65,15 +65,15 @@
   border-width: 1px;
   border-style: solid;
   border-color: #313638;
-  padding: 8px 30px 8px 30px;
+  padding: 5% 20% 5% 20%;
   background-color: white;
   display: block;
-  margin: -10px 20px 0px 20px;
+  margin: -5% 10% 0% 10%;
   border-radius: 4px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   text-decoration: none;
   color: #313638;
-  font-size: 20px;
+  font-size: 1em;
 }
 
 #link:hover {
@@ -84,4 +84,20 @@ h1 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color: #313638;
 }
+<<<<<<< HEAD
+
+#animal {
+  flex-direction: column-reverse;
+  flex-grow: 0;
+  justify-content: flex-start;
+}
+
+@media screen and (max-width: 450px) {
+  .navigation {
+    width: 70vw;
+    margin-left: 60px;
+  }
+}
+=======
+>>>>>>> 996a2321f0f293304ee267b6949a9f4ba0c7fb49
 </style>

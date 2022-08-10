@@ -10,4 +10,12 @@ img {
   width: 50%;
   height: 50%;
 }
+
+@media screen and (max-width: 450px) {
+  img {
+    width: 70%;
+    height: 70%;
+    padding: 0%;
+  }
+}
 </style>

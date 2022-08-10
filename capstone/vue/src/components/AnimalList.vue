@@ -136,4 +136,17 @@ export default {
   opacity: 50%;
   font-weight: bolder;
 }
+
+@media screen and (max-width: 450px) {
+  .card-container {
+    position: center;
+    justify-content: space-around;
+    padding: 0px 20px 10px 30px;
+    margin-top: 0px;
+  }
+
+  .pagination {
+    margin-right: 60px;
+  }
+}
 </style>
