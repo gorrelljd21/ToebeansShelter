@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Volunteer;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -122,11 +123,18 @@ public class JdbcVolunteerDao implements VolunteerDao {
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
         String sql = "INSERT INTO volunteers (full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?); ";
+                "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING volunteer_id; ";
 
-        return jdbcTemplate.update(sql, volunteer.getVolunteer_id(), volunteer.getFull_name(), volunteer.getPhone_number(),
-                volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getPhone_number(),
-                    volunteer.getRef_email()) == 1;
+        Integer newVolunteerId;
+            try {
+                newVolunteerId = jdbcTemplate.queryForObject(sql, Integer.class, volunteer.getFull_name(), volunteer.getRef_phone_number(),
+                        volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
+                        volunteer.getRef_email());
+            } catch (DataAccessException e) {
+                System.out.println(e.getLocalizedMessage());
+                return false;
+            }
+            return true;
     }
 
 

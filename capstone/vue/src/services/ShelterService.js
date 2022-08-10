@@ -43,6 +43,9 @@ export default {
     },
     getVolunteerReference(volunteer_id) {
         return http.get(`/volunteers/reference/${volunteer_id}`);
-    }
+    },
+    addNewVolunteer(volunteer) {
+        return http.post(`volunteers/submit`, volunteer);
+    },
 
 }

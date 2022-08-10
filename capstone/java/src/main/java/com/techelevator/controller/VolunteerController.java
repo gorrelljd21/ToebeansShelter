@@ -1,9 +1,13 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.VolunteerDao;
+import com.techelevator.model.UserAlreadyExistsException;
+import com.techelevator.model.UserNotFoundException;
 import com.techelevator.model.Volunteer;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -46,9 +50,11 @@ public class VolunteerController {
         return volunteerDao.findReferenceByVolunteer(volunteer_id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/volunteers/submit")
-    public boolean postVolunteerSubmission(@RequestBody Volunteer newVolunteer) {
-        return volunteerDao.postVolunteerSubmission(newVolunteer);
+    public Volunteer createNewVolunteer(@Valid @RequestBody Volunteer newVolunteer) {
+         volunteerDao.postVolunteerSubmission(newVolunteer);
+        return newVolunteer;
     }
 
 
