@@ -14,11 +14,11 @@ CREATE TABLE users (
 CREATE TABLE volunteers (
 	volunteer_id SERIAL,
 	full_name varchar(100) NOT NULL,
-	phone_number varchar (10) NOT NULL,
+	phone_number varchar (20) NOT NULL,
 	email varchar(50) NOT NULL UNIQUE,
 	bio text NOT NULL,
 	ref_full_name varchar(100) NOT NULL,
-	ref_phone_number varchar (10) NOT NULL,
+	ref_phone_number varchar (20) NOT NULL,
 	ref_email varchar(50) NOT NULL UNIQUE,
 	CONSTRAINT UQ_email UNIQUE(email),
 	CONSTRAINT UQ_ref_email UNIQUE(ref_email),

@@ -8,7 +8,7 @@ public class Volunteer {
     private String email;
     private String bio;
     private String ref_full_name;
-    private int ref_phone_number;
+    private String ref_phone_number;
     private String ref_email;
 
     public Volunteer() {
@@ -16,7 +16,7 @@ public class Volunteer {
     }
 
     public Volunteer(int volunteer_id, String full_name, String phone_number, String email, String bio,
-                     String ref_full_name, int ref_phone_number, String ref_email) {
+                     String ref_full_name, String ref_phone_number, String ref_email) {
         this.volunteer_id = volunteer_id;
         this.full_name = full_name;
         this.phone_number = phone_number;
@@ -75,11 +75,11 @@ public class Volunteer {
         this.ref_full_name = ref_full_name;
     }
 
-    public int getRef_phone_number() {
+    public String getRef_phone_number() {
         return ref_phone_number;
     }
 
-    public void setRef_phone_number(int ref_phone_number) {
+    public void setRef_phone_number(String ref_phone_number) {
         this.ref_phone_number = ref_phone_number;
     }
 

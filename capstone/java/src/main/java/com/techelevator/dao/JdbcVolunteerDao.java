@@ -41,7 +41,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
                         " where volunteer_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, volunteer_id);
 
-        if(result.next()){
+        while(result.next()){
             volunteer = mapRowToVolunteer(result);
         }
         return volunteer;
@@ -127,7 +127,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         volunteer.setEmail(rs.getString("email"));
         volunteer.setBio(rs.getString("bio"));
         volunteer.setRef_full_name(rs.getString("ref_full_name"));
-        volunteer.setRef_phone_number(rs.getInt("ref_phone_number"));
+        volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
         volunteer.setRef_email(rs.getString("ref_email"));
         return volunteer;
     }
