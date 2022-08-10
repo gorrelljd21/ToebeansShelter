@@ -84,7 +84,6 @@ h1 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color: #313638;
 }
-<<<<<<< HEAD
 
 #animal {
   flex-direction: column-reverse;
@@ -98,6 +97,4 @@ h1 {
     margin-left: 60px;
   }
 }
-=======
->>>>>>> 996a2321f0f293304ee267b6949a9f4ba0c7fb49
 </style>
