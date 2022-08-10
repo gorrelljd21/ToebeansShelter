@@ -13,4 +13,7 @@ export default {
 </script>
 
 <style scoped>
+* {
+  background-color: #e0dfd5;
+}
 </style>

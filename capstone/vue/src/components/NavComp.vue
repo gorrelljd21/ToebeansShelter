@@ -8,11 +8,11 @@
           <b><a id="link" href="default.asp" target="_blank">Home</a></b>
         </router-link>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">About Us</a></b>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -20,7 +20,7 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -28,11 +28,11 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">Volunteers</a></b>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -40,7 +40,7 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">Events</a></b>
       </p>
@@ -56,6 +56,7 @@
   text-align: center;
   border-radius: 8px;
   border-style: solid;
+  border-width: 1px;
   height: 100vh;
   margin-left: 15px;
 }
@@ -83,6 +84,7 @@ h1 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color: #313638;
 }
+<<<<<<< HEAD
 
 #animal {
   flex-direction: column-reverse;
@@ -96,4 +98,6 @@ h1 {
     margin-left: 60px;
   }
 }
+=======
+>>>>>>> 996a2321f0f293304ee267b6949a9f4ba0c7fb49
 </style>

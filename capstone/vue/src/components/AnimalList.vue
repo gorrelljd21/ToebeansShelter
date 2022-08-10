@@ -15,12 +15,25 @@
     <div class="bottomComponent">
       <div class="pagination">
         <button
-          v-for="num in numberOfPages"
-          :key="num"
-          @click="page = num"
-          :class="{ currentPage: page == num }"
+          @click="
+            page--;
+            getAnimalsPaginated();
+            getPhotos();
+          "
+          v-show="page > 1"
         >
-          {{ num }}
+          back
+        </button>
+        <button
+          @click="
+            page++;
+
+            getPhotos();
+            getAnimalsPaginated();
+          "
+          v-show="page < 4"
+        >
+          next
         </button>
       </div>
     </div>
@@ -40,45 +53,39 @@ export default {
     return {
       isLoading: true,
       errorMsg: "",
-      animals: [],
       animalPhotos: [],
-      offset: 0,
       limit: 15,
       page: 1,
+      currentAnimals: [],
+      isDisabled: false,
     };
   },
   methods: {
-    seeAnimals() {
-      shelterService.getAnimals().then((response) => {
-        this.animals = response.data;
-        this.isLoading = false;
-      });
-    },
     getPhotos() {
-      shelterService.getAllPhotos().then((r) => {
-        this.animalPhotos = r.data;
-      });
+      shelterService
+        .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
+        .then((r) => {
+          this.animalPhotos = r.data;
+        });
     },
-    getAnimalsPaginated(page) {
-      shelterService.getAnimalsPaginated(this.limit, page).then((r) => {
-        this.animals = r.data;
-        this.isLoading = false;
-      });
+    getAnimalsPaginated() {
+      this.isLoading = true;
+      shelterService
+        .getAnimalsPaginated(this.limit, (this.page - 1) * this.limit)
+        .then((r) => {
+          this.currentAnimals = r.data;
+          this.isLoading = false;
+        });
     },
   },
   computed: {
     numberOfPages() {
       return Math.ceil(this.animalPhotos.length / this.limit);
     },
-    currentAnimals() {
-      return this.animals.slice(
-        (this.page - 1) * this.limit,
-        this.page * this.limit
-      );
-    },
   },
+
   created() {
-    this.seeAnimals();
+    this.getAnimalsPaginated();
     this.getPhotos();
   },
 };
@@ -89,10 +96,9 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Calibri", "Trebuchet MS", sans-serif;
 }
 .card-container {
-  position: relative center;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;

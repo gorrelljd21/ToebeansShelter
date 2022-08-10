@@ -1,6 +1,8 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.AnimalNotFoundException;
 import com.techelevator.model.AnimalPhoto;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
@@ -58,6 +60,40 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
             photo = mapRowToPhoto(result);
         }
         return photo;
+    }
+
+    @Override
+    public List<AnimalPhoto> getPhotosPage(int limit, int offset) {
+        String sql = "select animal_id, photo_id, photo_link" +
+                " From animal_photos" +
+                " ORDER BY animal_id, photo_id" +
+                " LIMIT ?" +
+                " OFFSET ?;";
+        List<AnimalPhoto> photos = new ArrayList<>();
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql, limit, offset);
+        while (results.next()) {
+            AnimalPhoto photo = mapRowToPhoto(results);
+            photos.add(photo);
+        }
+        return photos;
+    }
+
+    public int getPhotoIdByAnimalId(int animal_id) {
+        if (animal_id == -1) throw new IllegalArgumentException("animal_id cannot be null");
+        int photo_id;
+        try {
+            photo_id = jdbctemplate.queryForObject("SELECT photo_id " +
+                    "FROM " +
+                    "animal_photo " +
+                    "WHERE " +
+                    "animal_id = ?; ", int.class, animal_id);
+        } catch (EmptyResultDataAccessException e) {
+            {
+                throw new AnimalNotFoundException();
+            }
+        }
+
+        return photo_id;
     }
 
     private AnimalPhoto mapRowToPhoto(SqlRowSet rs) {

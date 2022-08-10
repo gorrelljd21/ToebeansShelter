@@ -68,7 +68,11 @@ export default {
 };
 </script>
 
-<style scoped>
+
+<style >
+* {
+  background-color: #e0dfd5;
+}
 .logo {
   grid-area: ga-logo;
 }
@@ -93,6 +97,10 @@ export default {
 .main {
   grid-area: ga-main;
   border-top: black;
+  /* overflow-y: scroll; */
+}
+
+.list-container {
 }
 
 .story {
@@ -112,7 +120,12 @@ export default {
     "ga-nav     ga-main   ga-story"
     "ga-feet    ga-feet   ga-feet";
   gap: 10px;
+  height: 90vh;
   background-color: #e0dfd5;
+}
+
+.card * {
+  background-color: aliceblue !important;
 }
 
 @media screen and (max-width: 450px) {
