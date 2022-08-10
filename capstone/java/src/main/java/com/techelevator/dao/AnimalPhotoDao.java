@@ -12,4 +12,6 @@ public interface AnimalPhotoDao {
 
     AnimalPhoto getPhotoByPhotoId(int photo_id);
 
+    int  getPhotoIdByAnimalId(int animal_id);
+
 }

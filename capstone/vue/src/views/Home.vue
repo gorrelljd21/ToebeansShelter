@@ -54,7 +54,11 @@ export default {
 };
 </script>
 
-<style scoped>
+
+<style >
+* {
+  background-color: #e0dfd5;
+}
 .logo {
   grid-area: ga-logo;
 }

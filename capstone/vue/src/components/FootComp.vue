@@ -22,6 +22,7 @@ export default {
 <style scoped>
 .footer {
   font-family: "Calibri", "Trebuchet MS", sans-serif;
+  margin-bottom: 1%;
 }
 
 .footer-container {
