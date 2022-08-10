@@ -26,5 +26,6 @@ export default {
   align-items: flex-start;
   background-color: rgb(207, 232, 220);
   border: 2px solid rgb(79, 185, 227);
+  margin-left: 15px;
 }
 </style>
