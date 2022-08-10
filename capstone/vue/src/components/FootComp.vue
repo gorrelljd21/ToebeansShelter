@@ -20,12 +20,26 @@ export default {
 </script>
 
 <style scoped>
+.footer {
+  font-family: "Calibri", "Trebuchet MS", sans-serif;
+}
+
 .footer-container {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   background-color: rgb(207, 232, 220);
-  border: 2px solid rgb(79, 185, 227);
+  border-radius: 2px;
+  border-style: solid;
+  border-color: rgb(79, 185, 227);
   margin-left: 15px;
+}
+
+.footer-container h3 {
+  margin-left: 2%;
+}
+
+.footer-container > ul > li {
+  list-style: none;
 }
 </style>
