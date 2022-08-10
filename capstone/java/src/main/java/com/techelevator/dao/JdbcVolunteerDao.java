@@ -119,6 +119,9 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return volunteer;
     }
 
+
+
+
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();
 
