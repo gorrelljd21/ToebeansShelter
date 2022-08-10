@@ -57,6 +57,7 @@
   border-radius: 8px;
   border-style: solid;
   height: 100vh;
+  margin-left: 15px;
 }
 
 #link {
