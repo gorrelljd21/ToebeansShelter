@@ -68,11 +68,12 @@ export default {
 .card__content {
   /* Take available height */
   flex: 1;
-  margin: 5px;
+  margin: 0px;
+  padding-bottom: 5px;
   margin-top: 0px;
   font-family: Arial, Helvetica, sans-serif;
   color: black;
-  padding-left: 2px;
+  padding-left: 10px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 

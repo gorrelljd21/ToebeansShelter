@@ -110,6 +110,10 @@ export default {
   background-color: #e0dfd5;
 }
 
+.card * {
+  background-color: aliceblue !important;
+}
+
 @media screen and (max-width: 450px) {
   .nav {
     height: 25vh;
