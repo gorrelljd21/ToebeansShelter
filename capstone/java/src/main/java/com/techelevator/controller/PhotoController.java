@@ -33,5 +33,10 @@ public class PhotoController {
         return animalPhotoDao.getPhotoByPhotoId(photo_id);
     }
 
+    @GetMapping(path = "/photos/photo_id/{animal_id}")
+    public int findPhotoIdByAnimalId(@PathVariable int animal_id) {
+        return animalPhotoDao.getPhotoIdByAnimalId(animal_id);
+    }
+
 
 }

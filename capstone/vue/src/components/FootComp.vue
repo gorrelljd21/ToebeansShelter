@@ -20,6 +20,9 @@ export default {
 </script>
 
 <style scoped>
+* {
+  background-color: #e0dfd5;
+}
 .footer {
   font-family: "Calibri", "Trebuchet MS", sans-serif;
   margin-bottom: 1%;

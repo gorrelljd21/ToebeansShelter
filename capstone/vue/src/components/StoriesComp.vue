@@ -19,6 +19,15 @@
           excepturi ex commodi ad sunt?
         </p>
       </div>
+      <div class="story-card">
+        <h3 class="story-title">Story Headline Here</h3>
+        <p class="story-content">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium
+          assumenda possimus obcaecati at odio ad eligendi cumque placeat
+          adipisci aspernatur iure aut qui dolorum, a dolor maiores rerum atque
+          sequi!
+        </p>
+      </div>
     </div>
   </div>
 </template>
