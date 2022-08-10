@@ -5,7 +5,7 @@
     </div>
     <ul class="card-container">
       <animal-card
-        v-for="animal in animals"
+        v-for="animal in currentAnimals"
         :key="animal.animal_id"
         :animal="animal"
         :photo="animalPhotos.find((x) => x.animal_id == animal.animal_id)"
@@ -13,12 +13,12 @@
       </animal-card>
     </ul>
     <div class="bottomComponent">
-      <h3>See more pets that need a home:</h3>
       <div class="pagination">
         <button
           v-for="num in numberOfPages"
           :key="num"
-          @click="offset = num * limit - limit"
+          @click="page = num"
+          :class="{ currentPage: page == num }"
         >
           {{ num }}
         </button>
@@ -44,6 +44,7 @@ export default {
       animalPhotos: [],
       offset: 0,
       limit: 15,
+      page: 1,
     };
   },
   methods: {
@@ -58,8 +59,8 @@ export default {
         this.animalPhotos = r.data;
       });
     },
-    getAnimalsPaginated() {
-      shelterService.getAnimalsPaginated(this.limit, this.offset).then((r) => {
+    getAnimalsPaginated(page) {
+      shelterService.getAnimalsPaginated(this.limit, page).then((r) => {
         this.animals = r.data;
         this.isLoading = false;
       });
@@ -69,9 +70,15 @@ export default {
     numberOfPages() {
       return Math.ceil(this.animalPhotos.length / this.limit);
     },
+    currentAnimals() {
+      return this.animals.slice(
+        (this.page - 1) * this.limit,
+        this.page * this.limit
+      );
+    },
   },
   created() {
-    this.getAnimalsPaginated();
+    this.seeAnimals();
     this.getPhotos();
   },
 };
@@ -82,6 +89,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
+  font-family: Calibri, "Trebuchet MS", sans-serif;
 }
 .card-container {
   position: relative center;
@@ -115,5 +123,11 @@ export default {
 
 .pagination > button:hover {
   opacity: 50%;
+}
+
+.currentPage {
+  color: #4c5454 !important;
+  opacity: 50%;
+  font-weight: bolder;
 }
 </style>
