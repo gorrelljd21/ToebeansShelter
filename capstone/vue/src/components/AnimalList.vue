@@ -66,6 +66,7 @@ export default {
         .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.animalPhotos = r.data;
+          this.shuffle(this.animalPhotos);
         });
     },
     getAnimalsPaginated() {
@@ -74,8 +75,22 @@ export default {
         .getAnimalsPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.currentAnimals = r.data;
+          this.shuffle(this.currentAnimals);
           this.isLoading = false;
         });
+    },
+    shuffle(array) {
+      let currentIndex = array.length,
+        randomIndex;
+      while (currentIndex != 0) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex--;
+        [array[currentIndex], array[randomIndex]] = [
+          array[randomIndex],
+          array[currentIndex],
+        ];
+      }
+      return array;
     },
   },
   computed: {
@@ -90,6 +105,8 @@ export default {
   },
 };
 </script>
+
+
 
 <style>
 .bottomComponent {
