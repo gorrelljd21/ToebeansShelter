@@ -8,11 +8,11 @@
           <b><a id="link" href="default.asp" target="_blank">Home</a></b>
         </router-link>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">About Us</a></b>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -20,7 +20,7 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -28,11 +28,11 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">Volunteers</a></b>
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -40,7 +40,7 @@
           ></b
         >
       </p>
-      <br />
+      <!-- <br /> -->
       <p>
         <b><a id="link" href="default.asp" target="_blank">Events</a></b>
       </p>
@@ -82,11 +82,5 @@
 h1 {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
   color: #313638;
-}
-
-#animal {
-  flex-direction: column-reverse;
-  flex-grow: 0;
-  justify-content: flex-start;
 }
 </style>

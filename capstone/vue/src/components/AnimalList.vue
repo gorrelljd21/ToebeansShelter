@@ -71,6 +71,7 @@ export default {
       return Math.ceil(this.animalPhotos.length / this.limit);
     },
   },
+
   created() {
     this.getAnimalsPaginated();
     this.getPhotos();
@@ -83,10 +84,9 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Calibri", "Trebuchet MS", sans-serif;
 }
 .card-container {
-  position: relative center;
   display: flex;
   justify-content: space-evenly;
   flex-wrap: wrap;
