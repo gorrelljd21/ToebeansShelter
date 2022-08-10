@@ -70,6 +70,7 @@ export default {
       return Math.ceil(this.animalPhotos.length / this.limit);
     },
   },
+
   created() {
     this.getAnimalsPaginated();
     this.getPhotos();
