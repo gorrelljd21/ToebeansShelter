@@ -17,7 +17,10 @@
         <button
           v-for="num in numberOfPages"
           :key="num"
-          @click="page = num"
+          @click="
+            page = num;
+            getAnimalsPaginated();
+          "
           :class="{ currentPage: page == num }"
         >
           {{ num }}
@@ -40,45 +43,36 @@ export default {
     return {
       isLoading: true,
       errorMsg: "",
-      animals: [],
       animalPhotos: [],
       offset: 0,
       limit: 15,
       page: 1,
+      currentAnimals: [],
     };
   },
   methods: {
-    seeAnimals() {
-      shelterService.getAnimals().then((response) => {
-        this.animals = response.data;
-        this.isLoading = false;
-      });
-    },
     getPhotos() {
       shelterService.getAllPhotos().then((r) => {
         this.animalPhotos = r.data;
       });
     },
-    getAnimalsPaginated(page) {
-      shelterService.getAnimalsPaginated(this.limit, page).then((r) => {
-        this.animals = r.data;
-        this.isLoading = false;
-      });
+    getAnimalsPaginated() {
+      this.isLoading = true;
+      shelterService
+        .getAnimalsPaginated(this.limit, (this.page - 1) * this.limit)
+        .then((r) => {
+          this.currentAnimals = r.data;
+          this.isLoading = false;
+        });
     },
   },
   computed: {
     numberOfPages() {
       return Math.ceil(this.animalPhotos.length / this.limit);
     },
-    currentAnimals() {
-      return this.animals.slice(
-        (this.page - 1) * this.limit,
-        this.page * this.limit
-      );
-    },
   },
   created() {
-    this.seeAnimals();
+    this.getAnimalsPaginated();
     this.getPhotos();
   },
 };
