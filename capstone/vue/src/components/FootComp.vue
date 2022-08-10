@@ -33,7 +33,7 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   /* background-color: rgb(207, 232, 220); */
-  border-radius: 5px;
+  border-radius: 4px;
   border-style: solid;
   border-color: #44a1a0;
   margin-left: 15px;

@@ -30,7 +30,7 @@
       </p>
       <!-- <br /> -->
       <p>
-        <b><a id="link" href="default.asp" target="_blank">Volunteers</a></b>
+        <b><router-link id="link" to="/volunteer">Volunteer</router-link></b>
       </p>
       <!-- <br /> -->
       <p>
@@ -54,7 +54,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  border-radius: 8px;
+  border-radius: 4px;
   border-style: solid;
   border-width: 1px;
   height: 100vh;
