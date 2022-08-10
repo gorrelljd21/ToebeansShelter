@@ -90,7 +90,7 @@ export default {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  font-family: Calibri, "Trebuchet MS", sans-serif;
+  font-family: "Calibri", "Trebuchet MS", sans-serif;
 }
 .card-container {
   display: flex;
