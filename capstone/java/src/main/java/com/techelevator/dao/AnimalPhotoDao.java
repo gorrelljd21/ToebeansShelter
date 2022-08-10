@@ -14,4 +14,6 @@ public interface AnimalPhotoDao {
 
     List<AnimalPhoto> getPhotosPage(int limit, int offset);
 
+    int  getPhotoIdByAnimalId(int animal_id);
+
 }

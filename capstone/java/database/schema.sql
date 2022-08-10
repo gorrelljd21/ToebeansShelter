@@ -1,6 +1,6 @@
 BEGIN TRANSACTION;
 
-DROP TABLE IF EXISTS users, animal_types, animals, animal_photos CASCADE;
+DROP TABLE IF EXISTS users, animal_types, animals, animal_photos, stories CASCADE;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -34,6 +34,16 @@ CREATE TABLE animal_photos (
     CONSTRAINT PK_animal_photos PRIMARY KEY (photo_id),
     CONSTRAINT FK_animals FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
 );
+
+CREATE TABLE stories (
+	story_id SERIAL,
+	story_title varchar(50) NOT NULL,
+	story_text varchar(1000) NOT NULL,
+	animal_id int NOT NULL,
+	CONSTRAINT PK_story PRIMARY KEY (story_id), 
+	CONSTRAINT FK_animals FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
+);
+
 
 INSERT INTO animal_types (type) values('dog');
 INSERT INTO animal_types (type) values('cat');
