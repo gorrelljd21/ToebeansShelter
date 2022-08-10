@@ -20,6 +20,7 @@
             getAnimalsPaginated();
             getPhotos();
           "
+          v-show="page > 1"
         >
           back
         </button>
@@ -30,6 +31,7 @@
             getPhotos();
             getAnimalsPaginated();
           "
+          v-show="page < 4"
         >
           next
         </button>
@@ -55,6 +57,7 @@ export default {
       limit: 15,
       page: 1,
       currentAnimals: [],
+      isDisabled: false,
     };
   },
   methods: {
