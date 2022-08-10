@@ -1,32 +1,32 @@
 <template>
-  <div class="home">
-    <div class="logo">
-      <logo-comp></logo-comp>
-    </div>
-    <div class="title">
-      <title-comp></title-comp>
-    </div>
-    <div class="loginRegister">
-      <login-register-comp></login-register-comp>
-    </div>
-    <div class="header">
-      <header-comp></header-comp>
-    </div>
-    <div class="nav">
-      <nav-comp></nav-comp>
-    </div>
-    <div class="main">
-      <div class="list-container">
+  <body>
+    <div class="home">
+      <div class="logo">
+        <logo-comp></logo-comp>
+      </div>
+      <div class="title">
+        <title-comp></title-comp>
+      </div>
+      <div class="loginRegister">
+        <login-register-comp></login-register-comp>
+      </div>
+      <div class="header">
+        <header-comp></header-comp>
+      </div>
+      <div class="nav">
+        <nav-comp></nav-comp>
+      </div>
+      <div class="main">
         <animal-list></animal-list>
       </div>
+      <div class="story">
+        <stories-comp></stories-comp>
+      </div>
+      <div class="feet">
+        <foot-view />
+      </div>
     </div>
-    <div class="story">
-      <stories-comp></stories-comp>
-    </div>
-    <div class="feet">
-      <foot-view />
-    </div>
-  </div>
+  </body>
 </template>
 
 <script>
@@ -106,7 +106,7 @@ export default {
   background-color: #e0dfd5;
 }
 
-/* @media screen and (max-width: 450px) {
+@media screen and (max-width: 450px) {
   .nav {
     height: 25vh;
     border-style: none;
@@ -115,9 +115,13 @@ export default {
   .home {
     grid-template-columns: 1fr;
     grid-template-areas:
-      "ga-header"
+      "ga-logo"
+      "ga-title"
+      "ga-lr"
       "ga-nav"
-      "ga-main";
+      "ga-main"
+      "ga-story"
+      "ga-feet";
   }
-} */
+}
 </style> 
