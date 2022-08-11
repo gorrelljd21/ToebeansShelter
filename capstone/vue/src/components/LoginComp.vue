@@ -12,7 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username:  </label>
+      <label for="username" class="sr-only">Username: </label>
       <input
         type="text"
         id="username"
@@ -24,7 +24,7 @@
       />
       <br />
       <br />
-      <label for="password" class="sr-only">Password:  </label>
+      <label for="password" class="sr-only">Password: </label>
       <input
         type="password"
         id="password"
@@ -42,7 +42,7 @@
       <button id="sign-in" type="submit">Sign in</button>
       <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
-      <button v-on:click="resetForm()">Reset Form</button>
+      <button type="reset">Reset Form</button>
     </form>
   </div>
 </template>
@@ -83,9 +83,6 @@ export default {
     },
     goToHome() {
       this.$router.push("/");
-    },
-    resetForm() {
-      this.user = "";
     },
   },
 };

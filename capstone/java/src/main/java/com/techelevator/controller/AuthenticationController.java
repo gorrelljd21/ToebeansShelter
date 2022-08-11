@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
+import com.techelevator.Exceptions.ThreadSleepTryCatch;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,7 @@ public class AuthenticationController {
     private final TokenProvider tokenProvider;
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
+    ThreadSleepTryCatch threadSleepTryCatch = new ThreadSleepTryCatch();
 
     public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao) {
         this.tokenProvider = tokenProvider;
@@ -36,7 +38,7 @@ public class AuthenticationController {
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) {
+    public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) throws InterruptedException {
 
         UsernamePasswordAuthenticationToken authenticationToken =
                 new UsernamePasswordAuthenticationToken(loginDto.getUsername(), loginDto.getPassword());
@@ -49,18 +51,20 @@ public class AuthenticationController {
 
         HttpHeaders httpHeaders = new HttpHeaders();
         httpHeaders.add(JWTFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
+        threadSleepTryCatch.threadSleep();
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public void register(@Valid @RequestBody RegisterUserDTO newUser) {
+    public void register(@Valid @RequestBody RegisterUserDTO newUser) throws InterruptedException {
         try {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
             userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
         }
+        threadSleepTryCatch.threadSleep();
     }
 
     /**
