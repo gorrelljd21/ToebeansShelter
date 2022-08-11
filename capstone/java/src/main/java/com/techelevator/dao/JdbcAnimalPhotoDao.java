@@ -68,7 +68,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
     public List<AnimalPhoto> getPhotosPage(int limit, int offset) {
         String sql = "select animal_id, photo_id, photo_link" +
                 " From animal_photos" +
-                " ORDER BY animal_id, photo_id" +
+                " ORDER BY animal_id, photo_link " +
                 " LIMIT ?" +
                 " OFFSET ?;";
         List<AnimalPhoto> photos = new ArrayList<>();
@@ -76,7 +76,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
         while (results.next()) {
             AnimalPhoto photo = mapRowToPhoto(results);
             photos.add(photo);
-//            animalShuffle(photos);
+
         }
         return photos;
     }
@@ -98,11 +98,6 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
 
         return photo_id;
     }
-
-    public static void animalShuffle(List<AnimalPhoto> list) {
-        Collections.shuffle(list, new Random());
-    }
-
 
 
     private AnimalPhoto mapRowToPhoto(SqlRowSet rs) {

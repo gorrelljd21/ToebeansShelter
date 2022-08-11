@@ -22,12 +22,13 @@ public class Volunteer {
     private String ref_phone_number;
     @Email
     private String ref_email;
+    private String app_status;
 
     public Volunteer() {
 
     }
 
-    public Volunteer(int volunteer_id, String full_name, String phone_number, String email, String bio, String ref_full_name, String ref_phone_number, String ref_email) {
+    public Volunteer(int volunteer_id, String full_name, String phone_number, String email, String bio, String ref_full_name, String ref_phone_number, String ref_email, String app_status) {
         this.volunteer_id = volunteer_id;
         this.full_name = full_name;
         this.phone_number = phone_number;
@@ -36,6 +37,8 @@ public class Volunteer {
         this.ref_full_name = ref_full_name;
         this.ref_phone_number = ref_phone_number;
         this.ref_email = ref_email;
+        this.app_status = app_status;
+
     }
 
     public int getVolunteer_id() {
@@ -100,5 +103,13 @@ public class Volunteer {
 
     public void setRef_email(String ref_email) {
         this.ref_email = ref_email;
+    }
+
+    public String getApp_status() {
+        return app_status;
+    }
+
+    public void setApp_status(String app_status) {
+        this.app_status = app_status;
     }
 }

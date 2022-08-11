@@ -137,6 +137,11 @@ public class JdbcVolunteerDao implements VolunteerDao {
             return true;
     }
 
+//    @Override
+//    boolean approveOrDeny(Volunteer volunteer) {
+//
+//    }
+
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();
@@ -149,6 +154,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
       volunteer.setRef_full_name(rs.getString("ref_full_name"));
       volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
       volunteer.setRef_email(rs.getString("ref_email"));
+      volunteer.setApp_status(rs.getString("app_status"));
 
       return volunteer;
     }

@@ -20,4 +20,8 @@ public interface VolunteerDao {
 
     boolean postVolunteerSubmission(Volunteer volunteer);
 
+//    boolean approveOrDeny(Volunteer volunteer);
+
+
+
 }

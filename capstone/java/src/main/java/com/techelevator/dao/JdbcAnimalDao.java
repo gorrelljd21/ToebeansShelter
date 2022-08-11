@@ -95,14 +95,9 @@ public class JdbcAnimalDao implements AnimalDao {
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
         while(result.next()){
             animals.add(mapRowToAnimal(result));
-//            shuffle(animals);
         }
 
         return animals;
-    }
-
-    public static void shuffle(List<Animal> list) {
-        Collections.shuffle(list, new Random());
     }
 
     private Animal mapRowToAnimal(SqlRowSet rs) {

@@ -74,6 +74,7 @@ INSERT INTO animal_types (type) values('small');
 
 ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_volunteer FOREIGN KEY(volunteer_id) REFERENCES volunteers(volunteer_id);
 ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_user FOREIGN KEY(user_id) REFERENCES users(user_id);
+ALTER TABLE volunteers ADD COLUMN app_status varchar(15) DEFAULT 'PENDING';
 
 COMMIT TRANSACTION;
 
