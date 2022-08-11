@@ -1,6 +1,16 @@
 <template>
   <div>
-    <button v-on:click="goToLogin()">Login/Register</button>
+    <button v-on:click="goToLogin()" v-if="$store.state.token == ''">
+      Login/Register
+    </button>
+    <div id="nav">
+      <router-link
+        tag="button"
+        v-bind:to="{ name: 'logout' }"
+        v-if="$store.state.token != ''"
+        >Logout</router-link
+      >
+    </div>
   </div>
 </template>
 

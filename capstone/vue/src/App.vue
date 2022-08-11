@@ -1,12 +1,12 @@
 <template>
   <div id="app">
-    <div id="nav">
+    <!-- <div id="nav">
       <router-link
         v-bind:to="{ name: 'logout' }"
         v-if="$store.state.token != ''"
         >Logout</router-link
       >
-    </div>
+    </div> -->
     <!-- <header-comp></header-comp> -->
     <div class="center">
       <!-- <nav-comp />
