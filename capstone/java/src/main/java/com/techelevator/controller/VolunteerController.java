@@ -1,12 +1,13 @@
 package com.techelevator.controller;
 
 import com.techelevator.dao.VolunteerDao;
+import com.techelevator.model.UserAlreadyExistsException;
+import com.techelevator.model.UserNotFoundException;
 import com.techelevator.model.Volunteer;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -47,6 +48,13 @@ public class VolunteerController {
     @GetMapping(path = "/volunteers/reference/{volunteer_id}")
     public Volunteer findReferenceByVolunteer(@PathVariable int volunteer_id) {
         return volunteerDao.findReferenceByVolunteer(volunteer_id);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/volunteers/submit")
+    public Volunteer createNewVolunteer(@Valid @RequestBody Volunteer newVolunteer) {
+         volunteerDao.postVolunteerSubmission(newVolunteer);
+        return newVolunteer;
     }
 
 

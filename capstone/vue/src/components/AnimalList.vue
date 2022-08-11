@@ -67,7 +67,6 @@ export default {
         .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.animalPhotos = r.data;
-          this.shuffleCards(this.animalPhotos);
         });
     },
     getAnimalsPaginated() {
@@ -76,7 +75,6 @@ export default {
         .getAnimalsPaginated(this.limit, (this.page - 1) * this.limit)
         .then((r) => {
           this.currentAnimals = r.data;
-          this.shuffleCards(this.currentAnimals);
           this.isLoading = false;
         });
     },

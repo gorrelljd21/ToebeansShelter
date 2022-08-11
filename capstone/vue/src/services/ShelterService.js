@@ -30,19 +30,22 @@ export default {
         return http.get(`/photos/limit/${limit}/offset/${offset}`)
     },
     getVolunteers() {
-        return http.get('/volunteer');
+        return http.get('/volunteers');
     },
     getVolunteerById(volunteer_id) {
-        return http.get(`/volunteer/${volunteer_id}`);
+        return http.get(`/volunteers/${volunteer_id}`);
     },
     getVolunteerByName(full_name) {
-        return http.get(`/volunteer/name/${full_name}`);
+        return http.get(`/volunteers/name/${full_name}`);
     },
     getVolunteerByEmail(email) {
-        return http.get(`volunteer/email/${email}`);
+        return http.get(`volunteers/email/${email}`);
     },
     getVolunteerReference(volunteer_id) {
-        return http.get(`/volunteer/reference/${volunteer_id}`);
-    }
+        return http.get(`/volunteers/reference/${volunteer_id}`);
+    },
+    addNewVolunteer(volunteer) {
+        return http.post(`volunteers/submit`, volunteer);
+    },
 
 }

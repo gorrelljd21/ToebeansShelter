@@ -18,4 +18,6 @@ public interface VolunteerDao {
 
     Volunteer findReferenceByVolunteer (int volunteer_id);
 
+    boolean postVolunteerSubmission(Volunteer volunteer);
+
 }
