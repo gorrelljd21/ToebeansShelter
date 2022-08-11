@@ -88,11 +88,14 @@ public class JdbcAnimalDao implements AnimalDao {
     @Override
     public List<Animal> getAnimalPage(int limit, int offset) {
         List<Animal> animals = new ArrayList<>();
-        String sql = "Select animal_id, name, breed, age, bio, animal_type_id from animals order by animal_id limit ? offset ?";
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id " +
+                "FROM animals " +
+                "ORDER BY animal_id " +
+                "limit ? offset ?";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
         while(result.next()){
             animals.add(mapRowToAnimal(result));
-            shuffle(animals);
+//            shuffle(animals);
         }
 
         return animals;

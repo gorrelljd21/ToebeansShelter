@@ -76,7 +76,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
         while (results.next()) {
             AnimalPhoto photo = mapRowToPhoto(results);
             photos.add(photo);
-            animalShuffle(photos);
+//            animalShuffle(photos);
         }
         return photos;
     }
