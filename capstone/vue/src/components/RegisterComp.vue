@@ -46,6 +46,8 @@
         Create Account
       </button>
       <router-link to="/" tag="button" id="cancel">Cancel</router-link>
+      <br />
+      <button type="reset">Reset Form</button>
     </form>
   </div>
 </template>
