@@ -10,7 +10,7 @@
       </p>
       <!-- <br /> -->
       <p>
-        <b><a id="link" href="default.asp" target="_blank">About Us</a></b>
+        <b><router-link id="link" to="/about">About Us</router-link></b>
       </p>
       <!-- <br /> -->
       <p>

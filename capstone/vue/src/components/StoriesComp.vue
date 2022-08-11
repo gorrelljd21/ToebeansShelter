@@ -69,6 +69,7 @@ export default {
 <style scoped>
 .story-comp {
   font-family: "Calibri", "Trebuchet MS", sans-serif;
+  margin-right: 15px;
 }
 
 .story-container {

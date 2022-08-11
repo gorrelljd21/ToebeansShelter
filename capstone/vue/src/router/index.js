@@ -6,7 +6,8 @@ import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
 import Animal from '../views/Animal.vue'
-import VolunteerView from '../views/VolunteerView'
+import VolunteerView from '../views/VolunteerView.vue'
+import AboutUsView from '../views/AboutUsView.vue'
 
 
 
@@ -29,6 +30,14 @@ const router = new Router({
             path: '/',
             name: 'home',
             component: Home,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: '/about',
+            name: 'about',
+            component: AboutUsView,
             meta: {
                 requiresAuth: false
             }
