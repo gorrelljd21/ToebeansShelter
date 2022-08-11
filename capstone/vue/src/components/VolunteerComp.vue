@@ -58,6 +58,7 @@ export default {
   data() {
     return {
       isLoading: true,
+      submitted: false,
     };
   },
 };
