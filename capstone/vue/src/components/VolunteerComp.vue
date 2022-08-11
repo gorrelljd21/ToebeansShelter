@@ -51,7 +51,24 @@
 </template>
 
 <script>
-export default {};
+import shelterService from "@/services.ShelterService.js";
+export default {
+  name: "volunteer-comp",
+  data() {
+    return {
+      volunteer: {},
+    };
+  },
+  methods: {
+    submitVoluntter(volunteer) {
+      shelterService.submitVoluntter(volunteer).then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      });
+    },
+  },
+};
 </script>
 
 <style scoped>

@@ -7,7 +7,7 @@ import Register from '../views/Register.vue'
 import store from '../store/index'
 import Animal from '../views/Animal.vue'
 import VolunteerView from '../views/VolunteerView'
-import TestVolun from '@/views/TestVolun.vue'
+
 
 
 Vue.use(Router)
@@ -73,14 +73,7 @@ const router = new Router({
                 requiresAuth: false
             }
         },
-        {
-            path: "/volunteers",
-            name: "test",
-            component: TestVolun,
-            meta: {
-                requiresAuth: false
-            }
-        }
+
     ]
 })
 
