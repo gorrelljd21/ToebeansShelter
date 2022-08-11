@@ -35,7 +35,7 @@
           v-show="page < 4"
           v-if="!isLoading"
         >
-          next
+          Next
         </button>
       </div>
     </div>
@@ -129,7 +129,7 @@ export default {
   margin: 5px;
   background-color: #44a1a0;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   color: white;
   padding: 16px 32px;
   text-align: center;

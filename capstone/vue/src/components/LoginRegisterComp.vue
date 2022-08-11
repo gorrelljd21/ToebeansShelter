@@ -28,7 +28,7 @@ export default {
 button {
   background-color: #44a1a0;
   border: none;
-  border-radius: 10px;
+  border-radius: 4px;
   color: white;
   padding: 16px 32px;
   text-align: center;
