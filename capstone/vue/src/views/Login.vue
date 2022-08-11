@@ -7,6 +7,40 @@
       <div class="title" v-if="!mobileView">
         <title-comp></title-comp>
       </div>
+<<<<<<< HEAD
+      <label for="username" class="sr-only">Username </label>
+      <input
+        type="text"
+        id="username"
+        class="form-control"
+        placeholder="Username"
+        v-model="user.username"
+        required
+        autofocus
+      />
+      <br />
+      <br />
+      <label for="password" class="sr-only">Password </label>
+      <input
+        type="password"
+        id="password"
+        class="form-control"
+        placeholder="Password"
+        v-model="user.password"
+        required
+      />
+      <br />
+      <router-link class="newAccount" :to="{ name: 'register' }"
+        >Need an account?</router-link
+      >
+      <p></p>
+      <button id="sign-in" type="submit">Sign in</button>
+      <button @click="goToHome()">Cancel</button>
+      <br />
+      <button @click="resetForm()">Reset</button>
+    </form>
+  </div>
+=======
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
@@ -27,6 +61,7 @@
       </div>
     </div>
   </body>
+>>>>>>> 4c6dda17924a12c9976d1736dcd3662a1d285c53
 </template>
 
 <script>
@@ -84,7 +119,7 @@ export default {
       this.$router.push("/");
     },
     resetForm() {
-      this.user = "";
+      this.$refs["user"].value = "";
     },
   },
 };

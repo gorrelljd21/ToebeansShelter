@@ -1,5 +1,11 @@
 <template>
-  <div></div>
+  <div>
+    <ul>
+      <li v-for="volunteer in volunteers" v-bind:key="volunteer.id">
+        {{ volunteer.full_name }}
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
