@@ -1,8 +1,5 @@
 <template>
   <div id="whole">
-    <!-- <div class="loading" v-if="isLoading">
-      <img id="bunny" src="..\assets\hopping.gif" />
-    </div> -->
     <h2>Volunteer With Us!</h2>
     <form action="" id="volunteerform">
       <label for="name">Your Name: </label>
@@ -47,19 +44,47 @@
         required
       />
       <br />
-      <button type="submit">Submit</button>
+      <button type="submit" @click.prevent="submitVolunteer(volunteer)">
+        Submit
+      </button>
       <router-link to="/" tag="button" id="cancel">Cancel</router-link>
     </form>
+    <!-- <ul>
+      <li v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
+        {{ volunteer.full_name }}
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script>
+import shelterService from "@/services/ShelterService.js";
 export default {
+  name: "volunteer-comp",
   data() {
     return {
       isLoading: true,
       submitted: false,
     };
+  },
+  methods: {
+    // getVolunteers() {
+    //   shelterService.getVolunteers().then((response) => {
+    //     this.volunteers = response.data;
+    //   });
+    // },
+
+    submitApplication() {
+      const newVolunteer = {};
+      shelterService.submitVolunteer(newVolunteer).then((response) => {
+        if (response.status === 201) {
+          this.$router.push("/");
+        }
+      });
+    },
+  },
+  created() {
+    this.getVolunteers();
   },
 };
 </script>

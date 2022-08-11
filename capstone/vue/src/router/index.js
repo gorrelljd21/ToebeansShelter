@@ -9,6 +9,7 @@ import Animal from '../views/Animal.vue'
 import VolunteerView from '../views/VolunteerView'
 
 
+
 Vue.use(Router)
 
 /**
@@ -71,7 +72,8 @@ const router = new Router({
             meta: {
                 requiresAuth: false
             }
-        }
+        },
+
     ]
 })
 
