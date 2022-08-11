@@ -31,7 +31,7 @@
 
 <script>
 import authService from "../services/AuthService";
-import HeaderComp from "@/components/HeaderComp.vue";
+
 import NavComp from "@/components/NavComp.vue";
 import StoriesComp from "@/components/StoriesComp.vue";
 import FootView from "@/views/FootView.vue";
@@ -42,7 +42,6 @@ import RegisterComp from "@/components/RegisterComp.vue";
 
 export default {
   components: {
-    HeaderComp,
     NavComp,
     StoriesComp,
     FootView,

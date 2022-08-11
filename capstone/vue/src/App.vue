@@ -20,7 +20,7 @@
 
 <script>
 // import NavComp from "@/components/NavComp.vue";
-// import HeaderComp from "@/components/HeaderComp.vue";
+// import  from "@/components/HeaderComp.vue";
 // import Animal from "@/views/Animal.vue";
 // import StoryView from "@/views/StoryView.vue";
 

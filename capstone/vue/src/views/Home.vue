@@ -10,9 +10,7 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-      <div class="header">
-        <header-comp></header-comp>
-      </div>
+      
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
@@ -31,7 +29,6 @@
 
 <script>
 import AnimalList from "@/components/AnimalList.vue";
-import HeaderComp from "@/components/HeaderComp.vue";
 import NavComp from "@/components/NavComp.vue";
 import StoriesComp from "@/components/StoriesComp.vue";
 import FootView from "@/views/FootView.vue";
@@ -48,7 +45,6 @@ export default {
   },
   components: {
     AnimalList,
-    HeaderComp,
     NavComp,
     StoriesComp,
     FootView,
@@ -85,10 +81,6 @@ export default {
   grid-area: ga-lr;
 }
 
-.header {
-  grid-area: ga-header;
-}
-
 .nav {
   grid-area: ga-nav;
   border-top: black;
@@ -99,9 +91,6 @@ export default {
   border-top: black;
   /* overflow-y: scroll; */
 }
-
-/* .list-container {
-} */
 
 .story {
   grid-area: ga-story;
@@ -137,9 +126,6 @@ export default {
     padding: 0% 0% 0% 0%;
     width: 40vw;
     margin: 10px;
-  }
-
-  .main {
   }
 
   .home {
