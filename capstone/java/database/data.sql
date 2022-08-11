@@ -76,12 +76,12 @@ insert into animal_photos (photo_id, animal_id, photo_link) values (16, 16, 'htt
 insert into animal_photos (photo_id, animal_id, photo_link) values (17, 17, 'https://i.imgur.com/7EAJi2Y.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (18, 18, 'https://i.imgur.com/CkmEbfN.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (19, 19, 'https://i.imgur.com/tlwinbv.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (20, 20, 'https://i.imgur.com/Yds4Jka.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (21, 21, 'https://i.imgur.com/QfzzdII.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (22, 22, 'https://i.imgur.com/CaGYWdO.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (23, 23, 'https://i.imgur.com/BAtqSRk.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (24, 24, 'https://i.imgur.com/xDNtGzS.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (25, 25, 'https://i.imgur.com/DlKKD1U.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (20, 20, 'https://i.imgur.com/dZjsMz1.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (21, 21, 'https://i.imgur.com/emxvOXe.jpg?1');
+insert into animal_photos (photo_id, animal_id, photo_link) values (22, 22, 'https://i.imgur.com/aVjk7qx.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (23, 23, 'https://i.imgur.com/H7AbgxS.png');
+insert into animal_photos (photo_id, animal_id, photo_link) values (24, 24, 'https://i.imgur.com/4JIRZoo.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (25, 25, 'https://i.imgur.com/95TwgZa.jpg');
 
 insert into animal_photos (photo_id, animal_id, photo_link) values (26, 26, 'https://i.imgur.com/IqxPTSq.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (27, 27, 'https://i.imgur.com/YtRBXEw.jpg');
@@ -92,12 +92,12 @@ insert into animal_photos (photo_id, animal_id, photo_link) values (31, 31, 'htt
 insert into animal_photos (photo_id, animal_id, photo_link) values (32, 32, 'https://i.imgur.com/T4jS1M8.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (33, 33, 'https://i.imgur.com/qhapnnj.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (34, 34, 'https://i.imgur.com/ygHfGxe.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (35, 35, 'https://i.imgur.com/YtRBXEw.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (36, 36, 'https://i.imgur.com/2Hmr2zP.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (37, 37, 'https://i.imgur.com/YMfg4yD.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (35, 35, 'https://i.imgur.com/EZKSjiM.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (36, 36, 'https://i.imgur.com/j6wyZ7u.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (37, 37, 'https://i.imgur.com/wJgb78l.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (38, 38, 'https://i.imgur.com/2pgVqVB.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (39, 39, 'https://i.imgur.com/LNPo3wN.jpg');
-insert into animal_photos (photo_id, animal_id, photo_link) values (40, 40, 'https://i.imgur.com/T4jS1M8.jpg');
+insert into animal_photos (photo_id, animal_id, photo_link) values (40, 40, 'https://i.imgur.com/t3ASpsv.jpg');
 
 insert into animal_photos (photo_id, animal_id, photo_link) values (41, 41, 'https://i.imgur.com/rDY69GI.jpg');
 insert into animal_photos (photo_id, animal_id, photo_link) values (42, 42, 'https://i.imgur.com/5zTCYIY.jpg');

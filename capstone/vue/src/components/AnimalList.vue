@@ -33,6 +33,7 @@
             getAnimalsPaginated();
           "
           v-show="page < 4"
+          v-if="!isLoading"
         >
           next
         </button>
