@@ -24,7 +24,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
         String volunteerSql =
                 "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, " +
-                        " ref_phone_number, ref_email " +
+                        " ref_phone_number, ref_email, app_status " +
                         "FROM volunteers; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(volunteerSql);
         while(result.next()){
@@ -38,7 +38,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email " +
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status " +
                         " FROM volunteers " +
                         " WHERE volunteer_id = ?;";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, volunteer_id);
@@ -54,7 +54,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email " +
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status " +
                         " FROM volunteers" +
                         " WHERE full_name = ?; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, full_name);
@@ -70,7 +70,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email" +
+                "SELECT volunteer_id, full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status " +
                         " FROM volunteers " +
                         " WHERE email = ?; ";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, email);
@@ -86,7 +86,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         Volunteer volunteer = null;
 
         String sql =
-                "SELECT full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email " +
+                "SELECT full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status " +
                         "FROM volunteers " +
                         "JOIN volunteers_users " +
                         "ON volunteers.volunteer_id = volunteers_users.volunteer_id " +
@@ -122,14 +122,14 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
-        String sql = "INSERT INTO volunteers (full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email) " +
-                "VALUES (?, ?, ?, ?, ?, ?, ?) RETURNING volunteer_id; ";
+        String sql = "INSERT INTO volunteers (full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?, ?) RETURNING volunteer_id; ";
 
         Integer newVolunteerId;
             try {
-                newVolunteerId = jdbcTemplate.queryForObject(sql, Integer.class, volunteer.getFull_name(), volunteer.getRef_phone_number(),
+                newVolunteerId = jdbcTemplate.queryForObject(sql, Integer.class, volunteer.getFull_name(), volunteer.getPhone_number(),
                         volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
-                        volunteer.getRef_email());
+                        volunteer.getRef_email(), volunteer.getApp_status());
             } catch (DataAccessException e) {
                 System.out.println(e.getLocalizedMessage());
                 return false;
@@ -137,25 +137,19 @@ public class JdbcVolunteerDao implements VolunteerDao {
             return true;
     }
 
-//    @Override
-//    boolean approveOrDeny(Volunteer volunteer) {
-//
-//    }
-
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();
 
-      volunteer.setVolunteer_id(rs.getInt("volunteer_id"));
-      volunteer.setFull_name(rs.getString("full_name"));
-      volunteer.setPhone_number(rs.getString("phone_number"));
-      volunteer.setEmail(rs.getString("email"));
-      volunteer.setBio(rs.getString("bio"));
-      volunteer.setRef_full_name(rs.getString("ref_full_name"));
-      volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
-      volunteer.setRef_email(rs.getString("ref_email"));
-      volunteer.setApp_status(rs.getString("app_status"));
-
+        volunteer.setVolunteer_id(rs.getInt("volunteer_id"));
+        volunteer.setFull_name(rs.getString("full_name"));
+        volunteer.setPhone_number(rs.getString("phone_number"));
+        volunteer.setEmail(rs.getString("email"));
+        volunteer.setBio(rs.getString("bio"));
+        volunteer.setRef_full_name(rs.getString("ref_full_name"));
+        volunteer.setRef_phone_number(rs.getString("ref_phone_number"));
+        volunteer.setRef_email(rs.getString("ref_email"));
+        volunteer.setApp_status(rs.getString("app_status"));
       return volunteer;
     }
 }

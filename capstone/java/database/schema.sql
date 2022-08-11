@@ -20,6 +20,7 @@ CREATE TABLE volunteers (
 	ref_full_name varchar(100) NOT NULL,
 	ref_phone_number varchar (20) NOT NULL,
 	ref_email varchar(50) NOT NULL UNIQUE,
+	app_status varchar(15) DEFAULT 'PENDING',
 	CONSTRAINT UQ_email UNIQUE(email),
 	CONSTRAINT UQ_ref_email UNIQUE(ref_email),
 	CONSTRAINT PK_volunteers PRIMARY KEY (volunteer_id)
@@ -74,7 +75,7 @@ INSERT INTO animal_types (type) values('small');
 
 ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_volunteer FOREIGN KEY(volunteer_id) REFERENCES volunteers(volunteer_id);
 ALTER TABLE volunteers_users ADD CONSTRAINT FK_volunteers_users_user FOREIGN KEY(user_id) REFERENCES users(user_id);
-ALTER TABLE volunteers ADD COLUMN app_status varchar(15) DEFAULT 'PENDING';
+
 
 COMMIT TRANSACTION;
 

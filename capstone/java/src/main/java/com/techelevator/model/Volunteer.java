@@ -24,6 +24,7 @@ public class Volunteer {
     private String ref_email;
     private String app_status;
 
+
     public Volunteer() {
 
     }
@@ -38,6 +39,7 @@ public class Volunteer {
         this.ref_phone_number = ref_phone_number;
         this.ref_email = ref_email;
         this.app_status = app_status;
+
 
     }
 
