@@ -44,9 +44,7 @@
         required
       />
       <br />
-      <button type="submit" @click.prevent="submitVolunteer(volunteer)">
-        Submit
-      </button>
+      <button type="submit" @click.prevent="submitApplication()">Submit</button>
       <router-link to="/" tag="button" id="cancel">Cancel</router-link>
     </form>
     <!-- <ul>
@@ -76,7 +74,7 @@ export default {
 
     submitApplication() {
       const newVolunteer = {};
-      shelterService.submitVolunteer(newVolunteer).then((response) => {
+      shelterService.volunteer(newVolunteer).then((response) => {
         if (response.status === 201) {
           this.$router.push("/");
         }

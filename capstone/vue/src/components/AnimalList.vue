@@ -98,7 +98,10 @@ export default {
 
 <style>
 .loading {
-  margin: 20% 10% 0% 30%;
+  margin: 20% 10% 0% 45%;
+}
+#bunny {
+  width: 100px;
 }
 .bottomComponent {
   display: flex;
