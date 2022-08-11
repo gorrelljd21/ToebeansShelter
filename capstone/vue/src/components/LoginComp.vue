@@ -84,9 +84,6 @@ export default {
     goToHome() {
       this.$router.push("/");
     },
-    resetForm() {
-      this.user = "";
-    },
   },
 };
 </script>
