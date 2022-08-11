@@ -21,7 +21,6 @@
       </div>
       <div class="story">
         <stories-comp></stories-comp>
-        <test />
       </div>
       <div class="feet">
         <foot-view />
@@ -39,7 +38,6 @@ import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
 import VolunteerComp from "@/components/VolunteerComp.vue";
-import test from "@/components/test.vue";
 
 export default {
   name: "home",
@@ -57,7 +55,6 @@ export default {
     TitleComp,
     LoginRegisterComp,
     VolunteerComp,
-    test,
   },
   methods: {
     handleView() {

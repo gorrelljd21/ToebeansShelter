@@ -47,29 +47,54 @@
         required
       />
       <br />
-      <button type="submit">Submit</button>
+      <button type="submit" @click.prevent="submitVolunteer(volunteer)">
+        Submit
+      </button>
       <router-link to="/" tag="button" id="cancel">Cancel</router-link>
     </form>
+    <!-- <ul>
+      <li v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
+        {{ volunteer.full_name }}
+      </li>
+    </ul> -->
   </div>
 </template>
 
 <script>
-import shelterService from "@/services.ShelterService.js";
+import shelterService from "@/services/ShelterService.js";
 export default {
   name: "volunteer-comp",
   data() {
     return {
-      volunteer: {},
+      volunteers: {
+        full_name: "",
+        phone_number: "",
+        email: "",
+        bio: "",
+        ref_full_name: "",
+        ref_phone_number: "",
+        ref_email: "",
+      },
     };
   },
   methods: {
-    submitVoluntter(volunteer) {
-      shelterService.submitVoluntter(volunteer).then((response) => {
+    // getVolunteers() {
+    //   shelterService.getVolunteers().then((response) => {
+    //     this.volunteers = response.data;
+    //   });
+    // },
+
+    submitApplication() {
+      const newVolunteer = {};
+      shelterService.submitVolunteer(newVolunteer).then((response) => {
         if (response.status === 201) {
           this.$router.push("/");
         }
       });
     },
+  },
+  created() {
+    this.getVolunteers();
   },
 };
 </script>
