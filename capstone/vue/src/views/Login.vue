@@ -39,9 +39,9 @@
       >
       <p></p>
       <button id="sign-in" type="submit">Sign in</button>
-      <button v-on:click="goToHome()">Cancel</button>
+      <button @click="goToHome()">Cancel</button>
       <br />
-      <button v-on:click="resetForm()">reset</button>
+      <button @click="resetForm()">Reset</button>
     </form>
   </div>
 </template>
@@ -84,7 +84,7 @@ export default {
       this.$router.push("/");
     },
     resetForm() {
-      this.user = "";
+      this.$refs["user"].value = "";
     },
   },
 };

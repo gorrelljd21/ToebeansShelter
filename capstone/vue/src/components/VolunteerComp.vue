@@ -1,5 +1,8 @@
 <template>
   <div id="whole">
+    <!-- <div class="loading" v-if="isLoading">
+      <img id="bunny" src="..\assets\hopping.gif" />
+    </div> -->
     <h2>Volunteer With Us!</h2>
     <form action="" id="volunteerform">
       <label for="name">Your Name: </label>
@@ -51,7 +54,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      isLoading: true,
+    };
+  },
+};
 </script>
 
 <style scoped>
