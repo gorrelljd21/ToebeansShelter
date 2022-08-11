@@ -12,7 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username</label>
+      <label for="username" class="sr-only">Username </label>
       <input
         type="text"
         id="username"
@@ -22,7 +22,9 @@
         required
         autofocus
       />
-      <label for="password" class="sr-only">Password</label>
+      <br />
+      <br />
+      <label for="password" class="sr-only">Password </label>
       <input
         type="password"
         id="password"
@@ -31,9 +33,14 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <br />
+      <router-link class="newAccount" :to="{ name: 'register' }"
+        >Need an account?</router-link
+      >
+      <p></p>
       <button id="sign-in" type="submit">Sign in</button>
       <button v-on:click="goToHome()">Cancel</button>
+      <br />
       <button v-on:click="resetForm()">reset</button>
     </form>
   </div>
@@ -82,3 +89,22 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+button {
+  margin-top: 20px;
+  background-color: #e8e9eb;
+  border-width: 1px;
+  border-radius: 4px;
+}
+
+#password {
+  margin-left: 0.3%;
+}
+
+.sr-only,
+h1,
+.newAccount {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+</style>
