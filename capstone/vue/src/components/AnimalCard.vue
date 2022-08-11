@@ -47,6 +47,7 @@ export default {
   color: aliceblue;
   /* border-radius: 8px; */
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .card__content {
@@ -55,7 +56,6 @@ export default {
   margin: 0px;
   padding-bottom: 5px;
   margin-top: 0px;
-  font-family: Arial, Helvetica, sans-serif;
   color: black;
   padding-left: 10px;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;

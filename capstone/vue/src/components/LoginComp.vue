@@ -1,14 +1,18 @@
 <template>
-  <body>
-    <div class="home">
-      <div class="logo">
-        <logo-comp></logo-comp>
+  <div id="login" class="text-center">
+    <form class="form-signin" @submit.prevent="login">
+      <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
+        Invalid username and password!
       </div>
-      <div class="title" v-if="!mobileView">
-        <title-comp></title-comp>
+      <div
+        class="alert alert-success"
+        role="alert"
+        v-if="this.$route.query.registration"
+      >
+        Thank you for registering, please sign in.
       </div>
-<<<<<<< HEAD
-      <label for="username" class="sr-only">Username </label>
+      <label for="username" class="sr-only">Username:  </label>
       <input
         type="text"
         id="username"
@@ -20,7 +24,7 @@
       />
       <br />
       <br />
-      <label for="password" class="sr-only">Password </label>
+      <label for="password" class="sr-only">Password:  </label>
       <input
         type="password"
         id="password"
@@ -30,63 +34,25 @@
         required
       />
       <br />
+      <br />
       <router-link class="newAccount" :to="{ name: 'register' }"
         >Need an account?</router-link
       >
       <p></p>
       <button id="sign-in" type="submit">Sign in</button>
-      <button @click="goToHome()">Cancel</button>
+      <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
-      <button @click="resetForm()">Reset</button>
+      <button v-on:click="resetForm()">Reset Form</button>
     </form>
   </div>
-=======
-      <div class="loginRegister">
-        <login-register-comp></login-register-comp>
-      </div>
-      <div class="header">
-        <header-comp></header-comp>
-      </div>
-      <div class="nav">
-        <nav-comp></nav-comp>
-      </div>
-      <div class="main">
-        <login-comp></login-comp>
-      </div>
-      <div class="story">
-        <stories-comp></stories-comp>
-      </div>
-      <div class="feet">
-        <foot-view />
-      </div>
-    </div>
-  </body>
->>>>>>> 4c6dda17924a12c9976d1736dcd3662a1d285c53
 </template>
 
 <script>
 import authService from "../services/AuthService";
-import HeaderComp from "@/components/HeaderComp.vue";
-import NavComp from "@/components/NavComp.vue";
-import StoriesComp from "@/components/StoriesComp.vue";
-import FootView from "@/views/FootView.vue";
-import LogoComp from "@/components/LogoComp.vue";
-import TitleComp from "@/components/TitleComp.vue";
-import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
-import LoginComp from "@/components/LoginComp.vue";
 
 export default {
   name: "login",
-  components: {
-    HeaderComp,
-    NavComp,
-    StoriesComp,
-    FootView,
-    LogoComp,
-    TitleComp,
-    LoginRegisterComp,
-    LoginComp,
-  },
+  components: {},
   data() {
     return {
       user: {
@@ -119,7 +85,7 @@ export default {
       this.$router.push("/");
     },
     resetForm() {
-      this.$refs["user"].value = "";
+      this.user = "";
     },
   },
 };
@@ -138,8 +104,37 @@ button {
 }
 
 .sr-only,
-h1,
+h2,
 .newAccount {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+input {
+  background-color: white;
+  border-width: 1px;
+}
+
+* {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+#login {
+  border: 1px solid black;
+  display: block;
+  height: 100vh;
+  margin: 0px 25px 0px 25px;
+}
+
+form {
+  margin-left: 20px;
+}
+
+h2,
+h3 {
+  color: #313638;
+}
+
+#cancel {
+  margin-left: 5px;
 }
 </style>
