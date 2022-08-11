@@ -33,6 +33,8 @@
       />
       <router-link :to="{ name: 'register' }">Need an account?</router-link>
       <button id="sign-in" type="submit">Sign in</button>
+      <button v-on:click="goToHome()">Cancel</button>
+      <button v-on:click="resetForm()">reset</button>
     </form>
   </div>
 </template>
@@ -70,6 +72,12 @@ export default {
             this.invalidCredentials = true;
           }
         });
+    },
+    goToHome() {
+      this.$router.push("/");
+    },
+    resetForm() {
+      this.user = "";
     },
   },
 };

@@ -24,7 +24,7 @@
       <label for="bio">Tell Us About Yourself: </label>
       <br /><br />
       <textarea rows="5" cols="60" name="bio" style="resize: none">
-            Why are you looking to adopt?
+            Why are you looking to volunteer?
          </textarea
       >
 
