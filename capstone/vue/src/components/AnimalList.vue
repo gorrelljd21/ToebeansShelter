@@ -25,6 +25,7 @@
           back
         </button>
         <button
+          id="next-btn"
           @click="
             page++;
 
@@ -141,7 +142,8 @@ export default {
 }
 
 .pagination > button:hover {
-  opacity: 50%;
+  background-color: #f78154;
+  color: black;
 }
 
 .currentPage {
@@ -160,6 +162,10 @@ export default {
 
   .pagination {
     margin-right: 60px;
+  }
+
+  .pagination > button {
+    margin-right: 100px;
   }
 }
 </style>
