@@ -4,7 +4,7 @@
       <h1>Navigation</h1>
 
       <p>
-        <router-link v-bind:to="{ name: 'home' }">
+        <router-link style="text-decoration: none" v-bind:to="{ name: 'home' }">
           <b><a id="link" href="default.asp" target="_blank">Home</a></b>
         </router-link>
       </p>
