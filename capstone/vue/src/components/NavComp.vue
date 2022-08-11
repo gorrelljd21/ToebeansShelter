@@ -42,7 +42,13 @@
       </p>
       <!-- <br /> -->
       <p>
-        <b><a id="link" href="default.asp" target="_blank">Events</a></b>
+        <b>
+          <router-link v-bind:to="{ name: 'test' }">
+            <a id="link" href="default.asp" target="_blank"
+              >Events</a
+            > </router-link
+          >\
+        </b>
       </p>
     </nav>
   </div>
