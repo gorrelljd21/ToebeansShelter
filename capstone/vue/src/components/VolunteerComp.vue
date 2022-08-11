@@ -1,5 +1,8 @@
 <template>
   <div id="whole">
+    <div class="status-message error" v-show="errorMsg !== ''">
+      {{ errorMsg }}
+    </div>
     <h2>Volunteer With Us!</h2>
     <form action="" id="volunteerform">
       <label for="name">Your Full Name: </label>
@@ -74,11 +77,6 @@
       <button type="submit" @click.prevent="submitApplication()">Submit</button>
       <router-link to="/" tag="button" id="cancel">Cancel</router-link>
     </form>
-    <!-- <ul>
-      <li v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
-        {{ volunteer.full_name }}
-      </li>
-    </ul> -->
   </div>
 </template>
 
@@ -97,27 +95,43 @@ export default {
         ref_phone_number: "",
         ref_email: "",
       },
+      errorMsg: "",
       isLoading: true,
     };
   },
   methods: {
-    // getVolunteers() {
-    //   shelterService.getVolunteers().then((response) => {
-    //     this.volunteers = response.data;
-    //   });
-    // },
-
     submitApplication() {
-      shelterService.addNewVolunteer(this.volunteer).then((response) => {
-        if (response.status === 201) {
-          alert("Application submitted!");
-          this.$router.push("/");
-        }
-      });
+      shelterService
+        .addNewVolunteer(this.volunteer)
+        .then((response) => {
+          if (response.status === 201) {
+            alert("Application submitted!");
+            this.$router.push("/");
+          }
+        })
+        .catch((error) => {
+          this.handleErrorResponse(error, "submitting");
+        });
     },
   },
   created() {
     this.getVolunteers();
+  },
+  handleErrorResponse(error, verb) {
+    if (error.response) {
+      this.errorMsg =
+        "Error " +
+        verb +
+        " application. Response received was " +
+        error.response.statusText +
+        " .";
+    } else if (error.request) {
+      this.errorMsg =
+        "Error " + verb + " application. Server could not be reached.";
+    } else {
+      this.errorMsg =
+        "Error " + verb + " application. Request could not be created";
+    }
   },
 };
 </script>
