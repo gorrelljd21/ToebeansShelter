@@ -51,5 +51,9 @@ button:hover {
     margin: 85px 20px 0px -15px;
     width: 35vw;
   }
+
+  #nav {
+    margin-bottom: -20px;
+  }
 }
 </style>
