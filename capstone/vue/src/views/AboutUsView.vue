@@ -10,16 +10,12 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-      <<<<<<< HEAD =======
-      <!-- <div class="header">
-        <header-comp></header-comp>
-      </div> -->
-      >>>>>>> 3a294e813fc4bd379c5802818aea02c70d8cfc62
+
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
       <div class="main">
-        <volunteer-comp></volunteer-comp>
+        <about-us-comp></about-us-comp>
       </div>
       <div class="story">
         <stories-comp></stories-comp>
@@ -38,7 +34,7 @@ import FootView from "@/views/FootView.vue";
 import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
-import VolunteerComp from "@/components/VolunteerComp.vue";
+import AboutUsComp from "@/components/AboutUsComp.vue";
 
 export default {
   name: "home",
@@ -54,7 +50,7 @@ export default {
     LogoComp,
     TitleComp,
     LoginRegisterComp,
-    VolunteerComp,
+    AboutUsComp,
   },
   methods: {
     handleView() {
@@ -69,7 +65,7 @@ export default {
 </script>
 
 
-<style scoped>
+<style >
 * {
   background-color: #e0dfd5;
 }
@@ -93,6 +89,7 @@ export default {
 .main {
   grid-area: ga-main;
   border-top: black;
+  /* overflow-y: scroll; */
 }
 
 .story {
@@ -122,18 +119,13 @@ export default {
 
 @media screen and (max-width: 450px) {
   .nav {
-    height: 100vh;
     border-style: none;
   }
 
   .logo {
+    padding: 0% 0% 0% 0%;
     width: 40vw;
-    margin: 20px;
-  }
-
-  .title {
-    margin-left: 13%;
-    margin-top: -5%;
+    margin: 10px;
   }
 
   .home {
@@ -141,7 +133,6 @@ export default {
     grid-template-columns: 1fr 1fr;
     grid-template-areas:
       "ga-logo ga-lr"
-      "ga-title  ga-title"
       "ga-nav ga-nav"
       "ga-main ga-main"
       "ga-story ga-story"

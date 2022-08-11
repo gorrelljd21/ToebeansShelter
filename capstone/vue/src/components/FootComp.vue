@@ -26,6 +26,7 @@ export default {
 .footer {
   font-family: "Calibri", "Trebuchet MS", sans-serif;
   margin-bottom: 1%;
+  margin-right: 15px;
 }
 
 .footer-container {
