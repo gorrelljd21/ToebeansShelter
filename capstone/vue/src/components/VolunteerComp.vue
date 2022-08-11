@@ -45,6 +45,7 @@
       />
       <br />
       <button type="submit">Submit</button>
+      <router-link to="/" tag="button" id="cancel">Cancel</router-link>
     </form>
   </div>
 </template>
@@ -94,5 +95,13 @@ button {
   background-color: #e8e9eb;
   border-width: 1px;
   border-radius: 4px;
+}
+
+#cancel {
+  margin-left: 5px;
+}
+
+textarea {
+  margin-right: 15px;
 }
 </style>
