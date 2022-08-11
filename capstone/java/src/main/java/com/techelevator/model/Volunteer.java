@@ -1,14 +1,26 @@
 package com.techelevator.model;
 
+import org.hibernate.validator.constraints.Length;
+
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+
 public class Volunteer {
 
     private int volunteer_id;
+    @NotBlank
     private String full_name;
+    @Length(min = 10, max= 10)
     private String phone_number;
+    @Email
     private String email;
+    @NotBlank
     private String bio;
+    @NotBlank
     private String ref_full_name;
+    @Length(min = 10, max = 10)
     private String ref_phone_number;
+    @Email
     private String ref_email;
 
     public Volunteer() {

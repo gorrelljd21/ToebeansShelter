@@ -108,7 +108,6 @@ export default {
     // },
 
     submitApplication() {
-      //const newVolunteer = {};
       shelterService.addNewVolunteer(this.volunteer).then((response) => {
         if (response.status === 201) {
           alert("Application submitted!");
