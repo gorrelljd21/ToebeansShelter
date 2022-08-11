@@ -10,7 +10,7 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-      
+
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
@@ -120,6 +120,7 @@ export default {
 @media screen and (max-width: 450px) {
   .nav {
     border-style: none;
+    height: 0hv;
   }
 
   .logo {

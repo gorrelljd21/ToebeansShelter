@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 @Component
 public class JdbcAnimalDao implements AnimalDao {
@@ -91,11 +92,15 @@ public class JdbcAnimalDao implements AnimalDao {
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
         while(result.next()){
             animals.add(mapRowToAnimal(result));
+            shuffle(animals);
         }
-//        Collections.shuffle(animals);
+
         return animals;
     }
 
+    public static void shuffle(List<Animal> list) {
+        Collections.shuffle(list, new Random());
+    }
 
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();

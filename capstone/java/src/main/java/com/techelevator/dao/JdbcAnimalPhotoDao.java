@@ -7,6 +7,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
+import java.util.Random;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -74,6 +76,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
         while (results.next()) {
             AnimalPhoto photo = mapRowToPhoto(results);
             photos.add(photo);
+            animalShuffle(photos);
         }
         return photos;
     }
@@ -95,6 +98,12 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
 
         return photo_id;
     }
+
+    public static void animalShuffle(List<AnimalPhoto> list) {
+        Collections.shuffle(list, new Random());
+    }
+
+
 
     private AnimalPhoto mapRowToPhoto(SqlRowSet rs) {
         AnimalPhoto photo = new AnimalPhoto();

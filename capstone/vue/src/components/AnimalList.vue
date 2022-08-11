@@ -154,14 +154,12 @@ export default {
 
 @media screen and (max-width: 450px) {
   .card-container {
-    position: center;
-    justify-content: space-around;
     padding: 0px 20px 10px 30px;
-    margin-top: 0px;
+    gap: 5px;
   }
 
   .pagination {
-    margin-right: 60px;
+    margin-right: 70px;
   }
 
   .pagination > button {

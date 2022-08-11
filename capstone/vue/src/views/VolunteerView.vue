@@ -67,7 +67,7 @@ export default {
 </script>
 
 
-<style >
+<style scoped>
 * {
   background-color: #e0dfd5;
 }
@@ -96,9 +96,6 @@ export default {
   grid-area: ga-main;
   border-top: black;
   /* overflow-y: scroll; */
-}
-
-.list-container {
 }
 
 .story {
