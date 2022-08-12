@@ -37,7 +37,7 @@ img {
 }
 
 h2 {
-  background-color: #44a1a0;
+  background-color: #6eb8b6;
   padding: 5px 5px 5px 12px;
   border-radius: 3px;
   margin-right: 40%;
@@ -46,7 +46,7 @@ h2 {
 }
 
 h3 {
-  background-color: #f78154;
+  background-color: #f89670;
   padding: 5px 5px 5px 12px;
   border-radius: 3px;
   margin-right: 40%;
