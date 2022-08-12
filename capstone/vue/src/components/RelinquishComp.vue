@@ -26,13 +26,25 @@
         <input type="text" name="breed" id="breed" />
         <br />
         <label for="why">Why do you need to relinquish your pet? </label>
-        <textarea name="why" id="why" cols="30" rows="10"></textarea>
+        <textarea
+          name="why"
+          id="why"
+          cols="55"
+          rows="5"
+          style="resize: none"
+        ></textarea>
         <br />
         <label for="why"
           >Is there anything else we should know about to help place your pet in
           a good home?
         </label>
-        <textarea name="why" id="why" cols="30" rows="10"></textarea>
+        <textarea
+          name="why"
+          id="why"
+          cols="55"
+          rows="5"
+          style="resize: none"
+        ></textarea>
         <br />
         <button type="submit">List your Pet</button>
       </form>
@@ -44,5 +56,23 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
+.main {
+  border: 1px solid black;
+  display: block;
+  height: 100vh;
+  margin: 0px 25px 0px 25px;
+}
+* {
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+h1,
+h2 {
+  color: #313638;
+}
+input,
+select,
+textarea {
+  background-color: white;
+}
 </style>

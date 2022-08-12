@@ -29,6 +29,14 @@ const router = new Router({
     base: process.env.BASE_URL,
     routes: [
         {
+            path: '/relinquish',
+            name: 'relinquish',
+            component: Relinquish,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
             path: '/',
             name: 'home',
             component: Home,
