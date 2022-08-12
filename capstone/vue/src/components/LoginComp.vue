@@ -96,8 +96,15 @@ button {
   border-radius: 4px;
 }
 
+label,
+.newAccount,
+h2 {
+  background-color: #f89670;
+  color: white;
+}
+
 #password {
-  margin-left: 0.3%;
+  margin-left: 5px;
 }
 
 .sr-only,
@@ -124,11 +131,22 @@ input {
 
 form {
   margin-left: 20px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 15%;
+  padding-left: 20px;
+  display: block;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #f89670;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 300px;
 }
 
 h2,
 h3 {
-  color: #313638;
+  color: white;
 }
 
 #cancel {
