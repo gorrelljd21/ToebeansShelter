@@ -184,6 +184,23 @@ button {
 #cancel {
   margin-left: 5px;
 }
+h2 {
+  background-color: #44a1a0;
+  padding: 5px 5px 5px 12px;
+  border-radius: 3px;
+  margin-right: 40%;
+  color: aliceblue;
+  border: 1px solid black;
+}
+
+h3 {
+  background-color: #f78154;
+  padding: 5px 5px 5px 12px;
+  border-radius: 3px;
+  margin-right: 40%;
+  color: white;
+  border: 1px solid black;
+}
 
 textarea {
   margin-right: 15px;

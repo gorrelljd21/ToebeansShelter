@@ -2,7 +2,7 @@
   <div class="whole">
     <h2>Welcome to Toebeans Animal Shelter!</h2>
     <h3>We want to help animals find the perfect home.</h3>
-    <p>
+    <p id="blurb">
       Founded in 2022 by Jessica Gorell, Kit Morgan, Evan Amezcua, Mary Schmidt,
       and Nate Schlie, Toebeans Animal Shelter is a no-kill shelter located in
       Cincinnati, Ohio that seeks to provide the finest care and comfort to our
@@ -25,6 +25,10 @@ export default {};
 </script>
 
 <style scoped>
+img {
+  display: block;
+}
+
 .whole {
   border: 1px solid black;
   display: block;
@@ -32,16 +36,40 @@ export default {};
   margin: 0px 25px 0px 25px;
 }
 
+h2 {
+  background-color: #44a1a0;
+  padding: 5px 5px 5px 12px;
+  border-radius: 3px;
+  margin-right: 40%;
+  color: aliceblue;
+  border: 1px solid black;
+}
+
+h3 {
+  background-color: #f78154;
+  padding: 5px 5px 5px 12px;
+  border-radius: 3px;
+  margin-right: 40%;
+  color: white;
+  border: 1px solid black;
+}
+
 h2,
 h3,
 p {
-  color: #313638;
   margin-left: 20px;
-  margin-right: 20px;
+
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
 
 p {
-  margin-right: 20%;
+  margin-right: 40%;
+}
+
+#blurb {
+  border: 1px solid black;
+  padding: 8px 8px 8px 12px;
+  border-radius: 4px;
+  background-color: white;
 }
 </style>
