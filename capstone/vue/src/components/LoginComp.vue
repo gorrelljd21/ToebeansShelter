@@ -3,7 +3,7 @@
     <form class="form-signin" @submit.prevent="login">
       <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
-        Invalid username and password!
+        Invalid username or password!
       </div>
       <div
         class="alert alert-success"
@@ -98,7 +98,8 @@ button {
 
 label,
 .newAccount,
-h2 {
+h2,
+.alert {
   background-color: #f89670;
   color: white;
 }

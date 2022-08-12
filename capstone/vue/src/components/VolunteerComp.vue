@@ -30,6 +30,7 @@
         v-model="volunteer.email"
         type="text"
         name="email"
+        id="email"
         placeholder="xxxxxxxxxxx@xxx.com"
         required
       /><br /><br />
@@ -37,7 +38,7 @@
       <br /><br />
       <textarea
         rows="5"
-        cols="60"
+        cols="56"
         name="bio"
         style="resize: none"
         v-model="volunteer.bio"
@@ -52,6 +53,7 @@
       <input
         type="text"
         name="refname"
+        id="refname"
         placeholder="First Last"
         required
         v-model="volunteer.ref_full_name"
@@ -71,6 +73,7 @@
         v-model="volunteer.ref_email"
         type="text"
         name="refemail"
+        id="refemail"
         placeholder="xxxxxxxxxxx@xxx.com"
         required
       />
@@ -159,6 +162,7 @@ input {
 form {
   margin-left: 20px;
 }
+
 form {
   border: 1px solid black;
   margin: auto;
@@ -169,15 +173,38 @@ form {
   border-radius: 10px;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 600px;
+  background-color: #e8e9eb;
 }
+
 h2,
 h3 {
   color: #313638;
 }
 
+label {
+  background-color: #e8e9eb;
+}
+
+#name {
+  margin-left: 34px;
+}
+
+#email {
+  margin-left: 59px;
+}
+
 #bio {
   width: 300px;
   height: 100px;
+}
+
+#refname {
+  margin-left: 33px;
+}
+
+#refemail {
+  margin-left: 59px;
 }
 
 textarea {
