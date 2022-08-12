@@ -18,7 +18,7 @@ insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (1
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (13, 'Gus', 'Bichon Yorkie', 8, 'Visionary interactive framework', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (14, 'Robin', 'Cattle Dog', 1, 'Re-engineered tertiary strategy', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (15, 'Buster', 'Mutt', 4, 'Open-source radical complexity', 1);
-insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (16, 'Oscar', 'Corgi', 3, 'Visionary executive local area network', 1);
+insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (16, 'Oscar', 'Corgi', 3, 'Darn sweetest pup ever!', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (17, 'Patricia', 'Newfoundland', 1, 'Robust holistic array', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (18, 'Shinji', 'Shiba Inu', 4, 'Enterprise-wide secondary ability', 1);
 insert into animals (animal_id, name, breed, age, bio, animal_type_id) values (19, 'Darill', 'Basset Hound', 7, 'Multi-lateral attitude-oriented service-desk', 1);
