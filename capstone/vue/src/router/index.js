@@ -9,6 +9,7 @@ import Animal from '../views/Animal.vue'
 import VolunteerView from '../views/VolunteerView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import FormApprovalView from '../views/FormApprovalView.vue'
+import Relinquish from '../views/Relinquish.vue'
 
 
 
@@ -47,6 +48,14 @@ const router = new Router({
             path: '/animals',
             name: 'animals',
             component: Animal,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: '/relinquish',
+            name: 'relinquish',
+            component: Relinquish,
             meta: {
                 requiresAuth: false
             }
