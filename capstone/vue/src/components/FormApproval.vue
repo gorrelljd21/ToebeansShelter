@@ -2,7 +2,7 @@
   <div id="approval-container">
     <div>
       <h3>For Pending Volunteers</h3>
-      <button></button>
+      <button type=""></button>
       <button></button>
     </div>
   </div>
@@ -22,7 +22,7 @@ export default {
     created() {
       this.getVolunteers();
     },
-    listVolunteers() {
+    listVolunteerApps() {
       ShelterService.getVolunteers().then((response) => {
         this.volunteers = response.data;
       });
@@ -31,5 +31,5 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style scoped>
 </style>
