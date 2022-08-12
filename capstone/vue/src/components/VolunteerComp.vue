@@ -82,8 +82,10 @@
 
 <script>
 import shelterService from "@/services/ShelterService.js";
+
 export default {
   name: "volunteer-comp",
+
   data() {
     return {
       volunteer: {

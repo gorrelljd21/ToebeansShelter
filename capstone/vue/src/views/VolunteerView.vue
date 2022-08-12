@@ -10,7 +10,6 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
