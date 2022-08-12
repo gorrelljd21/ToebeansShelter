@@ -27,7 +27,7 @@ export default {
 <style scoped>
 button {
   background-color: #44a1a0;
-  border: none;
+  border: 1px solid black;
   border-radius: 4px;
   color: white;
   padding: 16px 32px;
@@ -39,6 +39,8 @@ button {
   transition-duration: 0.4s;
   cursor: pointer;
   margin: 100px 0px 0px 95px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 button:hover {
