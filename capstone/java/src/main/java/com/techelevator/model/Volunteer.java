@@ -1,6 +1,7 @@
 package com.techelevator.model;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.boot.context.properties.bind.DefaultValue;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -22,7 +23,7 @@ public class Volunteer {
     private String ref_phone_number;
     @Email
     private String ref_email;
-    private String app_status;
+    private String app_status = "PENDING";
 
 
     public Volunteer() {
