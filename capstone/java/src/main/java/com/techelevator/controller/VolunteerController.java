@@ -5,7 +5,9 @@ import com.techelevator.dao.VolunteerDao;
 import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.model.UserNotFoundException;
 import com.techelevator.model.Volunteer;
+import com.techelevator.model.VolunteerNotFoundException;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -73,4 +75,17 @@ public class VolunteerController {
         threadSleepTryCatch.threadSleep();
         return newVolunteer;
     }
+
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @PutMapping(path = "/volunteers/{volunteer_id}")
+    public boolean changeAppStatus(@Valid @RequestBody Volunteer volunteer, @PathVariable int volunteer_id) throws VolunteerNotFoundException {
+        return false;
+    }
+
+//    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @DeleteMapping(path = "/volunteers/{volunteer_id}")
+    public void delete(@PathVariable int volunteer_id) throws VolunteerNotFoundException {
+        volunteerDao.deleteVolunteer(volunteer_id);
+    }
+
 }

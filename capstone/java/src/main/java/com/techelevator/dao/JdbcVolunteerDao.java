@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Volunteer;
+import com.techelevator.model.VolunteerNotFoundException;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -136,6 +137,30 @@ public class JdbcVolunteerDao implements VolunteerDao {
             }
             return true;
     }
+
+    @Override
+    public boolean approveApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException {
+        String sql = "UPDATE volunteers SET app_status = 'APPROVED' WHERE volunteer_id = ?; ";
+        return jdbcTemplate.update(sql, volunteer.getFull_name(), volunteer.getPhone_number(),
+                volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
+                volunteer.getRef_email(), volunteer.getApp_status(), volunteer_id) == 1;
+    }
+
+    @Override
+    public boolean denyApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException {
+        String sql = "UPDATE volunteers SET app_status = 'DENIED' WHERE volunteer_id = ?; ";
+        return jdbcTemplate.update(sql, volunteer.getFull_name(), volunteer.getPhone_number(), volunteer.getEmail(),
+                volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
+                volunteer.getRef_email(), volunteer.getApp_status()) == 1;
+    }
+
+    @Override
+    public void deleteVolunteer(int volunteer_id) throws VolunteerNotFoundException {
+        String sql = "DELETE FROM volunteers " +
+                "WHERE volunteer_id = ?; ";
+        jdbcTemplate.update(sql, volunteer_id);
+    }
+
 
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
