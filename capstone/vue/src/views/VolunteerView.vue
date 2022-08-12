@@ -10,11 +10,6 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-      <<<<<<< HEAD =======
-      <!-- <div class="header">
-        <header-comp></header-comp>
-      </div> -->
-      >>>>>>> 3a294e813fc4bd379c5802818aea02c70d8cfc62
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
