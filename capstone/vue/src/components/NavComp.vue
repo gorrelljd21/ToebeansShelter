@@ -46,6 +46,14 @@
           <a id="link" href="default.asp" target="_blank">Events</a>
         </b>
       </p>
+      <!-- <br /> -->
+      <p>
+        <b
+          ><router-link id="link" to="/volunteer-requests"
+            >Volunteer Application Requests</router-link
+          ></b
+        >
+      </p>
     </nav>
   </div>
 </template>
