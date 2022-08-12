@@ -1,5 +1,6 @@
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
+INSERT INTO users (username,password_hash,role) VALUES ('volunteer','$2a$10$g5I16pPHztrGqbyGrrfzDem2NlnlSSwYdGgrASaEM.M82TIW/wjIK','ROLE_VOLUNTEER');
 
 
 
