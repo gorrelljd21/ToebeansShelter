@@ -1,5 +1,5 @@
 <template>
-  <div id="approval-container">
+  <div id="approval-container" v-if="isAdminUser">
     <div>
       <h3>For Pending Volunteers</h3>
       <button type="submit" id="approve" @click="approveApplication()">
@@ -20,39 +20,44 @@ export default {
       props: ["volunteer", "volunteer_id"],
     };
   },
-  methods: {
-    created() {
-      this.getVolunteers();
+  computed: {
+    isAdminUser() {
+      return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
     },
-    listVolunteerApps() {
-      ShelterService.getVolunteers().then((response) => {
-        this.volunteers = response.data;
-      });
-    },
-    denyApplication() {
-      ShelterService.deleteVolunteer(this.volunteer_id)
-        .then((response) => {
+    methods: {
+      created() {
+        this.getVolunteers();
+      },
+      listVolunteerApps() {
+        ShelterService.getVolunteers().then((response) => {
+          this.volunteers = response.data;
+        });
+      },
+      denyApplication() {
+        ShelterService.deleteVolunteer(this.volunteer_id)
+          .then((response) => {
+            if (response.status === 200) {
+              alert("Volunteer Application Removed!");
+            }
+          })
+          .catch((error) => {
+            if (error.response.status === 404) {
+              this.$router.push("/404");
+            } else {
+              console.error(error);
+            }
+          });
+      },
+      approveApplication() {
+        ShelterService.approveNewVolunteer(
+          this.volunteer_id,
+          this.volunteer
+        ).then((response) => {
           if (response.status === 200) {
-            alert("Volunteer Application Removed!");
-          }
-        })
-        .catch((error) => {
-          if (error.response.status === 404) {
-            this.$router.push("/404");
-          } else {
-            console.error(error);
+            alert("Volunteer Application Approved!");
           }
         });
-    },
-    approveApplication() {
-      ShelterService.approveNewVolunteer(
-        this.volunteer_id,
-        this.volunteer
-      ).then((response) => {
-        if (response.status === 200) {
-          alert("Volunteer Application Approved!");
-        }
-      });
+      },
     },
   },
 };

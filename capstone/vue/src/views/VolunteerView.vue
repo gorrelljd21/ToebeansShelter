@@ -15,6 +15,7 @@
       </div>
       <div class="main">
         <volunteer-comp></volunteer-comp>
+        <div id="admin-view"></div>
       </div>
       <div class="story">
         <stories-comp></stories-comp>
