@@ -115,6 +115,12 @@ button {
   margin-left: 0.3%;
 }
 
+label,
+.makeAccount {
+  background-color: #6eb8b6;
+  color: white;
+}
+
 .sr-only,
 h2,
 .newAccount {
@@ -143,10 +149,34 @@ form {
 
 h2,
 h3 {
-  color: #313638;
+  color: white;
+  background-color: #6eb8b6;
 }
 
 #cancel {
   margin-left: 5px;
+}
+
+#confirmPassword {
+  margin-left: 75px;
+}
+
+#password {
+  margin-left: 5px;
+}
+
+form {
+  margin-left: 20px;
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 15%;
+  padding-left: 20px;
+  display: block;
+  padding-bottom: 20px;
+  border-radius: 10px;
+  background-color: #6eb8b6;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+  width: 300px;
 }
 </style>
