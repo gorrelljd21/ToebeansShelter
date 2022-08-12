@@ -47,7 +47,7 @@
         </b>
       </p>
       <!-- <br /> -->
-      <p>
+      <p v-if="isAdminUser">
         <b
           ><router-link id="link" to="/volunteer-requests"
             >Volunteer Application Requests</router-link
@@ -57,6 +57,18 @@
     </nav>
   </div>
 </template>
+
+<script>
+export default {
+  computed: {
+    isAdminUser() {
+      return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
+    },
+  },
+};
+</script>
+
+
 
 <style scoped>
 .navigation {
