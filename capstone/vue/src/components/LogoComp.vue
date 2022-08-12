@@ -1,6 +1,8 @@
 <template>
   <div class="logo">
-    <img src="..\assets\logoblueNameFINALBG.png" alt="logo" />
+    <router-link v-bind:to="{ name: 'home' }">
+      <img src="..\assets\logoblueNameFINALBG.png" alt="logo" />
+    </router-link>
   </div>
 </template>
 

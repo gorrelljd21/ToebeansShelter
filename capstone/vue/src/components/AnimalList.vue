@@ -15,6 +15,7 @@
     <div class="bottomComponent">
       <div class="pagination">
         <button
+          id="back-btn"
           @click="
             page--;
             getAnimalsPaginated();
@@ -22,7 +23,7 @@
           "
           v-show="page > 1"
         >
-          back
+          Back
         </button>
         <button
           id="next-btn"
@@ -98,8 +99,6 @@ export default {
 };
 </script>
 
-
-
 <style>
 .loading {
   margin: 20% 10% 0% 45%;
@@ -121,7 +120,6 @@ export default {
   padding: 0px 10px 10px 10px;
   margin-top: 0px;
 }
-
 .pagination {
   display: flex;
   align-items: center;
@@ -144,18 +142,15 @@ export default {
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
-
 .pagination > button:hover {
   background-color: #f78154;
   color: black;
 }
-
 .currentPage {
   color: #4c5454 !important;
   opacity: 50%;
   font-weight: bolder;
 }
-
 @media screen and (max-width: 450px) {
   .card-container {
     padding: 0px 20px 10px 30px;
@@ -163,6 +158,10 @@ export default {
   }
 
   .pagination {
+    margin-right: -30px;
+  }
+
+  .pagination #back-btn #next-btn {
     margin-right: 70px;
   }
 

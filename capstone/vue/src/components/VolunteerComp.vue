@@ -4,7 +4,7 @@
       {{ errorMsg }}
     </div>
 
-    <form action="" id="volunteerform">
+    <form id="volunteerform">
       <h2>Volunteer With Us!</h2>
       <label for="name">Your Full Name: </label>
       <input

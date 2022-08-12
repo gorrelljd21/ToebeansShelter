@@ -21,10 +21,18 @@
         >
       </p>
       <!-- <br /> -->
+
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
             >Animals by Category</a
+          ></b
+        >
+      </p>
+      <p>
+        <b
+          ><router-link id="link" to="/relinquish"
+            >Relinquish Your Pet</router-link
           ></b
         >
       </p>
@@ -47,13 +55,13 @@
         </b>
       </p>
       <!-- <br /> -->
-      <p v-if="isAdminUser">
+      <!-- <p v-if="isAdminUser">
         <b
           ><router-link id="link" to="/volunteer-requests"
             >Volunteer Application Requests</router-link
           ></b
         >
-      </p>
+      </p> -->
     </nav>
   </div>
 </template>

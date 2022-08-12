@@ -22,6 +22,9 @@
       <div class="feet">
         <foot-view />
       </div>
+      <div class="relinquish">
+        <relinquish-comp></relinquish-comp>
+      </div>
     </div>
   </body>
 </template>
@@ -34,6 +37,7 @@ import FootView from "@/views/FootView.vue";
 import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
+import RelinquishComp from "@/components/RelinquishComp.vue";
 
 export default {
   name: "home",
@@ -50,6 +54,7 @@ export default {
     LogoComp,
     TitleComp,
     LoginRegisterComp,
+    RelinquishComp,
   },
   methods: {
     handleView() {
