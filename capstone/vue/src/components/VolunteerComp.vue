@@ -3,8 +3,9 @@
     <div class="status-message error" v-show="errorMsg !== ''">
       {{ errorMsg }}
     </div>
-    <h2>Volunteer With Us!</h2>
+
     <form action="" id="volunteerform">
+      <h2>Volunteer With Us!</h2>
       <label for="name">Your Full Name: </label>
       <input
         v-model="volunteer.full_name"
@@ -46,7 +47,7 @@
       >
 
       <br />
-      <h3>Reference Info:</h3>
+      <h2>Reference Info:</h2>
       <label for="refname">Reference Full Name: </label>
       <input
         type="text"
@@ -155,11 +156,20 @@ input {
   margin: 0px 25px 0px 25px;
 }
 
-h2,
 form {
   margin-left: 20px;
 }
-
+form {
+  border: 1px solid black;
+  margin: auto;
+  margin-top: 10%;
+  padding: 0px 0px 20px 20px;
+  width: 600px;
+  display: block;
+  border-radius: 10px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
 h2,
 h3 {
   color: #313638;
@@ -184,6 +194,7 @@ button {
 #cancel {
   margin-left: 5px;
 }
+
 h2 {
   background-color: #6eb8b6;
   padding: 5px 5px 5px 12px;
