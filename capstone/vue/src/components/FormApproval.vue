@@ -18,6 +18,7 @@ export default {
   data() {
     return {
       props: ["volunteer", "volunteer_id"],
+      verdict: true,
     };
   },
   computed: {
@@ -49,14 +50,13 @@ export default {
           });
       },
       approveApplication() {
-        ShelterService.approveNewVolunteer(
-          this.volunteer_id,
-          this.volunteer
-        ).then((response) => {
-          if (response.status === 200) {
-            alert("Volunteer Application Approved!");
+        ShelterService.changeAppStatus(this.volunteer_id, this.volunteer).then(
+          (response) => {
+            if (response.status === 200) {
+              alert("Volunteer Application Approved!");
+            }
           }
-        });
+        );
       },
     },
   },

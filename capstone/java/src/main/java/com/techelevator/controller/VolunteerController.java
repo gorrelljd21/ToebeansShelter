@@ -79,7 +79,7 @@ public class VolunteerController {
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PutMapping(path = "/volunteers/{volunteer_id}")
     public boolean changeAppStatus(@Valid @RequestBody Volunteer volunteer, @PathVariable int volunteer_id) throws VolunteerNotFoundException {
-        return false;
+        return volunteerDao.approveApp(volunteer, volunteer_id);
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
