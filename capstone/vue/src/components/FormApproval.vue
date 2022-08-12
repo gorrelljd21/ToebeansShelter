@@ -2,8 +2,10 @@
   <div id="approval-container">
     <div>
       <h3>For Pending Volunteers</h3>
-      <button type="submit">APPROVE</button>
-      <button type="submit">DENY</button>
+      <button type="submit" id="approve" @click="approveApplication()">
+        APPROVE
+      </button>
+      <button type="submit" id="deny" @click="denyApplication()">DENY</button>
     </div>
   </div>
 </template>
