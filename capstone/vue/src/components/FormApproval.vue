@@ -15,7 +15,7 @@ export default {
   name: "form-approval",
   data() {
     return {
-      volunteers: [],
+      props: ["volunteer", "volunteer_id"],
     };
   },
   methods: {
@@ -27,10 +27,28 @@ export default {
         this.volunteers = response.data;
       });
     },
-    denyApplication(id) {
-      ShelterService.deleteVolunteer(id).then((response) => {
+    denyApplication() {
+      ShelterService.deleteVolunteer(this.volunteer_id)
+        .then((response) => {
+          if (response.status === 200) {
+            alert("Volunteer Application Removed!");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        });
+    },
+    approveApplication() {
+      ShelterService.approveNewVolunteer(
+        this.volunteer_id,
+        this.volunteer
+      ).then((response) => {
         if (response.status === 200) {
-          this.getVolunteers();
+          alert("Volunteer Application Approved!");
         }
       });
     },
