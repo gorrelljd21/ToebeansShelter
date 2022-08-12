@@ -2,8 +2,8 @@
   <div id="approval-container">
     <div>
       <h3>For Pending Volunteers</h3>
-      <button type=""></button>
-      <button></button>
+      <button type="submit">APPROVE</button>
+      <button type="submit">DENY</button>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@ export default {
   name: "form-approval",
   data() {
     return {
-      volunteers: [],
+      props: ["volunteer", "volunteer_id"],
     };
   },
   methods: {
@@ -25,6 +25,31 @@ export default {
     listVolunteerApps() {
       ShelterService.getVolunteers().then((response) => {
         this.volunteers = response.data;
+      });
+    },
+    denyApplication() {
+      ShelterService.deleteVolunteer(this.volunteer_id)
+        .then((response) => {
+          if (response.status === 200) {
+            alert("Volunteer Application Removed!");
+          }
+        })
+        .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        });
+    },
+    approveApplication() {
+      ShelterService.approveNewVolunteer(
+        this.volunteer_id,
+        this.volunteer
+      ).then((response) => {
+        if (response.status === 200) {
+          alert("Volunteer Application Approved!");
+        }
       });
     },
   },

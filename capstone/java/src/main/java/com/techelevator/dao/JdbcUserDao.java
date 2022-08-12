@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 
 import com.techelevator.model.User;
 
+//@PreAuthorize("isAuthenticated()")
 @Component
 public class JdbcUserDao implements UserDao {
 
@@ -23,6 +24,7 @@ public class JdbcUserDao implements UserDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Override
     public int findIdByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
@@ -37,6 +39,7 @@ public class JdbcUserDao implements UserDao {
         return userId;
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
 	@Override
 	public User getUserById(int userId) {
 		String sql = "SELECT * FROM users WHERE user_id = ?";
@@ -48,6 +51,7 @@ public class JdbcUserDao implements UserDao {
 		}
 	}
 
+    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Override
     public List<User> findAll() {
         List<User> users = new ArrayList<>();
@@ -62,6 +66,7 @@ public class JdbcUserDao implements UserDao {
         return users;
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Override
     public User findByUsername(String username) {
         if (username == null) throw new IllegalArgumentException("Username cannot be null");
@@ -74,6 +79,7 @@ public class JdbcUserDao implements UserDao {
         throw new UsernameNotFoundException("User " + username + " was not found.");
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Override
     public boolean create(String username, String password, String role) {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";

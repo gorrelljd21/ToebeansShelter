@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class AnimalController {
@@ -19,30 +20,35 @@ public class AnimalController {
     }
     ThreadSleepTryCatch threadSleepTryCatch = new ThreadSleepTryCatch();
 
+    //    @PreAuthorize("permitAll")
     @GetMapping(path ="/animals")
     public List<Animal> findAll() throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.findAll();
     }
 
+    //    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/limit/{limit}/offset/{offset}")
     public List<Animal> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.getAnimalPage(limit, offset);
     }
 
+    //    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/type/{animal_type_id}")
     public List<Animal> findByType(@PathVariable int animal_type_id) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.listAnimalByType(animal_type_id);
     }
 
+    //    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_VOLUNTEER')")
     @GetMapping(path = "/animals/id/{animal_id}")
     public Animal getAnimalById(@PathVariable int animal_id) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.getAnimalById(animal_id);
     }
 
+    //    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/name/{name}")
     public Animal getAnimalByName(@PathVariable String name) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
