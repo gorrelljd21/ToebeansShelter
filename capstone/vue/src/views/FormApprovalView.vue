@@ -1,14 +1,13 @@
 <template>
-  <form-approval></form-approval>
+  <form-approval />
 </template>
 
 <script>
 import FormApproval from "@/components/FormApproval.vue";
 
 export default {
-  components: {
-    FormApproval,
-  },
+  name: "volunteer-requests",
+  components: { FormApproval },
 };
 </script>
 
