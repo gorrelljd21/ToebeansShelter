@@ -103,6 +103,7 @@ const router = new Router({
         {
             path: "/volunteer-requests",
             name: "volunteer-requests",
+            // beforeEnter: checkAdminRights,
             component: FormApprovalView,
             meta: {
                 requiresAuth: false
@@ -111,6 +112,15 @@ const router = new Router({
 
     ]
 })
+
+// function checkAdminRights(to, from, next) {
+//     // check if the user is admin
+//     if(userIsAdmin) {
+//         next({ path: '/volunteer-requests'});       
+//     } else {
+//         next({ path: '/home'});
+//     }
+// }
 
 router.beforeEach((to, from, next) => {
     // Determine if the route requires Authentication

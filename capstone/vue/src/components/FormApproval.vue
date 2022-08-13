@@ -34,8 +34,8 @@
           <td>
             <select id="statusFilter" v-model="filter.app_status">
               <option value="">Show All</option>
-              <option value="Active">Active</option>
-              <option value="Pending">Pending</option>
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="PENDING">PENDING</option>
             </select>
           </td>
           <td>
