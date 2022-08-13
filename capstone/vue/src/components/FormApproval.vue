@@ -124,28 +124,24 @@ export default {
   //   },
   // },
 
-  // computed: {
-  //   filteredList() {
-  //     return this.volunteers((volunteer) => {
-  //       return (
-  //         volunteer.full_name
-  //           .toLowerCase()
-  //           .includes(this.volunteer.full_name.toLowerCase()) &&
-  //         volunteer.email
-  //           .toLowerCase()
-  //           .includes(this.volunteer.email.toLowerCase()) &&
-  //         volunteer.phone_number.includes(this.volunteer.phone_number) &&
-  //         volunteer.app_status.includes(this.filter.emailAddress)
-  //       );
-  //     });
-  //   },
-  // },
+  computed: {
+    filteredList() {
+      return this.volunteers.filter((volunteer) => {
+        return (
+          volunteer.full_name
+            .toLowerCase()
+            .includes(this.volunteer.full_name.toLowerCase()) &&
+          volunteer.email
+            .toLowerCase()
+            .includes(this.volunteer.email.toLowerCase()) &&
+          volunteer.phone_number.includes(this.volunteer.phone_number) &&
+          volunteer.app_status.includes(this.filter.emailAddress)
+        );
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
-
-
-
-
 </style>
