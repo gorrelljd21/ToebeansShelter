@@ -52,7 +52,16 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
-          <td><input type="checkbox" id="selectVolunteerApp" /></td>
+          <td>
+            <input
+              type="checkbox"
+              id="selectVolunteerApp"
+              v-model="volunteer.volunteer_id"
+            />
+            <button @click="denyApplication(volunteer.volunteer_id)">
+              DELETE
+            </button>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -64,13 +73,7 @@
     >
       APPROVE
     </button>
-    <button
-      type="submit"
-      id="deny"
-      @click="denyApplication(volunteers.volunteer_id)"
-    >
-      DENY
-    </button>
+    <!-- <button type="submit" id="deny" @click="denyApplication()">DENY</button> -->
   </div>
 </template>
 
@@ -110,8 +113,8 @@ export default {
         this.volunteers = response.data;
       });
     },
-    denyApplication() {
-      ShelterService.deleteVolunteer(this.volunteer_id)
+    denyApplication(volunteer_id) {
+      ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
             alert("Volunteer Application Removed!");
