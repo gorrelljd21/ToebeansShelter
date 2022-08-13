@@ -23,20 +23,16 @@
             />
           </td> -->
           <td>
-            <input type="text" id="nameFilter" v-model="volunteers.full_name" />
+            <input type="text" id="nameFilter" v-model="filter.full_name" />
           </td>
           <td>
-            <input type="text" id="emailFilter" v-model="volunteers.email" />
+            <input type="text" id="emailFilter" v-model="filter.email" />
           </td>
           <td>
-            <input
-              type="text"
-              id="phoneFilter"
-              v-model="volunteers.phone_number"
-            />
+            <input type="text" id="phoneFilter" v-model="filter.phone_number" />
           </td>
           <td>
-            <select id="statusFilter" v-model="volunteers.app_status">
+            <select id="statusFilter" v-model="filter.app_status">
               <option value="">Show All</option>
               <option value="Active">Active</option>
               <option value="Pending">Pending</option>
@@ -47,7 +43,10 @@
           </td>
         </tr>
 
-        <tr v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
+        <tr
+          v-for="volunteer in filteredList"
+          v-bind:key="volunteer.volunteer_id"
+        >
           <!-- <td>{{ volunteer.volunteer_id }}</td> -->
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
@@ -91,6 +90,13 @@ export default {
           app_status: "",
         },
       ],
+      filter: {
+        volunteer_id: "",
+        full_name: "",
+        email: "",
+        phone_number: "",
+        app_status: "",
+      },
       updatedStatus: "APPROVED",
     };
   },
@@ -140,28 +146,24 @@ export default {
   //   },
   // },
 
-  // computed: {
-  //   filteredList() {
-  //     return this.volunteers((volunteer) => {
-  //       return (
-  //         volunteer.full_name
-  //           .toLowerCase()
-  //           .includes(this.volunteer.full_name.toLowerCase()) &&
-  //         volunteer.email
-  //           .toLowerCase()
-  //           .includes(this.volunteer.email.toLowerCase()) &&
-  //         volunteer.phone_number.includes(this.volunteer.phone_number) &&
-  //         volunteer.app_status.includes(this.filter.emailAddress)
-  //       );
-  //     });
-  //   },
-  // },
+  computed: {
+    filteredList() {
+      return this.volunteers.filter((volunteer) => {
+        return (
+          volunteer.full_name
+            .toLowerCase()
+            .includes(this.filter.full_name.toLowerCase()) &&
+          volunteer.email
+            .toLowerCase()
+            .includes(this.filter.email.toLowerCase()) &&
+          volunteer.phone_number.includes(this.filter.phone_number) &&
+          volunteer.app_status.includes(this.filter.app_status)
+        );
+      });
+    },
+  },
 };
 </script>
 
 <style scoped>
-
-
-
-
 </style>
