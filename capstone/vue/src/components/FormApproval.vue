@@ -4,23 +4,24 @@
     <table>
       <thead>
         <tr>
-          <th>Volunteer ID</th>
+          <!-- <th>Volunteer ID</th> -->
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
           <th>Volunteer Status</th>
+          <th>Select</th>
         </tr>
       </thead>
 
       <tbody>
         <tr>
-          <td>
+          <!-- <td>
             <input
               type="text"
               id="volunteerId"
               v-model="volunteers.volunteer_id"
             />
-          </td>
+          </td> -->
           <td>
             <input type="text" id="nameFilter" v-model="volunteers.full_name" />
           </td>
@@ -41,14 +42,18 @@
               <option value="Pending">Pending</option>
             </select>
           </td>
+          <td>
+            <input type="checkbox" id="selectAll" />
+          </td>
         </tr>
 
         <tr v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
-          <td>{{ volunteer.volunteer_id }}</td>
+          <!-- <td>{{ volunteer.volunteer_id }}</td> -->
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
+          <td><input type="checkbox" id="selectVolunteerApp" /></td>
         </tr>
       </tbody>
     </table>
@@ -134,8 +139,29 @@ export default {
   //     return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
   //   },
   // },
+
+  // computed: {
+  //   filteredList() {
+  //     return this.volunteers((volunteer) => {
+  //       return (
+  //         volunteer.full_name
+  //           .toLowerCase()
+  //           .includes(this.volunteer.full_name.toLowerCase()) &&
+  //         volunteer.email
+  //           .toLowerCase()
+  //           .includes(this.volunteer.email.toLowerCase()) &&
+  //         volunteer.phone_number.includes(this.volunteer.phone_number) &&
+  //         volunteer.app_status.includes(this.filter.emailAddress)
+  //       );
+  //     });
+  //   },
+  // },
 };
 </script>
 
 <style scoped>
+
+
+
+
 </style>
