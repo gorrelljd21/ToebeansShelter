@@ -1,17 +1,62 @@
 <template>
-  <div id="approval-container">
-    <div>
-      <h3>Select Volunteer</h3>
+  <div>
+    <h2>Volunteer Approval Status</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Volunteer ID</th>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Phone</th>
+          <th>Volunteer Status</th>
+        </tr>
+      </thead>
 
-      <ul v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
-        <li>{{ volunteer.full_name }}, {{ volunteer.volunteer_id }}</li>
-      </ul>
-      <h3>For Pending Volunteers</h3>
-      <button type="submit" id="approve" @click="approveApplication()">
-        APPROVE
-      </button>
-      <button type="submit" id="deny" @click="denyApplication()">DENY</button>
-    </div>
+      <tbody>
+        <tr>
+          <td>
+            <input
+              type="text"
+              id="volunteerId"
+              v-model="volunteers.volunteer_id"
+            />
+          </td>
+          <td>
+            <input type="text" id="nameFilter" v-model="volunteers.full_name" />
+          </td>
+          <td>
+            <input type="text" id="emailFilter" v-model="volunteers.email" />
+          </td>
+          <td>
+            <input
+              type="text"
+              id="phoneFilter"
+              v-model="volunteers.phone_number"
+            />
+          </td>
+          <td>
+            <select id="statusFilter" v-model="volunteers.app_status">
+              <option value="">Show All</option>
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
+            </select>
+          </td>
+        </tr>
+
+        <tr v-for="volunteer in volunteers" v-bind:key="volunteer.volunteer_id">
+          <td>{{ volunteer.volunteer_id }}</td>
+          <td>{{ volunteer.full_name }}</td>
+          <td>{{ volunteer.email }}</td>
+          <td>{{ volunteer.phone_number }}</td>
+          <td>{{ volunteer.app_status }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>For Pending Volunteers</h3>
+    <button type="submit" id="approve" @click="approveApplication()">
+      APPROVE
+    </button>
+    <button type="submit" id="deny" @click="denyApplication()">DENY</button>
   </div>
 </template>
 
@@ -26,6 +71,9 @@ export default {
         {
           volunteer_id: "",
           full_name: "",
+          email: "",
+          phone_number: "",
+          app_status: "",
         },
       ],
     };
