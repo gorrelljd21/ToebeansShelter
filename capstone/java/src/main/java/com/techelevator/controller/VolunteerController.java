@@ -77,12 +77,14 @@ public class VolunteerController {
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.OK)
     @PutMapping(path = "/volunteers/{volunteer_id}")
     public boolean changeAppStatus(@Valid @RequestBody Volunteer volunteer, @PathVariable int volunteer_id) throws VolunteerNotFoundException {
         return volunteerDao.approveApp(volunteer, volunteer_id);
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
+    @ResponseStatus(HttpStatus.OK)
     @DeleteMapping(path = "/volunteers/{volunteer_id}")
     public void delete(@PathVariable int volunteer_id) throws VolunteerNotFoundException {
         volunteerDao.deleteVolunteer(volunteer_id);
