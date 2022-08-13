@@ -14,7 +14,7 @@
         <nav-comp></nav-comp>
       </div>
       <div class="main">
-        <relinquish-comp></relinquish-comp>
+        <add-animal-form />
       </div>
       <div class="story">
         <stories-comp></stories-comp>
@@ -33,7 +33,8 @@ import FootView from "@/views/FootView.vue";
 import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
-import RelinquishComp from "@/components/RelinquishComp.vue";
+// import RelinquishComp from "@/components/RelinquishComp.vue";
+import AddAnimalForm from "../components/AddAnimalForm.vue";
 
 export default {
   name: "home",
@@ -43,13 +44,14 @@ export default {
     };
   },
   components: {
-    RelinquishComp,
+    // RelinquishComp,
     NavComp,
     StoriesComp,
     FootView,
     LogoComp,
     TitleComp,
     LoginRegisterComp,
+    AddAnimalForm,
   },
   methods: {
     handleView() {

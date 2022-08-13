@@ -49,6 +49,9 @@ export default {
     },
     deleteVolunteer(volunteer_id) {
         return axios.delete(`/volunteers/${volunteer_id}`)
+    },
+    addAnimal(animal) {
+        return axios.post(`/animals`, animal);
     }
 
 }
