@@ -53,10 +53,20 @@
       </tbody>
     </table>
     <h3>For Pending Volunteers</h3>
-    <button type="submit" id="approve" @click="approveApplication()">
+    <button
+      type="submit"
+      id="approve"
+      @click="approveApplication(volunteers.volunteer_id, volunteers)"
+    >
       APPROVE
     </button>
-    <button type="submit" id="deny" @click="denyApplication()">DENY</button>
+    <button
+      type="submit"
+      id="deny"
+      @click="denyApplication(volunteers.volunteer_id)"
+    >
+      DENY
+    </button>
   </div>
 </template>
 
@@ -76,6 +86,7 @@ export default {
           app_status: "",
         },
       ],
+      updatedStatus: "APPROVED",
     };
   },
   created() {
@@ -104,7 +115,12 @@ export default {
         });
     },
     approveApplication() {
-      ShelterService.changeAppStatus(this.volunteer_id, this.volunteer).then(
+      // this.app_status = this.updatedStatus;
+      // const approvedVolunteer = {
+      //   volunteer_id: this.volunteer_id,
+      //   app_status: this.updatedStatus,
+      // };
+      ShelterService.changeAppStatus(this.volunteer_id, this.volunteers).then(
         (response) => {
           if (response.status === 200) {
             alert("Volunteer Application Approved!");

@@ -44,8 +44,8 @@ export default {
     addNewVolunteer(volunteer) {
         return axios.post(`volunteers/submit`, volunteer);
     },
-    changeAppStatus(volunteer_id, volunteer, verdict) {
-        return axios.put(`/volunteers/${volunteer_id}`, volunteer, verdict);
+    changeAppStatus(volunteer_id, volunteer) {
+        return axios.put(`/volunteers/${volunteer_id}`, volunteer);
     },
     deleteVolunteer(volunteer_id) {
         return axios.delete(`/volunteers/${volunteer_id}`)
