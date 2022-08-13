@@ -1,9 +1,12 @@
 package com.techelevator.controller;
 
 
+import com.techelevator.Exceptions.AnimalNotAddedException;
 import com.techelevator.Exceptions.ThreadSleepTryCatch;
 import com.techelevator.dao.AnimalDao;
+import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -55,5 +58,14 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
+    // @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
+    @PostMapping ("/animals")
+    @ResponseStatus(HttpStatus.CREATED)
+    public void addAnimal(@RequestBody AddAnimal animal) throws AnimalNotAddedException { //takes in an AddAnimal model, this includes a photo_link!!
+        boolean result = animalDao.addAnimal(animal);
+        if (!result){
+            throw new AnimalNotAddedException();
+        }
+    }
 
 }

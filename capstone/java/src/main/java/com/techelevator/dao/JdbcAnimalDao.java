@@ -1,9 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
+import org.springframework.dao.DataAccessException;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -98,6 +102,20 @@ public class JdbcAnimalDao implements AnimalDao {
         }
 
         return animals;
+    }
+
+    @Override
+    public boolean addAnimal(AddAnimal animal){
+        String sql = "INSERT INTO animals (name, breed, age, bio, animal_type_id) VALUES (?,?,?,?,?); "+
+                "INSERT INTO animal_photos (animal_id, photo_link) VALUES ((SELECT animal_id FROM animals WHERE name = ? AND bio = ? AND animal_type_id = ?),?);";
+        try {
+            jdbctemplate.update(sql, animal.getName(), animal.getBreed(), animal.getAge(), animal.getBio(), animal.getAnimal_type_id(), animal.getName(), animal.getBio(), animal.getAnimal_type_id(), animal.getLink());
+            return true;
+        }
+        catch (DataAccessException e){
+            System.out.println(e);
+            return false;
+        }
     }
 
     private Animal mapRowToAnimal(SqlRowSet rs) {

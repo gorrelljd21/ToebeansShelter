@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 
+import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
 
 import java.util.List;
@@ -16,5 +17,7 @@ public interface AnimalDao {
     Animal getAnimalByName(String name);
 
     List<Animal> getAnimalPage(int limit, int offset);
+
+    boolean addAnimal(AddAnimal animal);
 
 }
