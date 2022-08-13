@@ -2,10 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.Exceptions.ThreadSleepTryCatch;
 import com.techelevator.dao.VolunteerDao;
-import com.techelevator.model.UserAlreadyExistsException;
-import com.techelevator.model.UserNotFoundException;
-import com.techelevator.model.Volunteer;
-import com.techelevator.model.VolunteerNotFoundException;
+import com.techelevator.model.*;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -71,9 +68,14 @@ public class VolunteerController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/volunteers/submit")
     public Volunteer createNewVolunteer(@Valid @RequestBody Volunteer newVolunteer) throws InterruptedException {
-         volunteerDao.postVolunteerSubmission(newVolunteer);
-        threadSleepTryCatch.threadSleep();
-        return newVolunteer;
+        try {
+            Volunteer volunteer = volunteerDao.findByName(newVolunteer.getFull_name());
+            throw new VolunteerAlreadyExistsException();
+        } catch (VolunteerNotFoundException e) {
+            volunteerDao.postVolunteerSubmission(newVolunteer);
+            threadSleepTryCatch.threadSleep();
+            return newVolunteer;
+        }
     }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
