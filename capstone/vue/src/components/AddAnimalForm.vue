@@ -73,6 +73,7 @@ export default {
         .then((r) => {
           if (r.status == 201) {
             this.accepted = true;
+            this.$emit("submitted-animal", this.animal);
           }
           if (r.status == 400) {
             this.rejected = true;
