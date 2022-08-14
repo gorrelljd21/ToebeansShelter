@@ -9,6 +9,7 @@
         :key="animal.animal_id"
         :animal="animal"
         :photo="animalPhotos.find((x) => x.animal_id == animal.animal_id)"
+        v-show="!isLoading"
       >
       </animal-card>
     </ul>

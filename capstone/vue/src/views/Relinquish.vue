@@ -14,8 +14,17 @@
         <nav-comp></nav-comp>
       </div>
       <div class="main">
-        <add-animal-form />
+        <add-animal-form
+          @submitted-animal="
+            emittedAnimal = $event;
+            photo = emittedAnimal;
+            photo.photo_link = photo.link;
+          "
+        />
+        <br />
+        <animal-card :animal="emittedAnimal" :photo="photo" v-if="photo" />
       </div>
+      <div></div>
       <div class="story">
         <stories-comp></stories-comp>
       </div>
@@ -35,12 +44,15 @@ import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
 // import RelinquishComp from "@/components/RelinquishComp.vue";
 import AddAnimalForm from "../components/AddAnimalForm.vue";
+import AnimalCard from "../components/AnimalCard.vue";
 
 export default {
   name: "home",
   data() {
     return {
       mobileView: false,
+      emittedAnimal: {},
+      photo: "",
     };
   },
   components: {
@@ -52,6 +64,7 @@ export default {
     TitleComp,
     LoginRegisterComp,
     AddAnimalForm,
+    AnimalCard,
   },
   methods: {
     handleView() {
