@@ -68,15 +68,10 @@ public class VolunteerController {
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/volunteers/submit")
     public Volunteer createNewVolunteer(@Valid @RequestBody Volunteer newVolunteer) throws InterruptedException {
-        try {
-            Volunteer volunteer = volunteerDao.findByName(newVolunteer.getFull_name());
-            throw new VolunteerAlreadyExistsException();
-        } catch (VolunteerNotFoundException e) {
-            volunteerDao.postVolunteerSubmission(newVolunteer);
+        volunteerDao.postVolunteerSubmission(newVolunteer);
             threadSleepTryCatch.threadSleep();
             return newVolunteer;
         }
-    }
 
 //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @ResponseStatus(HttpStatus.OK)
