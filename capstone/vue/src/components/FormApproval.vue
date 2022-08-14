@@ -9,6 +9,7 @@
           <th>Email</th>
           <th>Phone</th>
           <th>Volunteer Status</th>
+          <th>Application Form</th>
           <th>Select</th>
         </tr>
       </thead>
@@ -31,6 +32,7 @@
           <td>
             <input type="text" id="phoneFilter" v-model="filter.phone_number" />
           </td>
+
           <td>
             <select id="statusFilter" v-model="filter.app_status">
               <option value="APPROVED">APPROVED</option>
@@ -39,11 +41,10 @@
             </select>
           </td>
           <td>
-            <input
-              type="checkbox"
-              id="selectAll"
-              @change="selectAllVolunteers"
-            />
+            <input type="text" id="appForm" v-model="filter.app_form" />
+          </td>
+          <td>
+            <input type="checkbox" id="selectAll" />
           </td>
         </tr>
 
@@ -56,6 +57,7 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
+          <td>{{ volunteer.bio }}</td>
           <td>
             <input
               type="checkbox"
@@ -117,6 +119,7 @@ export default {
         full_name: "",
         email: "",
         phone_number: "",
+        app_form: "",
         app_status: "",
       },
       selectedVolunteers: [],

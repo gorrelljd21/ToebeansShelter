@@ -35,7 +35,6 @@ public class JdbcUserDao implements UserDao {
         } catch (EmptyResultDataAccessException e) {
             throw new UsernameNotFoundException("User " + username + " was not found.");
         }
-
         return userId;
     }
 
