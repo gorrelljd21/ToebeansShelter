@@ -33,8 +33,7 @@
           </td>
           <td>
             <select id="statusFilter" v-model="filter.app_status">
-              <option value="">Show All</option>
-              <option value="ACTIVE">ACTIVE</option>
+              <option value="APPROVED">ACTIVE</option>
               <option value="PENDING">PENDING</option>
             </select>
           </td>
@@ -56,24 +55,25 @@
             <input
               type="checkbox"
               id="selectVolunteerApp"
-              v-model="volunteer.volunteer_id"
+              @click="addSelectedVolunteers"
+              v-bind:key="volunteer.volunteer_id"
+              v-bind:value="volunteer.volunteer_id"
+              v-model.number="selectedVolunteers"
             />
-            <button @click="denyApplication(volunteer.volunteer_id)">
-              DELETE
-            </button>
           </td>
         </tr>
       </tbody>
     </table>
     <h3>For Pending Volunteers</h3>
-    <button
-      type="submit"
-      id="approve"
-      @click="approveApplication(volunteers.volunteer_id, volunteers)"
-    >
+    <button type="submit" id="approve" @click.prevent="approveSelected">
       APPROVE
     </button>
-    <!-- <button type="submit" id="deny" @click="denyApplication()">DENY</button> -->
+    <button type="submit" id="deny" @click.prevent="deleteSelectedVolunteers">
+      DENY
+    </button>
+    <button type="submit" id="clear" @click.prevent="clearSelected">
+      CLEAR
+    </button>
   </div>
 </template>
 
@@ -88,8 +88,12 @@ export default {
         {
           volunteer_id: "",
           full_name: "",
-          email: "",
           phone_number: "",
+          email: "",
+          bio: "",
+          ref_full_name: "",
+          ref_phone_number: "",
+          ref_email: "",
           app_status: "",
         },
       ],
@@ -100,7 +104,7 @@ export default {
         phone_number: "",
         app_status: "",
       },
-      updatedStatus: "APPROVED",
+      selectedVolunteers: [],
     };
   },
   created() {
@@ -113,11 +117,26 @@ export default {
         this.volunteers = response.data;
       });
     },
+    clearSelected() {
+      this.selectedVolunteers = [];
+    },
+    addSelectedVolunteers() {
+      this.selectedVolunteers.push(this.volunteer.volunteer_id);
+    },
+    deleteSelectedVolunteers() {
+      this.selectedVolunteers.forEach((volunteer) => {
+        let selected = this.volunteers.find(
+          (f) => f.volunteer_id === volunteer
+        );
+        return this.denyApplication(selected.volunteer_id);
+      });
+    },
     denyApplication(volunteer_id) {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
             alert("Volunteer Application Removed!");
+            this.$router.push("/volunteer-requests");
           }
         })
         .catch((error) => {
@@ -128,19 +147,30 @@ export default {
           }
         });
     },
-    approveApplication() {
-      // this.app_status = this.updatedStatus;
-      // const approvedVolunteer = {
-      //   volunteer_id: this.volunteer_id,
-      //   app_status: this.updatedStatus,
-      // };
-      ShelterService.changeAppStatus(this.volunteer_id, this.volunteers).then(
-        (response) => {
+    approveSelected() {
+      this.selectedVolunteers.forEach((volunteer) => {
+        let selected = this.volunteers.find(
+          (f) => f.volunteer_id === volunteer
+        );
+        selected.app_status = "APPROVED";
+        return this.approveApplications(selected.volunteer_id, selected);
+      });
+    },
+    approveApplications(volunteer_id, volunteer) {
+      ShelterService.changeAppStatus(volunteer_id, volunteer)
+        .then((response) => {
           if (response.status === 200) {
-            alert("Volunteer Application Approved!");
+            alert("Application approved!");
+            this.$router.push("/volunteer-requests");
           }
-        }
-      );
+        })
+        .catch((error) => {
+          if (error.response.status === 404) {
+            this.$router.push("/404");
+          } else {
+            console.error(error);
+          }
+        });
     },
   },
   // computed: {

@@ -11,7 +11,7 @@ public class Volunteer {
     private int volunteer_id;
     @NotBlank
     private String full_name;
-    @Length(min = 10, max= 10)
+    @Length(min = 7)
     private String phone_number;
     @Email
     private String email;
@@ -19,7 +19,7 @@ public class Volunteer {
     private String bio;
     @NotBlank
     private String ref_full_name;
-    @Length(min = 10, max = 10)
+    @Length(min = 7)
     private String ref_phone_number;
     @Email
     private String ref_email;

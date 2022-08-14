@@ -23,8 +23,6 @@ public interface VolunteerDao {
 
     boolean approveApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException;
 
-    boolean denyApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException;
-
     void deleteVolunteer(int volunteer_id) throws VolunteerNotFoundException;
 
 
