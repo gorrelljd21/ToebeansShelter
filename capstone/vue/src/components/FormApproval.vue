@@ -33,12 +33,17 @@
           </td>
           <td>
             <select id="statusFilter" v-model="filter.app_status">
-              <option value="APPROVED">ACTIVE</option>
+              <option value="APPROVED">APPROVED</option>
               <option value="PENDING">PENDING</option>
+              <option value="">SHOW ALL</option>
             </select>
           </td>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input
+              type="checkbox"
+              id="selectAll"
+              @change="selectAllVolunteers"
+            />
           </td>
         </tr>
 
@@ -65,10 +70,20 @@
       </tbody>
     </table>
     <h3>For Pending Volunteers</h3>
-    <button type="submit" id="approve" @click.prevent="approveSelected">
+    <button
+      disableButtons
+      type="submit"
+      id="approve"
+      @click.prevent="approveSelected"
+    >
       APPROVE
     </button>
-    <button type="submit" id="deny" @click.prevent="deleteSelectedVolunteers">
+    <button
+      disableButtons
+      type="submit"
+      id="deny"
+      @click.prevent="deleteSelectedVolunteers"
+    >
       DENY
     </button>
     <button type="submit" id="clear" @click.prevent="clearSelected">
@@ -119,9 +134,22 @@ export default {
     },
     clearSelected() {
       this.selectedVolunteers = [];
+      this.getVolunteers();
     },
     addSelectedVolunteers() {
       this.selectedVolunteers.push(this.volunteer.volunteer_id);
+    },
+    selectAllVolunteers() {
+      this.volunteers.forEach((volunteer) => {
+        if (this.selectedVolunteers.indexOf(volunteer.volunteer_id) === -1) {
+          this.selectedVolunteers.push(volunteer.volunteer_id);
+        } else {
+          this.selectedVolunteers.splice(
+            this.selectedVolunteers.indexOf(volunteer.volunteer_id),
+            1
+          );
+        }
+      });
     },
     deleteSelectedVolunteers() {
       this.selectedVolunteers.forEach((volunteer) => {
@@ -136,7 +164,6 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             alert("Volunteer Application Removed!");
-            this.$router.push("/volunteer-requests");
           }
         })
         .catch((error) => {
@@ -146,6 +173,7 @@ export default {
             console.error(error);
           }
         });
+      this.clearSelected();
     },
     approveSelected() {
       this.selectedVolunteers.forEach((volunteer) => {
@@ -161,7 +189,6 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             alert("Application approved!");
-            this.$router.push("/volunteer-requests");
           }
         })
         .catch((error) => {
@@ -171,6 +198,7 @@ export default {
             console.error(error);
           }
         });
+      this.clearSelected();
     },
   },
   // computed: {
@@ -193,6 +221,9 @@ export default {
           volunteer.app_status.includes(this.filter.app_status)
         );
       });
+    },
+    disableButtons() {
+      return this.selectedVolunteers.length === 0;
     },
   },
 };
