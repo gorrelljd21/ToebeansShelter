@@ -163,7 +163,7 @@ export default {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
-            alert("Volunteer Application Removed!");
+            alert("Application Removed!");
           }
         })
         .catch((error) => {
