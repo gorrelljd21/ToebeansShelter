@@ -4,12 +4,14 @@ package com.techelevator.controller;
 import com.techelevator.Exceptions.AnimalNotAddedException;
 import com.techelevator.Exceptions.ThreadSleepTryCatch;
 import com.techelevator.dao.AnimalDao;
+import com.techelevator.dao.JdbcAnimalDao;
 import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @PreAuthorize("isAuthenticated()")
@@ -59,6 +61,12 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
+    @PutMapping(path = "/update-pet/:animalId")
+    public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animal_id) throws InterruptedException {
+        threadSleepTryCatch.threadSleep();
+        return animalDao.updateAnimal(animal, animal_id);
+    }
+
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
     @PostMapping ("/animals")
     @ResponseStatus(HttpStatus.CREATED)
@@ -68,5 +76,6 @@ public class AnimalController {
             throw new AnimalNotAddedException();
         }
     }
+
 
 }

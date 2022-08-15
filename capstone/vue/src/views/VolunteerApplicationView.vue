@@ -55,10 +55,19 @@ export default {
     handleView() {
       this.mobileView = window.innerWidth <= 450;
     },
+    isAuthenticated() {
+      if (!this.$store.state.user.authorities) {
+        this.$router
+          .push("/login")
+          .then(alert("Please login to visit this page."));
+      }
+    },
   },
+
   created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);
+    this.isAuthenticated();
   },
 };
 </script>

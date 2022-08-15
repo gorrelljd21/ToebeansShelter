@@ -1,16 +1,17 @@
 <template>
   <div>
     <table>
-      <h2>Volunteer Approval Status</h2>
+      <h2 v-if="isAdminUser">Volunteer Information / Approval Status</h2>
+      <h2 v-if="isVolunteerUser">Volunteer Information</h2>
       <thead>
         <tr>
           <!-- <th>Volunteer ID</th> -->
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th>Volunteer Status</th>
-          <th>Application Form</th>
-          <th>Select</th>
+          <th v-if="isAdminUser">Volunteer Status</th>
+          <th v-if="isAdminUser">Application Form</th>
+          <th v-if="isAdminUser">Select</th>
         </tr>
       </thead>
 
@@ -27,7 +28,11 @@
           </td>
 
           <td>
-            <select id="statusFilter" v-model="filter.app_status">
+            <select
+              v-if="isAdminUser"
+              id="statusFilter"
+              v-model="filter.app_status"
+            >
               <option value="">Show all</option>
               <option value="PENDING">Pending</option>
               <option value="APPROVED">Approved</option>
@@ -35,10 +40,16 @@
             </select>
           </td>
           <td>
-            <input type="text" id="appForm" v-model="filter.app_form" />
+            <input
+              v-if="isAdminUser"
+              type="text"
+              id="appForm"
+              v-model="filter.app_form"
+            />
           </td>
           <td>
             <input
+              v-if="isAdminUser"
               type="checkbox"
               id="selectAll"
               @change="selectAllVolunteers"
@@ -54,9 +65,10 @@
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
-          <td>{{ volunteer.app_status }}</td>
+          <td v-if="isAdminUser">{{ volunteer.app_status }}</td>
           <td>
             <router-link
+              v-if="isAdminUser"
               id="see-application"
               :to="{
                 name: 'volunteer-application-form',
@@ -67,6 +79,7 @@
           </td>
           <td>
             <input
+              v-if="isAdminUser"
               type="checkbox"
               id="selectVolunteerApp"
               @click="addSelectedVolunteers"
@@ -79,6 +92,7 @@
       </tbody>
       <!-- <h3>For Pending Volunteers</h3> -->
       <button
+        v-if="isAdminUser"
         disableButtons
         type="submit"
         id="approve"
@@ -88,6 +102,7 @@
       </button>
 
       <button
+        v-if="isAdminUser"
         disableButtons
         type="submit"
         id="deny"
@@ -97,6 +112,7 @@
       </button>
 
       <button
+        v-if="isAdminUser"
         disableButtons
         type="submit"
         id="delete-app"
@@ -104,7 +120,12 @@
       >
         DELETE
       </button>
-      <button type="submit" id="clear" @click.prevent="clearSelected">
+      <button
+        v-if="isAdminUser"
+        type="submit"
+        id="clear"
+        @click.prevent="clearSelected"
+      >
         CLEAR
       </button>
     </table>
@@ -271,6 +292,18 @@ export default {
   // },
 
   computed: {
+    isAdminUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
+    },
+    isVolunteerUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
+    },
     filteredList() {
       return this.volunteers.filter((volunteer) => {
         return (

@@ -20,4 +20,6 @@ public interface AnimalDao {
 
     boolean addAnimal(AddAnimal animal);
 
+    Animal updateAnimal(Animal animal, int animal_id);
+
 }
