@@ -100,17 +100,11 @@ export default {
             this.$emit("submitted-animal", this.animal);
             alert("Successfully Added!");
           }
-          if (r.status == 400) {
-            this.rejected = true;
-            alert("Something went wrong! (It probably wasn't your fault)");
-          }
-          if (r.status == 401) {
-            this.rejected = true;
-            alert("Must be registered volunteer to submit");
-          }
-          //todo
         })
         .catch((err) => {
+          if (err.response.status == 401) {
+            alert("Something went wrong! (User not authorized)");
+          }
           console.log(err);
         });
     },
