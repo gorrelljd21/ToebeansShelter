@@ -53,7 +53,7 @@ import AddAnimalForm from "../components/AddAnimalForm.vue";
 import AnimalCard from "../components/AnimalCard.vue";
 
 export default {
-  name: "home",
+  name: "addAnimal",
   data() {
     return {
       mobileView: false,
@@ -84,7 +84,7 @@ export default {
       }
     },
   },
-  beforeCreate() {},
+
   created() {
     this.handleView();
     window.addEventListener("resize", this.handleView);

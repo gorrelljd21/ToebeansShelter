@@ -8,8 +8,8 @@ export default {
     getAnimalByType() {
         return axios.get('/animals/type/:type');
     },
-    getAnimalById() {
-        return axios.get('/animals/id/:id');
+    getAnimalById(animalId) {
+        return axios.get(`/animals/id/${animalId}`);
     },
     getAnimalByName() {
         return axios.get('/animals/name/:name');
