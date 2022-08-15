@@ -52,6 +52,11 @@ export default {
     },
     addAnimal(animal) {
         return axios.post(`/animals`, animal);
+    },
+    updateAnimalCard() {
+        return axios.put('/update-pet/:animalId');
+    },
+    updatePassword() {
+        return axios.put('/login/update');
     }
-
 }
