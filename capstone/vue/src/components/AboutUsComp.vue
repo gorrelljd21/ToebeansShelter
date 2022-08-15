@@ -25,35 +25,42 @@ export default {};
 </script>
 
 <style scoped>
-#gif {
+/* #gif {
   margin-left: 700px;
-  margin-top: -300px;
-}
+  margin-top: -300px; 
+} */
 img {
   display: block;
 }
 
 .whole {
+  display: flex;
+  align-items: center;
+
+  flex-direction: column;
+}
+
+.whole {
   border: 1px solid black;
-  display: block;
   height: 100vh;
   margin: 0px 25px 0px 25px;
 }
 
 h2 {
   background-color: #6eb8b6;
-  padding: 5px 5px 5px 12px;
+  padding: 5px 120px 5px 120px;
   border-radius: 3px;
-  margin-right: 40%;
+  /* margin-right: 40%; */
   color: aliceblue;
   border: 1px solid black;
+  margin-top: 4%;
 }
 
 h3 {
   background-color: #f89670;
-  padding: 5px 5px 5px 12px;
+  padding: 5px 120px 5px 120px;
   border-radius: 3px;
-  margin-right: 40%;
+  /* margin-right: 40%; */
   color: white;
   border: 1px solid black;
 }
@@ -61,13 +68,15 @@ h3 {
 h2,
 h3,
 p {
-  margin-left: 20px;
-
+  margin-left: 20%;
+  margin-right: 20%;
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 p {
-  margin-right: 40%;
+  /* margin-right: 40%; */
 }
 
 #blurb {

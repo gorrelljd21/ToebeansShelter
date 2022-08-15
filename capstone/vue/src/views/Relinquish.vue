@@ -13,7 +13,7 @@
       <div class="nav">
         <nav-comp></nav-comp>
       </div>
-      <div class="main">
+      <div class="main" id="relmain">
         <add-animal-form
           @submitted-animal="
             emittedAnimal = $event;
@@ -22,7 +22,13 @@
           "
         />
         <br />
-        <animal-card :animal="emittedAnimal" :photo="photo" v-if="photo" />
+        <animal-card
+          :animal="emittedAnimal"
+          :photo="photo"
+          v-if="photo"
+          class="fade-in"
+          id="relinquish-card"
+        />
       </div>
       <div></div>
       <div class="story">
@@ -78,7 +84,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 * {
   background-color: #e0dfd5;
 }
@@ -100,8 +106,10 @@ export default {
 }
 
 .main {
-  grid-area: ga-main;
-  border-top: black;
+  border: 1px solid black;
+  display: block;
+  height: 100vh;
+  margin: 0px 25px 0px 25px;
 }
 
 .story {
@@ -129,6 +137,10 @@ export default {
   background-color: aliceblue !important;
 }
 
+#relinquish-card {
+  margin: auto !important;
+}
+
 @media screen and (max-width: 450px) {
   .nav {
     border-style: none;
@@ -150,6 +162,23 @@ export default {
       "ga-main ga-main"
       "ga-story ga-story"
       "ga-feet ga-feet";
+  }
+
+  .fade-in {
+    opacity: 1;
+    animation-name: fadeInOpacity;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+    animation-duration: 2s;
+  }
+
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
   }
 }
 </style> 

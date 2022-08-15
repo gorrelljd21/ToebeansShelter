@@ -70,11 +70,6 @@
         Place for Adoption
       </button>
     </form>
-    <h1 id="added" v-if="accepted">successfully added</h1>
-    <!-- PROBABLY CHANGE ME -->
-    <h1 id="not-added" v-if="rejected">
-      <p>Something went horribly wrong, it probably wasn't your fault</p>
-    </h1>
   </div>
 </template>
 
@@ -103,9 +98,15 @@ export default {
           if (r.status == 201) {
             this.accepted = true;
             this.$emit("submitted-animal", this.animal);
+            alert("Successfully Added!");
           }
           if (r.status == 400) {
             this.rejected = true;
+            alert("Something went wrong! (It probably wasn't your fault)");
+          }
+          if (r.status == 401) {
+            this.rejected = true;
+            alert("Must be registered volunteer to submit pet.");
           }
           //todo
         })
@@ -118,12 +119,6 @@ export default {
 </script>
 
 <style scoped>
-#whole {
-  border: 1px solid black;
-  display: block;
-  height: 100vh;
-  margin: 0px 25px 0px 25px;
-}
 * {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
 }
@@ -159,6 +154,12 @@ form {
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
   width: 600px;
   background-color: #e8e9eb;
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  margin: 0;
 }
 
 h2 {

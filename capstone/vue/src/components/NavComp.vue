@@ -21,7 +21,6 @@
         >
       </p>
       <!-- <br /> -->
-
       <p>
         <b
           ><a id="link" href="default.asp" target="_blank"
@@ -55,13 +54,13 @@
         </b>
       </p>
       <!-- <br /> -->
-      <!-- <p>
-        <b v-if="isAdminUser"
-          ><router-link id="link" to="/volunteer-requests"
+      <p>
+        <b
+          ><router-link v-if="isAdminUser" id="link" to="/volunteer-requests"
             >Volunteer Application Requests</router-link
           ></b
         >
-      </p> -->
+      </p>
     </nav>
   </div>
 </template>
@@ -70,6 +69,9 @@
 export default {
   computed: {
     isAdminUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
       return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
     },
   },
