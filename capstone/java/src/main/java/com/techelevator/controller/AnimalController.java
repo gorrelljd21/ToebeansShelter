@@ -7,11 +7,12 @@ import com.techelevator.dao.AnimalDao;
 import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-//@PreAuthorize("isAuthenticated()")
+@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
 public class AnimalController {
@@ -23,21 +24,21 @@ public class AnimalController {
     }
     ThreadSleepTryCatch threadSleepTryCatch = new ThreadSleepTryCatch();
 
-    //    @PreAuthorize("permitAll")
+    @PreAuthorize("permitAll")
     @GetMapping(path ="/animals")
     public List<Animal> findAll() throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.findAll();
     }
 
-    //    @PreAuthorize("permitAll")
+    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/limit/{limit}/offset/{offset}")
     public List<Animal> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.getAnimalPage(limit, offset);
     }
 
-    //    @PreAuthorize("permitAll")
+    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/type/{animal_type_id}")
     public List<Animal> findByType(@PathVariable int animal_type_id) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
@@ -58,7 +59,7 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
-    // @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
     @PostMapping ("/animals")
     @ResponseStatus(HttpStatus.CREATED)
     public void addAnimal(@RequestBody AddAnimal animal) throws AnimalNotAddedException { //takes in an AddAnimal model, this includes a photo_link!!
