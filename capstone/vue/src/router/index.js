@@ -104,16 +104,16 @@ const router = new Router({
         {
             path: "/volunteer-requests",
             name: "volunteer-requests",
-            // beforeEnter: checkAdminRights,
+
             component: FormApprovalView,
             meta: {
-                requiresAuth: false
+                requiresAuth: true
             }
         },
         {
             path: "/volunteers/:volunteer_id",
             name: "volunteer-application-form",
-            // beforeEnter: checkAdminRights,
+
             component: VolunteerApplicationView,
             meta: {
                 requiresAuth: false
