@@ -57,6 +57,7 @@
           <td>{{ volunteer.app_status }}</td>
           <td>
             <router-link
+              id="see-application"
               :to="{
                 name: 'volunteer-application-form',
                 params: { volunteer_id: volunteer.volunteer_id },
@@ -345,6 +346,20 @@ h3 {
   margin-right: 40%;
   color: aliceblue;
   border: 1px solid black;
+}
+
+#see-application {
+  text-decoration: none;
+  background-color: #e8e9eb;
+  color: black;
+}
+
+#see-application:focus {
+  color: #44a1a0;
+}
+
+#see-application:hover {
+  color: #f78154;
 }
 
 button {
