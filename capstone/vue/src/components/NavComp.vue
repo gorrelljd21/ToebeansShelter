@@ -28,7 +28,7 @@
           ></b
         >
       </p>
-      <p>
+      <p v-if="isAdminUser || isVolunteerUser">
         <b
           ><router-link id="link" to="/relinquish"
             >Relinquish Your Pet</router-link
@@ -73,6 +73,12 @@ export default {
         return false;
       }
       return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
+    },
+    isVolunteerUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
     },
   },
 };
