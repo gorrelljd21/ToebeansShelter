@@ -16,13 +16,6 @@
 
       <tbody>
         <tr>
-          <!-- <td>
-            <input
-              type="text"
-              id="volunteerId"
-              v-model="volunteers.volunteer_id"
-            />
-          </td> -->
           <td>
             <input type="text" id="nameFilter" v-model="filter.full_name" />
           </td>
@@ -35,9 +28,10 @@
 
           <td>
             <select id="statusFilter" v-model="filter.app_status">
-              <option value="APPROVED">APPROVED</option>
-              <option value="PENDING">PENDING</option>
-              <option value="">SHOW ALL</option>
+              <option value="">Show all</option>
+              <option value="PENDING">Pending</option>
+              <option value="APPROVED">Approved</option>
+              <option value="DENIED">Denied</option>
             </select>
           </td>
           <td>
@@ -61,7 +55,15 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
-          <td>{{ volunteer.bio }}</td>
+          <td>
+            <router-link
+              :to="{
+                name: 'volunteer-application-form',
+                params: { volunteer_id: volunteer.volunteer_id },
+              }"
+              >See Application
+            </router-link>
+          </td>
           <td>
             <input
               type="checkbox"
@@ -110,6 +112,7 @@
 
 <script>
 import ShelterService from "@/services/ShelterService.js";
+// import AuthService from "@/services/AuthService.js";
 
 export default {
   name: "form-approval",
@@ -122,6 +125,7 @@ export default {
           phone_number: "",
           email: "",
           bio: "",
+          form: "See Application Form",
           ref_full_name: "",
           ref_phone_number: "",
           ref_email: "",
@@ -146,6 +150,9 @@ export default {
   },
 
   methods: {
+    getVolunteersById(volunteer_id) {
+      this.$router.push(`/volunteers/${volunteer_id}`);
+    },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
         this.volunteers = response.data;
@@ -171,18 +178,23 @@ export default {
       });
     },
     deleteSelectedVolunteers() {
-      this.selectedVolunteers.forEach((volunteer) => {
-        let selected = this.volunteers.find(
-          (f) => f.volunteer_id === volunteer
-        );
-        return this.removeApplication(selected.volunteer_id);
-      });
+      if (confirm("Are you sure you want to delete this application?")) {
+        this.selectedVolunteers.forEach((volunteer) => {
+          let selected = this.volunteers.find(
+            (f) => f.volunteer_id === volunteer
+          );
+          return this.removeApplication(selected.volunteer_id);
+        });
+      } else {
+        ("Cancelled delete");
+      }
     },
     removeApplication(volunteer_id) {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
-            alert("Application Removed!");
+            // alert("Application Removed!");
+            this.clearSelected();
           }
         })
         .catch((error) => {
@@ -192,7 +204,6 @@ export default {
             console.error(error);
           }
         });
-      this.clearSelected();
     },
     updateSelected(newStatus) {
       this.selectedVolunteers.forEach((volunteer) => {
@@ -207,7 +218,8 @@ export default {
       ShelterService.changeAppStatus(volunteer_id, volunteer)
         .then((response) => {
           if (response.status === 200) {
-            alert("Application changed");
+            this.clearSelected();
+            // alert("Application changed");
           }
         })
         .catch((error) => {
@@ -217,7 +229,6 @@ export default {
             console.error(error);
           }
         });
-      this.clearSelected();
     },
   },
   // computed: {

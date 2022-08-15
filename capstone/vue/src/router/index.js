@@ -10,6 +10,7 @@ import VolunteerView from '../views/VolunteerView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import FormApprovalView from '../views/FormApprovalView.vue'
 import Relinquish from '../views/Relinquish.vue'
+import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 
 
 
@@ -109,7 +110,15 @@ const router = new Router({
                 requiresAuth: false
             }
         },
-
+        {
+            path: "/volunteers/:volunteer_id",
+            name: "volunteer-application-form",
+            // beforeEnter: checkAdminRights,
+            component: VolunteerApplicationView,
+            meta: {
+                requiresAuth: false
+            }
+        },
     ]
 })
 
