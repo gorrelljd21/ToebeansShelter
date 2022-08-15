@@ -106,7 +106,7 @@ export default {
           }
           if (r.status == 401) {
             this.rejected = true;
-            alert("Must be registered volunteer to submit pet.");
+            alert("Must be registered volunteer to submit");
           }
           //todo
         })
