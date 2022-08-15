@@ -70,10 +70,10 @@
         Place for Adoption
       </button>
     </form>
-    <h1 v-if="accepted">successfully added</h1>
+    <h1 id="added" v-if="accepted">successfully added</h1>
     <!-- PROBABLY CHANGE ME -->
-    <h1 v-if="rejected">
-      Something went horribly wrong, it probably wasn't your fault :)
+    <h1 id="not-added" v-if="rejected">
+      <p>Something went horribly wrong, it probably wasn't your fault</p>
     </h1>
   </div>
 </template>
@@ -126,6 +126,10 @@ export default {
 }
 * {
   font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+h1 {
+  margin-left: 40px;
 }
 
 input,
