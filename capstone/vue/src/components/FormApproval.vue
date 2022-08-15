@@ -57,7 +57,15 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
-          <td>{{ volunteer.bio }}</td>
+          <td>
+            <router-link
+              :to="{
+                name: 'volunteer-application-form',
+                params: { volunteer_id: volunteer.volunteer_id },
+              }"
+              >See Application
+            </router-link>
+          </td>
           <td>
             <input
               type="checkbox"
@@ -109,6 +117,7 @@ export default {
           phone_number: "",
           email: "",
           bio: "",
+          form: "See Application Form",
           ref_full_name: "",
           ref_phone_number: "",
           ref_email: "",
@@ -131,6 +140,9 @@ export default {
   },
 
   methods: {
+    getVolunteersById(volunteer_id) {
+      this.$router.push(`/volunteers/${volunteer_id}`);
+    },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
         this.volunteers = response.data;
