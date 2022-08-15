@@ -104,7 +104,7 @@
 
 <script>
 import ShelterService from "@/services/ShelterService.js";
-import AuthService from "@/services/AuthService.js";
+// import AuthService from "@/services/AuthService.js";
 
 export default {
   name: "form-approval",
@@ -181,7 +181,8 @@ export default {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
-            alert("Application Removed!");
+            // alert("Application Removed!");
+            this.clearSelected();
           }
         })
         .catch((error) => {
@@ -191,7 +192,6 @@ export default {
             console.error(error);
           }
         });
-      this.clearSelected();
     },
     updateSelected(newStatus) {
       this.selectedVolunteers.forEach((volunteer) => {
@@ -206,7 +206,8 @@ export default {
       ShelterService.changeAppStatus(volunteer_id, volunteer)
         .then((response) => {
           if (response.status === 200) {
-            alert("Application changed");
+            this.clearSelected();
+            // alert("Application changed");
           }
         })
         .catch((error) => {
@@ -216,7 +217,6 @@ export default {
             console.error(error);
           }
         });
-      this.clearSelected();
     },
   },
   // computed: {
