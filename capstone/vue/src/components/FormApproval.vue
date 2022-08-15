@@ -112,7 +112,7 @@
 
 <script>
 import ShelterService from "@/services/ShelterService.js";
-// import AuthService from "@/services/AuthService.js";
+import AuthService from "../services/AuthService";
 
 export default {
   name: "form-approval",
@@ -132,6 +132,12 @@ export default {
           app_status: "",
         },
       ],
+      user: {
+        username: "",
+        password: "",
+        confirmPassword: "",
+        role: "user",
+      },
       filter: {
         volunteer_id: "",
         full_name: "",
@@ -143,6 +149,7 @@ export default {
       selectedVolunteers: [],
       approved: "APPROVED",
       denied: "DENIED",
+      default: "password",
     };
   },
   created() {
@@ -220,6 +227,9 @@ export default {
           if (response.status === 200) {
             this.clearSelected();
             // alert("Application changed");
+            if (volunteer.app_status == this.approved) {
+              this.registerVolunteer(volunteer);
+            }
           }
         })
         .catch((error) => {
@@ -230,7 +240,29 @@ export default {
           }
         });
     },
+    registerVolunteer(volunteer) {
+      const user = {
+        username: volunteer.email,
+        password: this.default,
+        confirmPassword: this.default,
+        role: "volunteer",
+      };
+      AuthService.register(user)
+        .then((response) => {
+          if (response.status === 201) {
+            alert("Volunteer account registered!");
+          }
+        })
+        .catch((error) => {
+          const response = error.response;
+          this.registrationErrors = true;
+          if (response.status === 400) {
+            this.registrationErrorMsg = "Bad Request: Validation Errors";
+          }
+        });
+    },
   },
+
   // computed: {
   //   isAdminUser() {
   //     return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
