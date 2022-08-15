@@ -16,13 +16,6 @@
 
       <tbody>
         <tr>
-          <!-- <td>
-            <input
-              type="text"
-              id="volunteerId"
-              v-model="volunteers.volunteer_id"
-            />
-          </td> -->
           <td>
             <input type="text" id="nameFilter" v-model="filter.full_name" />
           </td>
@@ -35,9 +28,10 @@
 
           <td>
             <select id="statusFilter" v-model="filter.app_status">
-              <option value="APPROVED">APPROVED</option>
-              <option value="PENDING">PENDING</option>
-              <option value="">SHOW ALL</option>
+              <option value="">Show all</option>
+              <option value="PENDING">Pending</option>
+              <option value="APPROVED">Approved</option>
+              <option value="DENIED">Denied</option>
             </select>
           </td>
           <td>
@@ -110,6 +104,7 @@
 
 <script>
 import ShelterService from "@/services/ShelterService.js";
+import AuthService from "@/services/AuthService.js";
 
 export default {
   name: "form-approval",
@@ -171,12 +166,16 @@ export default {
       });
     },
     deleteSelectedVolunteers() {
-      this.selectedVolunteers.forEach((volunteer) => {
-        let selected = this.volunteers.find(
-          (f) => f.volunteer_id === volunteer
-        );
-        return this.removeApplication(selected.volunteer_id);
-      });
+      if (confirm("Are you sure you want to delete this application?")) {
+        this.selectedVolunteers.forEach((volunteer) => {
+          let selected = this.volunteers.find(
+            (f) => f.volunteer_id === volunteer
+          );
+          return this.removeApplication(selected.volunteer_id);
+        });
+      } else {
+        ("Cancelled delete");
+      }
     },
     removeApplication(volunteer_id) {
       ShelterService.deleteVolunteer(volunteer_id)
