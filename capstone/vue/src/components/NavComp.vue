@@ -56,7 +56,10 @@
       <!-- <br /> -->
       <p>
         <b
-          ><router-link v-if="isAdminUser" id="link" to="/volunteer-requests"
+          ><router-link
+            v-if="isVolunteerUser || isAdminUser"
+            id="link"
+            to="/volunteer-requests"
             >Volunteer Application Requests</router-link
           ></b
         >
