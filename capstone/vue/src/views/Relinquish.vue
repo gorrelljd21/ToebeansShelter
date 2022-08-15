@@ -84,7 +84,7 @@ export default {
 };
 </script>
 
-<style >
+<style scoped>
 * {
   background-color: #e0dfd5;
 }
@@ -137,6 +137,10 @@ export default {
   background-color: aliceblue !important;
 }
 
+#relinquish-card {
+  margin: auto !important;
+}
+
 @media screen and (max-width: 450px) {
   .nav {
     border-style: none;
@@ -175,9 +179,6 @@ export default {
     100% {
       opacity: 1;
     }
-  }
-  #relinquish-card {
-    margin: auto !important !important;
   }
 }
 </style> 
