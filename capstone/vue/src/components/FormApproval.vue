@@ -44,7 +44,11 @@
             <input type="text" id="appForm" v-model="filter.app_form" />
           </td>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input
+              type="checkbox"
+              id="selectAll"
+              @change="selectAllVolunteers"
+            />
           </td>
         </tr>
 
@@ -75,7 +79,7 @@
         disableButtons
         type="submit"
         id="approve"
-        @click.prevent="approveSelected"
+        @click.prevent="updateSelected(approved)"
       >
         APPROVE
       </button>
@@ -84,9 +88,18 @@
         disableButtons
         type="submit"
         id="deny"
-        @click.prevent="deleteSelectedVolunteers"
+        @click.prevent="updateSelected(denied)"
       >
         DENY
+      </button>
+
+      <button
+        disableButtons
+        type="submit"
+        id="delete-app"
+        @click.prevent="deleteSelectedVolunteers"
+      >
+        DELETE
       </button>
       <button type="submit" id="clear" @click.prevent="clearSelected">
         CLEAR
@@ -124,6 +137,8 @@ export default {
         app_status: "",
       },
       selectedVolunteers: [],
+      approved: "APPROVED",
+      denied: "DENIED",
     };
   },
   created() {
@@ -160,10 +175,10 @@ export default {
         let selected = this.volunteers.find(
           (f) => f.volunteer_id === volunteer
         );
-        return this.denyApplication(selected.volunteer_id);
+        return this.removeApplication(selected.volunteer_id);
       });
     },
-    denyApplication(volunteer_id) {
+    removeApplication(volunteer_id) {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
@@ -179,20 +194,20 @@ export default {
         });
       this.clearSelected();
     },
-    approveSelected() {
+    updateSelected(newStatus) {
       this.selectedVolunteers.forEach((volunteer) => {
         let selected = this.volunteers.find(
           (f) => f.volunteer_id === volunteer
         );
-        selected.app_status = "APPROVED";
-        return this.approveApplications(selected.volunteer_id, selected);
+        selected.app_status = newStatus;
+        return this.updateApplications(selected.volunteer_id, selected);
       });
     },
-    approveApplications(volunteer_id, volunteer) {
+    updateApplications(volunteer_id, volunteer) {
       ShelterService.changeAppStatus(volunteer_id, volunteer)
         .then((response) => {
           if (response.status === 200) {
-            alert("Application approved!");
+            alert("Application changed");
           }
         })
         .catch((error) => {
@@ -296,4 +311,8 @@ button {
   border-width: 1px;
   border-radius: 4px;
 }
+
+/* #delete-app {
+  margin-left: 5%;
+} */
 </style>
