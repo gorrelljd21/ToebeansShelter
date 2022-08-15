@@ -66,7 +66,7 @@ const router = new Router({
             name: 'relinquish',
             component: Relinquish,
             meta: {
-                requiresAuth: false
+                requiresAuth: true
             }
         },
         {
