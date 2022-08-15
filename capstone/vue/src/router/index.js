@@ -11,6 +11,7 @@ import AboutUsView from '../views/AboutUsView.vue'
 import FormApprovalView from '../views/FormApprovalView.vue'
 import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
+import AnimalDetail from '../views/AnimalDetailView.vue'
 
 
 
@@ -119,6 +120,15 @@ const router = new Router({
                 requiresAuth: false
             }
         },
+        {
+            path: "/animals/:animal_id",
+            name: "animal-detail",
+
+            component: AnimalDetail,
+            meta: {
+                requiresAuth: false
+            }
+        }
     ]
 })
 

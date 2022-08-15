@@ -8,8 +8,8 @@ export default {
     getAnimalByType() {
         return axios.get('/animals/type/:type');
     },
-    getAnimalById() {
-        return axios.get('/animals/id/:id');
+    getAnimalById(animalId) {
+        return axios.get(`/animals/id/${animalId}`);
     },
     getAnimalByName() {
         return axios.get('/animals/name/:name');
@@ -52,6 +52,11 @@ export default {
     },
     addAnimal(animal) {
         return axios.post(`/animals`, animal);
+    },
+    updateAnimalCard() {
+        return axios.put('/update-pet/:animalId');
+    },
+    updatePassword() {
+        return axios.put('/login/update');
     }
-
 }
