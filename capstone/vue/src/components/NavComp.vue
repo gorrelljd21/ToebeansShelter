@@ -60,7 +60,7 @@
             v-if="isVolunteerUser || isAdminUser"
             id="link"
             to="/volunteer-requests"
-            >Volunteer Application Requests</router-link
+            >Volunteer Information</router-link
           ></b
         >
       </p>
