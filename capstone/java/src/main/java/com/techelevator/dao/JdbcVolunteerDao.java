@@ -103,6 +103,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return volunteer;
     }
 
+
     @Override
     public Volunteer findReferenceByVolunteer (int volunteer_id) {
         Volunteer volunteer = null;
@@ -120,6 +121,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
         return volunteer;
     }
+
+
 
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
