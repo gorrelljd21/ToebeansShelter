@@ -14,7 +14,6 @@ public class JdbcVolunteerUserDao implements VolunteerUserDao {
 
     private final JdbcTemplate jdbcTemplate;
 
-
     public JdbcVolunteerUserDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
@@ -70,5 +69,4 @@ public class JdbcVolunteerUserDao implements VolunteerUserDao {
         vm.setVolunteerId(rs.getInt("volunteer_id"));
         return vm;
     }
-
 }

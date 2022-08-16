@@ -116,7 +116,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()){
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
 
@@ -135,11 +134,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()) {
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
-
-
 
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
@@ -167,7 +163,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return jdbcTemplate.update(sql, volunteer.getFull_name(), volunteer.getPhone_number(),
                 volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
                 volunteer.getRef_email(), volunteer.getApp_status(), volunteer_id) == 1;
-
     }
 
     @Override
@@ -176,8 +171,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
                 "WHERE volunteer_id = ?; ";
         jdbcTemplate.update(sql, volunteer_id);
     }
-
-
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();
