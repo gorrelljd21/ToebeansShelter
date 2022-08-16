@@ -223,7 +223,6 @@ export default {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
-            // alert("Application Removed!");
             this.clearSelected();
           }
         })
@@ -249,7 +248,6 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             this.clearSelected();
-            // alert("Application changed");
             if (volunteer.app_status == this.approved) {
               this.registerVolunteer(volunteer);
             }
@@ -285,13 +283,6 @@ export default {
         });
     },
   },
-
-  // computed: {
-  //   isAdminUser() {
-  //     return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
-  //   },
-  // },
-
   computed: {
     isAdminUser() {
       if (!this.$store.state.user.authorities) {
