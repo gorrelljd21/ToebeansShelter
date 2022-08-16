@@ -47,6 +47,7 @@ CREATE TABLE animals (
     age int NOT NULL, 
     bio VARCHAR(500),
     animal_type_id int NOT NULL,
+    adopted boolean DEFAULT 'false',
     CONSTRAINT PK_animals PRIMARY KEY (animal_id),
     CONSTRAINT FK_animal_type FOREIGN KEY (animal_type_id) REFERENCES animal_types (animal_type_id)
 );

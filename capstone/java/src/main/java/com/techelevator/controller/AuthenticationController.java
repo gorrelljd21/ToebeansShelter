@@ -23,6 +23,8 @@ import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 //@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
@@ -56,6 +58,7 @@ public class AuthenticationController {
         threadSleepTryCatch.threadSleep();
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
     }
+
 
 //    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.CREATED)

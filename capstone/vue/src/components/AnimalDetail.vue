@@ -9,6 +9,7 @@
       <li class="detailli">{{ animal.age }} Years Old</li>
       <li class="detailli">{{ animalType }} - {{ animal.breed }}</li>
       <li class="detailli">{{ animal.bio }}</li>
+      <li class="detailli">{{ animal.adopted }}</li>
       <br />
 
       <button

@@ -8,16 +8,18 @@ public class Animal {
     private int age;
     private String bio;
     private int animal_type_id;
+    private boolean adopted = false;
 
     public Animal() {};
 
-    public Animal(int animal_id, String name, String breed, int age, String bio, int animal_type_id) {
+    public Animal(int animal_id, String name, String breed, int age, String bio, int animal_type_id, boolean adopted) {
         this.animal_id = animal_id;
         this.name = name;
         this.breed = breed;
         this.age = age;
         this.bio = bio;
         this.animal_type_id = animal_type_id;
+        this.adopted = adopted;
     }
 
     public int getAnimal_id() {
@@ -66,5 +68,13 @@ public class Animal {
 
     public void setAnimal_type_id(int animal_type_id) {
         this.animal_type_id = animal_type_id;
+    }
+
+    public boolean isAdopted() {
+        return adopted;
+    }
+
+    public void setAdopted(boolean adopted) {
+        this.adopted = adopted;
     }
 }
