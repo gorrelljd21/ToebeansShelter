@@ -263,7 +263,7 @@ export default {
         username: volunteer.email,
         password: this.default,
         confirmPassword: this.default,
-        role: "volunteer",
+        role: "VOLUNTEER",
       };
       AuthService.register(user)
         .then((response) => {

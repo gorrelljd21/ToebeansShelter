@@ -122,8 +122,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return volunteer;
     }
 
-
-
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
         String sql = "INSERT INTO volunteers (full_name, phone_number, email, bio, ref_full_name, ref_phone_number, ref_email, app_status) " +
@@ -143,7 +141,7 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean approveApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException {
-        String sql = "UPDATE volunteers SET full_name = ?, phone_number = ?, email =?, bio = ?," +
+        String sql = "UPDATE volunteers SET full_name = ?, phone_number = ?, email = ?, bio = ?," +
                 "ref_full_name = ?, ref_phone_number = ?, ref_email = ?, app_status = ? " +
                 "WHERE volunteer_id = ?; ";
 

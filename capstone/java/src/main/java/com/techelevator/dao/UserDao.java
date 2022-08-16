@@ -16,5 +16,7 @@ public interface UserDao {
 
     boolean create(String username, String password, String role);
 
+    public boolean create(String username, String password, String role, boolean passwordNeedsChanged);
+
 
 }

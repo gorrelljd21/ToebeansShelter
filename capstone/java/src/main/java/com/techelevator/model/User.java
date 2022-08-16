@@ -15,6 +15,7 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   private boolean passwordNeedsChanged;
 
    public User() { }
 
@@ -65,6 +66,10 @@ public class User {
    public void setAuthorities(Set<Authority> authorities) {
       this.authorities = authorities;
    }
+
+   public boolean getPasswordNeedsChanged() {return passwordNeedsChanged;}
+
+   public void setPasswordNeedsChanged(boolean passwordNeedsChanged) {this.passwordNeedsChanged = passwordNeedsChanged;}
 
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
