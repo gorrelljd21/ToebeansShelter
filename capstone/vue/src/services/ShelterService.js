@@ -57,8 +57,8 @@ export default {
     addAnimal(animal) {
         return axios.post(`/animals`, animal);
     },
-    updateAnimalCard(animal_id, animal) {
-        return axios.put(`/update-pet/${animal_id}`, animal);
+    updateAnimalCard(animal) {
+        return axios.put(`/update-pet/${animal.animal_id}`, animal);
     },
     updatePassword() {
         return axios.put('/login/update');
