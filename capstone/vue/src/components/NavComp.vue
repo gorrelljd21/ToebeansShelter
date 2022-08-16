@@ -102,7 +102,7 @@ export default {
   border-style: solid;
   border-color: #313638;
   padding: 5% 20% 5% 20%;
-  background-color: white;
+  background-color: aliceblue;
   display: block;
   margin: -5% 10% 0% 10%;
   border-radius: 4px;
