@@ -160,6 +160,13 @@ public class JdbcAnimalDao implements AnimalDao {
         return animals;
     }
 
+    public int getCountByType(int type) {
+        String sql = "SELECT COUNT(*) as num FROM animals WHERE animal_type_id = ?;";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql, type);
+        result.next();
+        return result.getInt("num");
+    }
+
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();
         animal.setAnimal_id(rs.getInt("animal_id"));

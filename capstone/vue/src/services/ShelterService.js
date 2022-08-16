@@ -68,5 +68,8 @@ export default {
     },
     oneOfEach() {
         return axios.get('/oneOfEach');
+    },
+    getCount(type) {
+        return axios.get(`/${type}`)
     }
 }
