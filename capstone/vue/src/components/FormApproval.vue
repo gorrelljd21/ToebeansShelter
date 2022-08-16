@@ -28,11 +28,15 @@
           </td>
 
           <td>
-            <select id="statusFilter" v-model="filter.app_status">
-              <option v-if="isAdminUser" value="">Show all</option>
-              <option v-if="isAdminUser" value="PENDING">Pending</option>
+            <select
+              v-if="isAdminUser"
+              id="statusFilter"
+              v-model="filter.app_status"
+            >
+              <option value="">Show all</option>
+              <option value="PENDING">Pending</option>
               <option value="APPROVED">Approved</option>
-              <option v-if="isAdminUser" value="DENIED">Denied</option>
+              <option value="DENIED">Denied</option>
             </select>
           </td>
           <td>
