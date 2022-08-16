@@ -35,6 +35,23 @@ public class JdbcVolunteerDao implements VolunteerDao {
     }
 
     @Override
+    public List<Volunteer> findApproved() {
+
+           String sql = " SELECT full_name, phone_number, email FROM volunteers " +
+                    " WHERE app_status = 'APPROVED'; ";
+           SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+           List<Volunteer> approvedList = new ArrayList<>();
+           while(result.next()) {
+               Volunteer volunteer = new Volunteer();
+               volunteer.setFull_name(result.getString("full_name"));
+               volunteer.setPhone_number(result.getString("phone_number"));
+               volunteer.setRef_email(result.getString("email"));
+               approvedList.add(volunteer);
+           }
+           return approvedList;
+    }
+
+    @Override
     public Volunteer findById(int volunteer_id) {
         Volunteer volunteer = null;
 

@@ -12,6 +12,7 @@ import FormApprovalView from '../views/FormApprovalView.vue'
 import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
+import loginUpdate from '../views/UpdateLoginView.vue'
 
 
 
@@ -125,6 +126,14 @@ const router = new Router({
             name: "animal-detail",
 
             component: AnimalDetail,
+            meta: {
+                requiresAuth: false
+            }
+        },
+        {
+            path: "/login/update",
+            name: "loginUpdate",
+            component: loginUpdate,
             meta: {
                 requiresAuth: false
             }

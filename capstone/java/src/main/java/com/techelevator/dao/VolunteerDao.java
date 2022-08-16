@@ -9,6 +9,8 @@ public interface VolunteerDao {
 
     List<Volunteer> findAll();
 
+    List<Volunteer> findApproved();
+
     Volunteer findById(int volunteer_id);
 
     Volunteer findByName(String full_name);

@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <h2 class="h3 mb-3 font-weight-normal">Please Sign In</h2>
+      <h2 class="h3 mb-3 font-weight-normal">Please Change Your Password</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username or password!
       </div>
@@ -12,7 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only">Username: </label>
+      <label for="username" class="sr-only">Enter Current Username: </label>
       <input
         type="text"
         id="username"
@@ -24,24 +24,32 @@
       />
       <br />
       <br />
-      <label for="password" class="sr-only">Password: </label>
+      <label for="password" class="sr-only">New Password: </label>
       <input
         type="password"
         id="password"
         class="form-control"
-        placeholder="Password"
+        placeholder="New Password"
         v-model="user.password"
         required
       />
       <br />
       <br />
-      <router-link class="newAccount" :to="{ name: 'register' }"
+      <label for="confirmPassword" class="sr-only">Confirm Password: </label>
+      <input
+        type="password"
+        id="confirmPassword"
+        class="form-control"
+        placeholder="New Password"
+        v-model="user.confirmPassword"
+        required
+      />
+      <br /><br />
+      <!-- <router-link class="newAccount" :to="{ name: 'register' }"
         >Need an account?</router-link
-      >
-      <p></p>
-      <button id="sign-in" type="submit" @click="changePassword()">
-        Sign in
-      </button>
+      > -->
+      <!-- <p></p> -->
+      <button id="sign-in" type="submit">Sign in</button>
       <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
       <button type="reset">Reset Form</button>
@@ -86,11 +94,6 @@ export default {
     goToHome() {
       this.$router.push("/");
     },
-    changePassword() {
-      if (this.user.password === "password") {
-        this.$router.push("/login/update");
-      }
-    },
   },
 };
 </script>
@@ -112,7 +115,7 @@ h2,
 }
 
 #password {
-  margin-left: 1px;
+  margin-left: 5px;
 }
 
 .sr-only,
@@ -149,7 +152,7 @@ form {
   background-color: #f89670;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  width: 300px;
+  width: 350px;
 }
 
 h2,
