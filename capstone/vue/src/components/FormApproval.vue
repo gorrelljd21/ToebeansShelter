@@ -56,10 +56,6 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
-          <!-- <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.email }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td> -->
-
           <td>
             <router-link
               v-if="isAdminUser"
@@ -148,6 +144,7 @@ export default {
           app_status: "",
         },
       ],
+
       user: {
         username: "",
         password: "",
@@ -171,7 +168,6 @@ export default {
   },
   created() {
     this.getVolunteers();
-    this.getApproved();
   },
 
   methods: {
@@ -180,11 +176,6 @@ export default {
     },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
-        this.volunteers = response.data;
-      });
-    },
-    getApproved() {
-      ShelterService.getApproved().then((response) => {
         this.volunteers = response.data;
       });
     },
@@ -223,7 +214,6 @@ export default {
       ShelterService.deleteVolunteer(volunteer_id)
         .then((response) => {
           if (response.status === 200) {
-            // alert("Application Removed!");
             this.clearSelected();
           }
         })
@@ -249,7 +239,6 @@ export default {
         .then((response) => {
           if (response.status === 200) {
             this.clearSelected();
-            // alert("Application changed");
             if (volunteer.app_status == this.approved) {
               this.registerVolunteer(volunteer);
             }
@@ -285,13 +274,6 @@ export default {
         });
     },
   },
-
-  // computed: {
-  //   isAdminUser() {
-  //     return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
-  //   },
-  // },
-
   computed: {
     isAdminUser() {
       if (!this.$store.state.user.authorities) {

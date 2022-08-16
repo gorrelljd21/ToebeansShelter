@@ -7,6 +7,7 @@ import com.techelevator.dao.AnimalDao;
 import com.techelevator.dao.JdbcAnimalDao;
 import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
+import com.techelevator.model.FullAnimal;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -75,6 +76,12 @@ public class AnimalController {
         if (!result){
             throw new AnimalNotAddedException();
         }
+    }
+
+    @PreAuthorize("premitAll")
+    @GetMapping("/oneOfEach")
+    public List<FullAnimal> getOneOfEachType() {
+        return animalDao.getOneOfEachType();
     }
 
 
