@@ -257,7 +257,7 @@ export default {
         username: volunteer.email,
         password: this.default,
         confirmPassword: this.default,
-        role: "volunteer",
+        role: "VOLUNTEER",
       };
       AuthService.register(user)
         .then((response) => {
@@ -300,16 +300,10 @@ export default {
       } else {
         return this.volunteers.filter((volunteer) => {
           return (
-            volunteer.full_name
-              .toLowerCase()
-              .includes(this.filter.full_name.toLowerCase()) &&
-            volunteer.email
-              .toLowerCase()
-              .includes(this.filter.email.toLowerCase()) &&
+            volunteer.full_name.includes(this.filter.full_name) &&
+            volunteer.email.includes(this.filter.email) &&
             volunteer.phone_number.includes(this.filter.phone_number) &&
-            volunteer.app_status
-              .toLowerCase()
-              .includes(this.filter.app_status.toLowerCase())
+            volunteer.app_status.includes(this.filter.app_status)
           );
         });
       }
