@@ -32,7 +32,7 @@
             page++;
             getAnimalsPaginated();
           "
-          v-show="page < 4"
+          v-show="page < numberOfPages"
           v-if="!isLoading"
         >
           Next
@@ -60,6 +60,7 @@ export default {
       page: 1,
       currentAnimals: [],
       isDisabled: false,
+      count: 0,
     };
   },
   methods: {
@@ -93,8 +94,8 @@ export default {
   },
 
   created() {
-    this.getAnimalsPaginated();
     this.getCount();
+    this.getAnimalsPaginated();
   },
 };
 </script>
