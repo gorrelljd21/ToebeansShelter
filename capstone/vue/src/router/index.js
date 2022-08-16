@@ -13,6 +13,7 @@ import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
 import loginUpdate from '../views/UpdateLoginView.vue'
+import ByAnimalTypeListView from '@/views/ByAnimalTypeListView'
 
 
 
@@ -137,7 +138,15 @@ const router = new Router({
             meta: {
                 requiresAuth: false
             }
-        }
+        },
+        {
+            path: "/animals/type/:id",
+            name: "ByTypeList",
+            component: ByAnimalTypeListView,
+            meta: {
+                requiresAuth: false
+            }
+        },
     ]
 })
 
