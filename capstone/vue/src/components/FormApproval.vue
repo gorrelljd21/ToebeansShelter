@@ -9,7 +9,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th v-if="isAdminUser">Volunteer Status</th>
+          <th>Volunteer Status</th>
           <th v-if="isAdminUser">Application Form</th>
           <th v-if="isAdminUser">Select</th>
         </tr>
@@ -28,24 +28,13 @@
           </td>
 
           <td>
-<<<<<<< HEAD
-            <select
-              v-if="isAdminUser"
-              id="statusFilter"
-              v-model="filter.app_status"
-            >
-              <option value="">Show all</option>
-              <option value="PENDING">Pending</option>
+            <input type="text" id="appfilter" v-model="filter.app_status" />
+            <!-- <select id="statusFilter" v-model="filter.app_status">
+              <option value="" v-if="isAdminUser">Show all</option>
+              <option value="PENDING" v-if="isAdminUser">Pending</option>
               <option value="APPROVED">Approved</option>
-              <option value="DENIED">Denied</option>
-=======
-            <select id="statusFilter" v-model="filter.app_status">
-              <option v-if="isAdminUser" value="">Show all</option>
-              <option v-if="isAdminUser" value="PENDING">Pending</option>
-              <option value="APPROVED" selected>Approved</option>
-              <option v-if="isAdminUser" value="DENIED">Denied</option>
->>>>>>> 18d58b7d38a086d0585be9559f02d63368c69cb5
-            </select>
+              <option value="DENIED" v-if="isAdminUser">Denied</option>
+            </select> -->
           </td>
           <td>
             <input
@@ -69,14 +58,14 @@
           v-for="volunteer in filteredList"
           v-bind:key="volunteer.volunteer_id"
         >
-          <td v-if="isAdminUser">{{ volunteer.volunteer_id }}</td>
+          <!-- <td v-if="isAdminUser">{{ volunteer.volunteer_id }}</td> -->
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
-          <td v-if="isAdminUser">{{ volunteer.app_status }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
+          <td>{{ volunteer.app_status }}</td>
+          <!-- <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
           <td v-if="isVolunteerUser">{{ volunteer.email }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td> -->
 
           <td>
             <router-link
@@ -324,18 +313,35 @@ export default {
       return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
     },
     filteredList() {
-      return this.volunteers.filter((volunteer) => {
-        return (
-          volunteer.full_name
-            .toLowerCase()
-            .includes(this.filter.full_name.toLowerCase()) &&
-          volunteer.email
-            .toLowerCase()
-            .includes(this.filter.email.toLowerCase()) &&
-          volunteer.phone_number.includes(this.filter.phone_number) &&
-          volunteer.app_status.includes(this.filter.app_status)
-        );
-      });
+      if (this.isVolunteerUser) {
+        return this.volunteers.filter((volunteer) => {
+          return (
+            volunteer.full_name
+              .toLowerCase()
+              .includes(this.filter.full_name.toLowerCase()) &&
+            volunteer.email
+              .toLowerCase()
+              .includes(this.filter.email.toLowerCase()) &&
+            volunteer.phone_number.includes(this.filter.phone_number) &&
+            volunteer.app_status.toUpperCase() === "APPROVED"
+          );
+        });
+      } else {
+        return this.volunteers.filter((volunteer) => {
+          return (
+            volunteer.full_name
+              .toLowerCase()
+              .includes(this.filter.full_name.toLowerCase()) &&
+            volunteer.email
+              .toLowerCase()
+              .includes(this.filter.email.toLowerCase()) &&
+            volunteer.phone_number.includes(this.filter.phone_number) &&
+            volunteer.app_status
+              .toLowerCase()
+              .includes(this.filter.app_status.toLowerCase())
+          );
+        });
+      }
     },
     disableButtons() {
       return this.selectedVolunteers.length === 0;
