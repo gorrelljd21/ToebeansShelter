@@ -135,8 +135,7 @@ public class JdbcAnimalDao implements AnimalDao {
         List<FullAnimal> animals = new ArrayList<>();
         SqlRowSet result =  jdbctemplate.queryForRowSet(sql);
         while(result.next()){
-            FullAnimal animal = (FullAnimal) mapRowToAnimal(result);
-            animal.setPhoto_link(result.getString("photo_link"));
+            FullAnimal animal = mapRowToFullAnimal(result);
             animals.add(animal);
         }
         return animals;
@@ -150,6 +149,17 @@ public class JdbcAnimalDao implements AnimalDao {
         animal.setAge(rs.getInt("age"));
         animal.setBio(rs.getString("bio"));
         animal.setAnimal_type_id(rs.getInt("animal_type_id"));
+        return animal;
+    }
+    private FullAnimal mapRowToFullAnimal(SqlRowSet rs) {
+        FullAnimal animal = new FullAnimal();
+        animal.setAnimal_id(rs.getInt("animal_id"));
+        animal.setName(rs.getString("name"));
+        animal.setBreed(rs.getString("breed"));
+        animal.setAge(rs.getInt("age"));
+        animal.setBio(rs.getString("bio"));
+        animal.setAnimal_type_id(rs.getInt("animal_type_id"));
+        animal.setPhoto_link(rs.getString("photo_link"));
         return animal;
     }
 }

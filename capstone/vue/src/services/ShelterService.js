@@ -62,5 +62,8 @@ export default {
     },
     updatePassword() {
         return axios.put('/login/update');
+    },
+    oneOfEach() {
+        return axios.get('/oneOfEach');
     }
 }

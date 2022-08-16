@@ -79,7 +79,7 @@ public class AnimalController {
         }
     }
 
-    @PreAuthorize("premitAll")
+    @PreAuthorize("permitAll")
     @GetMapping("/oneOfEach")
     public List<FullAnimal> getOneOfEachType() {
         return animalDao.getOneOfEachType();
