@@ -81,6 +81,7 @@ export default {
 
   border-style: solid;
   border-color: #44a1a0;
+  background-color: white;
 }
 
 .story-title {
@@ -88,6 +89,7 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
   font-size: 16px;
+  background-color: white;
 }
 
 .story-content {
@@ -103,5 +105,9 @@ export default {
     margin-right: 10px;
     margin-left: 20px;
   }
+}
+
+p {
+  background-color: white;
 }
 </style>
