@@ -15,16 +15,8 @@
       <!-- <br /> -->
       <p>
         <b
-          ><a id="link" href="default.asp" target="_blank"
-            >All Animal Listings</a
-          ></b
-        >
-      </p>
-      <!-- <br /> -->
-      <p>
-        <b
-          ><a id="link" href="default.asp" target="_blank"
-            >Animals by Category</a
+          ><router-link id="link" to="/animals"
+            >Browse By Category</router-link
           ></b
         >
       </p>

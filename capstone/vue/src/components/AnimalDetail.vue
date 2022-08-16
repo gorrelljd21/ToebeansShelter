@@ -11,7 +11,13 @@
       <li class="detailli">{{ animal.bio }}</li>
       <br />
 
-      <button @click="editing = !editing">EDIT</button> <br />
+      <button
+        @click="editing = !editing"
+        v-if="isAdminUser() || isVolunteerUser()"
+      >
+        EDIT
+      </button>
+      <br />
       <form v-if="editing == true">
         <label>Name: </label>
         <input type="text" v-model="animal.name" /><br />
@@ -70,6 +76,18 @@ export default {
           this.animal = response.data;
         }
       });
+    },
+    isAdminUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
+    },
+    isVolunteerUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
     },
   },
   created() {
