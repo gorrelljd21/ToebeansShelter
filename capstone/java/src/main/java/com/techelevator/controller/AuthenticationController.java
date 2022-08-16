@@ -23,6 +23,8 @@ import com.techelevator.model.UserAlreadyExistsException;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.security.Principal;
+
 //@PreAuthorize("isAuthenticated()")
 @RestController
 @CrossOrigin
@@ -38,7 +40,8 @@ public class AuthenticationController {
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
     }
-//    @PreAuthorize("permitAll")
+
+    //    @PreAuthorize("permitAll")
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<LoginResponse> login(@Valid @RequestBody LoginDTO loginDto) throws InterruptedException {
 
@@ -48,7 +51,7 @@ public class AuthenticationController {
         Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);
         SecurityContextHolder.getContext().setAuthentication(authentication);
         String jwt = tokenProvider.createToken(authentication, false);
-        
+
         User user = userDao.findByUsername(loginDto.getUsername());
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -57,7 +60,7 @@ public class AuthenticationController {
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
     }
 
-//    @PreAuthorize("permitAll")
+    //    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDTO newUser) throws InterruptedException {
@@ -67,15 +70,22 @@ public class AuthenticationController {
         } catch (UsernameNotFoundException e) {
 
             boolean isVolunteer;
-            if(newUser.getRole().equals("VOLUNTEER")) {
+            if (newUser.getRole().equals("VOLUNTEER")) {
                 isVolunteer = true;
             } else {
                 isVolunteer = false;
             }
-
-            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole(), isVolunteer);
+            userDao.create(newUser.getUsername(), newUser.getPassword(), newUser.getRole(), isVolunteer);
         }
         threadSleepTryCatch.threadSleep();
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping(path = "/login/update")
+    public void changePassword(@RequestBody LoginDTO username, Principal principal) {
+        // this is a code smell. do not overwrite parameters
+        User userFromDatabase = userDao.findByUsername(principal.getName());
+        userDao.changePassword(username.getPassword(), userFromDatabase.getId());
     }
 
     /**
@@ -101,13 +111,13 @@ public class AuthenticationController {
         }
 
         @JsonProperty("user")
-		public User getUser() {
-			return user;
-		}
+        public User getUser() {
+            return user;
+        }
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+        public void setUser(User user) {
+            this.user = user;
+        }
     }
 }
 

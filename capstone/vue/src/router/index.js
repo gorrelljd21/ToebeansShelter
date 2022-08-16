@@ -13,6 +13,7 @@ import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
 import loginUpdate from '../views/UpdateLoginView.vue'
+import { find } from 'core-js/core/array'
 
 
 
@@ -155,10 +156,13 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
     // If it does and they are not logged in, send the user to "/login"
-    //if user is not undefined and passwordChange is true then send to change password login
+
     if (requiresAuth && store.state.token === '') {
         next("/login");
-    } else if () {
+    } else if (this.user.find(f => { f.id === this.$store.user.id }) && this.$store.state.user.passwordNeedsChanged === true) {
+        next("/login/update");
+        this.$store.state.user.passwordNeedsChanged = false;
+    } else {
         // Else let them go to their next destination
         next();
     }
