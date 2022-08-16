@@ -5,11 +5,9 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.dao.VolunteerDao;
 import com.techelevator.dao.VolunteerUserDao;
 import com.techelevator.model.VolunteerUser;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @PreAuthorize("isAuthenticated()")
 @RestController
@@ -27,7 +25,18 @@ public class VolunteerUserController {
     }
 
 
+    @GetMapping(path = "/volunteer-user/userid/{userId}")
+    public int getVolunteerIdByUserId(@PathVariable int userId) {
+        return volunteerUserDao.getVolunteerIdByUserId(userId);
+    }
+
+    @GetMapping(path = "/volunteer-user/volunteerid/{volunteerId}")
+    public int getUserIdByVolunteerId(@PathVariable int volunteerId) {
+        return volunteerUserDao.getUserIdByVolunteerId(volunteerId);
+    }
+
     @PutMapping(path = "/volunteer-user")
+    @ResponseStatus(HttpStatus.CREATED)
     public void insertVolunteerUserKeys(@PathVariable int userId, @PathVariable int volunteerId) {
         volunteerUserDao.insertVolunteerUserKeys(userId, volunteerId);
     }

@@ -29,6 +29,10 @@ export default {
     getVolunteers() {
         return axios.get('/volunteers');
     },
+
+    getApproved() {
+        return axios.get('/volunteers/status')
+    },
     getVolunteerById(volunteer_id) {
         return axios.get(`/volunteers/${volunteer_id}`);
     },
