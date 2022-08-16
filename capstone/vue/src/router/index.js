@@ -18,6 +18,7 @@ import AdoptionSuccessView from '../views/AdoptionSuccessView.vue'
 
 
 
+
 Vue.use(Router)
 
 /**
@@ -176,9 +177,9 @@ router.beforeEach((to, from, next) => {
 
     if (requiresAuth && store.state.token === '') {
         next("/login");
-    } else if (this.user.find(f => { f.id === this.$store.user.id }) && this.$store.state.user.passwordNeedsChanged === true) {
-        next("/login/update");
-        this.$store.state.user.passwordNeedsChanged = false;
+        // } else if (this.user.find(f => { f.id === this.$store.user.id }) && this.$store.state.user.passwordNeedsChanged === true) {
+        //     next("/login/update");
+        //     this.$store.state.user.passwordNeedsChanged = false;
     } else {
         // Else let them go to their next destination
         next();
