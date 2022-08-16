@@ -5,6 +5,7 @@
     </div>
     <ul class="card-container">
       <animal-card
+        @click.native="goToDetailPage(animal.animal_id)"
         v-for="animal in currentAnimals"
         :key="animal.animal_id"
         :animal="animal"
@@ -85,6 +86,9 @@ export default {
     },
     shuffleCards(array) {
       return array.sort(() => Math.random() - 0.5);
+    },
+    goToDetailPage(id) {
+      this.$router.push({ name: "animal-detail", params: { id: id } });
     },
   },
   computed: {
