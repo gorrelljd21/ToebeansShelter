@@ -121,7 +121,7 @@ const router = new Router({
             }
         },
         {
-            path: "/animals/:animal_id",
+            path: "/animals/:id",
             name: "animal-detail",
 
             component: AnimalDetail,

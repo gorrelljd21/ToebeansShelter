@@ -47,7 +47,7 @@ public class AnimalController {
         return animalDao.listAnimalByType(animal_type_id);
     }
 
-    //    @PreAuthorize("hasAnyRole('ROLE_USER', 'ROLE_ADMIN', 'ROLE_VOLUNTEER')")
+    @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/id/{animal_id}")
     public Animal getAnimalById(@PathVariable int animal_id) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
