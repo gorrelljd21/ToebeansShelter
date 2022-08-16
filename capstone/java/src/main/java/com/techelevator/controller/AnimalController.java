@@ -7,6 +7,7 @@ import com.techelevator.dao.AnimalDao;
 import com.techelevator.dao.JdbcAnimalDao;
 import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
+import com.techelevator.model.FullAnimal;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -61,10 +62,16 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
+<<<<<<< HEAD
     @PutMapping(path = "/update-pet/{animalId}")
     public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animal_id) throws InterruptedException {
+=======
+    @PreAuthorize("permitAll")
+    @PutMapping(path = "/update-pet/{animalId}")
+    public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animalId) throws InterruptedException {
+>>>>>>> b4350d5efb87178c565d9f2ac312713e304d161d
         threadSleepTryCatch.threadSleep();
-        return animalDao.updateAnimal(animal, animal_id);
+        return animalDao.updateAnimal(animal, animalId);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
@@ -75,6 +82,12 @@ public class AnimalController {
         if (!result){
             throw new AnimalNotAddedException();
         }
+    }
+
+    @PreAuthorize("premitAll")
+    @GetMapping("/oneOfEach")
+    public List<FullAnimal> getOneOfEachType() {
+        return animalDao.getOneOfEachType();
     }
 
 

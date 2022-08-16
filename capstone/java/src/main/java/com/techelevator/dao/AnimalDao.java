@@ -3,6 +3,7 @@ package com.techelevator.dao;
 
 import com.techelevator.model.AddAnimal;
 import com.techelevator.model.Animal;
+import com.techelevator.model.FullAnimal;
 
 import java.util.List;
 
@@ -21,5 +22,7 @@ public interface AnimalDao {
     boolean addAnimal(AddAnimal animal);
 
     Animal updateAnimal(Animal animal, int animal_id);
+
+    List<FullAnimal> getOneOfEachType();
 
 }
