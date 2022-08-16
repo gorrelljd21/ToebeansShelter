@@ -19,7 +19,12 @@
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
         <label>Bio: </label><input type="text" v-model="animal.bio" />
         <br />
-        <button type="submit" @click="updateAnimalCard()">Submit</button>
+        <button
+          type="submit"
+          @click.prevent="updateAnimalCard(animalId, animal)"
+        >
+          Submit
+        </button>
       </form>
     </div>
   </div>
@@ -30,7 +35,7 @@ import shelterService from "@/services/ShelterService";
 export default {
   data() {
     return {
-      animal: { name: "", age: "", breed: "", bio: "" },
+      animal: { animalId: "", name: "", age: "", breed: "", bio: "" },
       isLoading: true,
       photo: "",
       editing: false,
