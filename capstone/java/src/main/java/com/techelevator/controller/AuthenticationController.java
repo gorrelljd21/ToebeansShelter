@@ -59,7 +59,7 @@ public class AuthenticationController {
         threadSleepTryCatch.threadSleep();
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
     }
-    
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDTO newUser) throws InterruptedException {
