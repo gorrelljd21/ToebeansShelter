@@ -61,10 +61,11 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
-    @PutMapping(path = "/update-pet/:animalId")
-    public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animal_id) throws InterruptedException {
+    @PreAuthorize("permitAll")
+    @PutMapping(path = "/update-pet/{animalId}")
+    public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animalId) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
-        return animalDao.updateAnimal(animal, animal_id);
+        return animalDao.updateAnimal(animal, animalId);
     }
 
     @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
