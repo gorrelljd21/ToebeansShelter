@@ -5,7 +5,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import store from '../store/index'
-import Animal from '../views/Animal.vue'
+import ByAnimalTypeView from '../views/ByAnimalTypeView.vue'
 import VolunteerView from '../views/VolunteerView.vue'
 import AboutUsView from '../views/AboutUsView.vue'
 import FormApprovalView from '../views/FormApprovalView.vue'
@@ -58,7 +58,7 @@ const router = new Router({
         {
             path: '/animals',
             name: 'animals',
-            component: Animal,
+            component: ByAnimalTypeView,
             meta: {
                 requiresAuth: false
             }
