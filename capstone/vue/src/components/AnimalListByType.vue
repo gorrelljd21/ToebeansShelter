@@ -21,7 +21,6 @@
           @click="
             page--;
             getAnimalsPaginated();
-            getPhotos();
           "
           v-show="page > 1"
         >
@@ -31,8 +30,6 @@
           id="next-btn"
           @click="
             page++;
-
-            getPhotos();
             getAnimalsPaginated();
           "
           v-show="page < 4"
