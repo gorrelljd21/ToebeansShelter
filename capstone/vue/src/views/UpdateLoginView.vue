@@ -10,7 +10,6 @@
       <div class="loginRegister">
         <login-register-comp></login-register-comp>
       </div>
-      <div><update-login-comp></update-login-comp></div>
       <div class="header">
         <header-comp></header-comp>
       </div>
@@ -18,7 +17,7 @@
         <nav-comp></nav-comp>
       </div>
       <div class="main">
-        <login-comp></login-comp>
+        <update-login-comp></update-login-comp>
       </div>
       <div class="story">
         <stories-comp></stories-comp>
@@ -38,7 +37,6 @@ import FootView from "@/views/FootView.vue";
 import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
-import LoginComp from "@/components/LoginComp.vue";
 import updateLoginComp from "@/components/UpdateLoginComp.vue";
 
 export default {
@@ -50,7 +48,7 @@ export default {
     LogoComp,
     TitleComp,
     LoginRegisterComp,
-    LoginComp,
+
     updateLoginComp,
   },
   data() {

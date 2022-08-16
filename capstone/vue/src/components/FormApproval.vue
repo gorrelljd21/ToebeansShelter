@@ -29,12 +29,6 @@
 
           <td>
             <input type="text" id="appfilter" v-model="filter.app_status" />
-            <!-- <select id="statusFilter" v-model="filter.app_status">
-              <option value="" v-if="isAdminUser">Show all</option>
-              <option value="PENDING" v-if="isAdminUser">Pending</option>
-              <option value="APPROVED">Approved</option>
-              <option value="DENIED" v-if="isAdminUser">Denied</option>
-            </select> -->
           </td>
           <td>
             <input
