@@ -81,15 +81,17 @@ public class JdbcUserDao implements UserDao {
     //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @Override
     public boolean create(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
+        return create(username, password, role, false);
+    }
+
+    @Override
+    public boolean create(String username, String password, String role, boolean passwordNeedsChanged) {
+        String insertUserSql = "insert into users (username,password_hash,role,password_reset) values (?,?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
 
-        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
+        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, passwordNeedsChanged) == 1;
     }
-
-
-
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
@@ -97,6 +99,7 @@ public class JdbcUserDao implements UserDao {
         user.setUsername(rs.getString("username"));
         user.setPassword(rs.getString("password_hash"));
         user.setAuthorities(Objects.requireNonNull(rs.getString("role")));
+        user.setPasswordNeedsChanged(rs.getBoolean("password_reset"));
         user.setActivated(true);
         return user;
     }

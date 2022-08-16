@@ -116,7 +116,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()){
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
 
@@ -135,11 +134,8 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()) {
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
-
-
 
     @Override
     public boolean postVolunteerSubmission(Volunteer volunteer) {
@@ -160,14 +156,13 @@ public class JdbcVolunteerDao implements VolunteerDao {
 
     @Override
     public boolean approveApp(Volunteer volunteer, int volunteer_id) throws VolunteerNotFoundException {
-        String sql = "UPDATE volunteers SET full_name = ?, phone_number = ?, email =?, bio = ?," +
+        String sql = "UPDATE volunteers SET full_name = ?, phone_number = ?, email = ?, bio = ?," +
                 "ref_full_name = ?, ref_phone_number = ?, ref_email = ?, app_status = ? " +
                 "WHERE volunteer_id = ?; ";
 
         return jdbcTemplate.update(sql, volunteer.getFull_name(), volunteer.getPhone_number(),
                 volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
                 volunteer.getRef_email(), volunteer.getApp_status(), volunteer_id) == 1;
-
     }
 
     @Override
@@ -176,8 +171,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
                 "WHERE volunteer_id = ?; ";
         jdbcTemplate.update(sql, volunteer_id);
     }
-
-
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();

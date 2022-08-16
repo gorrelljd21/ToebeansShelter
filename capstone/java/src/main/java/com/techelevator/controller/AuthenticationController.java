@@ -65,10 +65,26 @@ public class AuthenticationController {
             User user = userDao.findByUsername(newUser.getUsername());
             throw new UserAlreadyExistsException();
         } catch (UsernameNotFoundException e) {
-            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole());
+
+            boolean isVolunteer;
+            if(newUser.getRole().equals("VOLUNTEER")) {
+                isVolunteer = true;
+            } else {
+                isVolunteer = false;
+            }
+
+            userDao.create(newUser.getUsername(),newUser.getPassword(), newUser.getRole(), isVolunteer);
         }
         threadSleepTryCatch.threadSleep();
     }
+
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(value = "/login/update", method = RequestMethod.PUT)
+//    public void updateLogin(@Valid @RequestBody LoginDTO loginDTO) {
+//        UsernamePasswordAuthenticationToken authenticationToken =
+//                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getNewPassword());
+//
+//    }
 
     /**
      * Object to return as body in JWT Authentication.
