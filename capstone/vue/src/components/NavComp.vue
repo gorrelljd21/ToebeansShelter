@@ -57,6 +57,11 @@
         >
       </p>
     </nav>
+    <img
+      src="../assets/Untitled.jpg"
+      alt="Our Mascot, Jimbo!"
+      title="Our Mascot, Jimbo!"
+    />
   </div>
 </template>
 
@@ -78,8 +83,6 @@ export default {
   },
 };
 </script>
-
-
 
 <style scoped>
 .navigation {
@@ -131,5 +134,12 @@ h1 {
     width: 70vw;
     margin-left: 60px;
   }
+}
+img {
+  max-width: 300px;
+  margin-left: 12%;
+  margin-top: 12%;
+  margin-bottom: 10%;
+  border: 1px solid black;
 }
 </style>
