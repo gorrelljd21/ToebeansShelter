@@ -14,7 +14,12 @@ import shelterService from "@/services/ShelterService";
 export default {
   data() {
     return {
-      animal: {},
+      animal: {
+        name: "",
+        age: "",
+        animalType: "",
+        bio: "",
+      },
     };
   },
   computed: {
