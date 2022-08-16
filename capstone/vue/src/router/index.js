@@ -13,12 +13,8 @@ import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
 import loginUpdate from '../views/UpdateLoginView.vue'
-<<<<<<< HEAD
-import { find } from 'core-js/core/array'
-=======
 import ByAnimalTypeListView from '@/views/ByAnimalTypeListView'
 import AdoptionSuccessView from '../views/AdoptionSuccessView.vue'
->>>>>>> 6ecc8bf989285d9af561de8b9bd775de05507871
 
 
 
@@ -180,12 +176,9 @@ router.beforeEach((to, from, next) => {
 
     if (requiresAuth && store.state.token === '') {
         next("/login");
-<<<<<<< HEAD
     } else if (this.user.find(f => { f.id === this.$store.user.id }) && this.$store.state.user.passwordNeedsChanged === true) {
         next("/login/update");
         this.$store.state.user.passwordNeedsChanged = false;
-=======
->>>>>>> 6ecc8bf989285d9af561de8b9bd775de05507871
     } else {
         // Else let them go to their next destination
         next();
