@@ -13,6 +13,7 @@ import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
 import loginUpdate from '../views/UpdateLoginView.vue'
+import AdoptionSuccessView from '../views/AdoptionSuccessView.vue'
 
 
 
@@ -137,7 +138,15 @@ const router = new Router({
             meta: {
                 requiresAuth: false
             }
-        }
+        },
+        {
+            path: "/adoption-success",
+            name: "adoptionSuccess",
+            component: AdoptionSuccessView,
+            meta: {
+                requiresAuth: false
+            }
+        },
     ]
 })
 
