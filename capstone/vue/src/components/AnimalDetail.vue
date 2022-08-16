@@ -11,20 +11,22 @@
       <li class="detailli">{{ animal.bio }}</li>
       <br />
 
-      <button @click="editing = !editing">EDIT</button> <br />
+      <button
+        @click="editing = !editing"
+        v-if="isAdminUser() || isVolunteerUser()"
+      >
+        EDIT
+      </button>
+      <br />
       <form v-if="editing == true">
         <label>Name: </label>
         <input type="text" v-model="animal.name" /><br />
-        <label>Age: </label><input type="number" v-model="animal.age" /><br />
+        <label>Age: </label
+        ><input type="number" v-model.number="animal.age" /><br />
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
         <label>Bio: </label><input type="text" v-model="animal.bio" />
         <br />
-        <button
-          type="submit"
-          @click.prevent="updateAnimalCard(animalId, animal)"
-        >
-          Submit
-        </button>
+        <button type="submit" @click="updateAnimalCard(animal)">Submit</button>
       </form>
     </div>
   </div>
@@ -35,7 +37,7 @@ import shelterService from "@/services/ShelterService";
 export default {
   data() {
     return {
-      animal: { animalId: "", name: "", age: "", breed: "", bio: "" },
+      animal: {},
       isLoading: true,
       photo: "",
       editing: false,
@@ -60,19 +62,32 @@ export default {
       this.isLoading = true;
       shelterService.getAnimalById(animalId).then((response) => {
         this.animal = response.data;
-        this.isLoading = false;
       });
+      this.isLoading = false;
     },
     getPhotoById(animalId) {
       shelterService.getPhotoById(animalId).then((response) => {
         this.photo = response.data.photo_link;
       });
     },
-    updateAnimalCard(animalId, animal) {
-      shelterService.updateAnimalCard(animalId, animal).then((response) => {
-        this.animal = response.data;
-        this.isLoading = false;
+    updateAnimalCard(animal) {
+      shelterService.updateAnimalCard(animal).then((response) => {
+        if (response.status === 200) {
+          this.animal = response.data;
+        }
       });
+    },
+    isAdminUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_ADMIN";
+    },
+    isVolunteerUser() {
+      if (!this.$store.state.user.authorities) {
+        return false;
+      }
+      return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
     },
   },
   created() {

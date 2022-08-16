@@ -62,7 +62,8 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
-    @PreAuthorize("permitAll")
+
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN', 'ROLE_VOLUNTEER')")
     @PutMapping(path = "/update-pet/{animalId}")
     public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animalId) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
