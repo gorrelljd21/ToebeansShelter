@@ -1,13 +1,21 @@
 <template>
   <div>
-    <h3>Dogs</h3>
-    <animal-card :animal="animals[0]" :photo="animals[0]" />
-    <h3>Cats</h3>
-    <animal-card :animal="animals[1]" :photo="animals[1]" />
-    <h3>Farm Animals</h3>
-    <animal-card :animal="animals[2]" :photo="animals[2]" />
-    <h3>Small Animals</h3>
-    <animal-card :animal="animals[3]" :photo="animals[3]" />
+    <div @click="$router.push('animals/type/1')">
+      <h3>Dogs</h3>
+      <animal-card :animal="animals[0]" :photo="animals[0]" />
+    </div>
+    <div @click="$router.push('animals/type/2')">
+      <h3>Cats</h3>
+      <animal-card :animal="animals[1]" :photo="animals[1]" />
+    </div>
+    <div @click="$router.push('animals/type/3')">
+      <h3>Farm Animals</h3>
+      <animal-card :animal="animals[2]" :photo="animals[2]" />
+    </div>
+    <div @click="$router.push('animals/type/4')">
+      <h3>Small Animals</h3>
+      <animal-card :animal="animals[3]" :photo="animals[3]" />
+    </div>
   </div>
 </template>
 
