@@ -1,5 +1,5 @@
 <template>
-  <div>Test</div>
+  <div>Nothing here yet... working on getting adoption features</div>
 </template>
 
 <script>

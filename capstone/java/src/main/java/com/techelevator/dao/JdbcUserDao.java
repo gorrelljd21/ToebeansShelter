@@ -94,17 +94,12 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public User changePassword(String password, boolean passwordNeedsChanged) {
-        //update current password from default to what the new user inputs
+    public int changePassword(String changedPassword, int user_id) {
         String changedPasswordSql =
-                    "update users set password_hash = ? where user_id = ?;";
-        //encode the new password
-        String password_hash = new BCryptPasswordEncoder().encode(password);
-        //if this is new password on role volunteer, then change passwordNeedsChanged to false
-//        return jdbcTemplate.update(changedPasswordSql, password, passwordNeedsChanged);
-        return null;
+                "update users set password_hash = ?, password_reset = false where user_id = ?;";
+        String password_hash = new BCryptPasswordEncoder().encode(changedPassword);
+        return jdbcTemplate.update(changedPasswordSql, password_hash, user_id);
     }
-
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();

@@ -32,7 +32,7 @@
             page++;
             getAnimalsPaginated();
           "
-          v-show="page < 4"
+          v-show="page < numberOfPages"
           v-if="!isLoading"
         >
           Next
@@ -60,6 +60,7 @@ export default {
       page: 1,
       currentAnimals: [],
       isDisabled: false,
+      count: 0,
     };
   },
   methods: {
@@ -80,14 +81,20 @@ export default {
     goToDetailPage(id) {
       this.$router.push({ name: "animal-detail", params: { id: id } });
     },
+    getCount() {
+      shelterService.getCount(this.$route.params.id).then((r) => {
+        this.count = r.data;
+      });
+    },
   },
   computed: {
     numberOfPages() {
-      return Math.ceil(this.animalPhotos.length / this.limit);
+      return Math.ceil(this.count / this.limit);
     },
   },
 
   created() {
+    this.getCount();
     this.getAnimalsPaginated();
   },
 };

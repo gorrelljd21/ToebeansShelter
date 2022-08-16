@@ -57,6 +57,11 @@
         >
       </p>
     </nav>
+    <img
+      src="../assets/Untitled.jpg"
+      alt="Our Mascot, Jimbo!"
+      title="Our Mascot, Jimbo!"
+    />
   </div>
 </template>
 
@@ -79,8 +84,6 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 .navigation {
   position: relative left;
@@ -99,7 +102,7 @@ export default {
   border-style: solid;
   border-color: #313638;
   padding: 5% 20% 5% 20%;
-  background-color: white;
+  background-color: aliceblue;
   display: block;
   margin: -5% 10% 0% 10%;
   border-radius: 4px;
@@ -131,5 +134,12 @@ h1 {
     width: 70vw;
     margin-left: 60px;
   }
+}
+img {
+  max-width: 300px;
+  margin-left: 12%;
+  margin-top: 12%;
+  margin-bottom: 10%;
+  border: 1px solid black;
 }
 </style>
