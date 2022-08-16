@@ -12,10 +12,10 @@ import FormApprovalView from '../views/FormApprovalView.vue'
 import Relinquish from '../views/Relinquish.vue'
 import VolunteerApplicationView from '../views/VolunteerApplicationView.vue'
 import AnimalDetail from '../views/AnimalDetailView.vue'
-import loginUpdate from '../views/UpdateLoginView.vue'
+import LoginUpdate from '../views/UpdateLoginView.vue'
 import ByAnimalTypeListView from '@/views/ByAnimalTypeListView'
-import AdoptionSuccessView from '@/views/AdoptionSuccessView.vue'
-// import { find } from 'core-js/core/array'
+import AdoptionSuccessView from '../views/AdoptionSuccessView.vue'
+
 
 
 
@@ -136,7 +136,7 @@ const router = new Router({
         {
             path: "/login/update",
             name: "loginUpdate",
-            component: loginUpdate,
+            component: LoginUpdate,
             meta: {
                 requiresAuth: false
             }
@@ -174,13 +174,11 @@ router.beforeEach((to, from, next) => {
     const requiresAuth = to.matched.some(x => x.meta.requiresAuth);
 
     // If it does and they are not logged in, send the user to "/login"
-
     if (requiresAuth && store.state.token === '') {
         next("/login");
-        if (this.user.find(f => { f.id === this.$store.user.id }) && this.$store.state.user.passwordNeedsChanged === true) {
-            next("/login/update");
-            this.$store.state.user.passwordNeedsChanged = false;
-        }
+    } else if (store.state.user.passwordNeedsChanged === true) {
+        store.commit('CLEAR_PASSWORD_REQUIRED');
+        next("/login/update");
     } else {
         // Else let them go to their next destination
         next();
