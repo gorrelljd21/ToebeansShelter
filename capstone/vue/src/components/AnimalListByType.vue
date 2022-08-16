@@ -80,15 +80,21 @@ export default {
     goToDetailPage(id) {
       this.$router.push({ name: "animal-detail", params: { id: id } });
     },
+    getCount() {
+      shelterService.getCount(this.$route.params.id).then((r) => {
+        this.count = r.data;
+      });
+    },
   },
   computed: {
     numberOfPages() {
-      return Math.ceil(this.animalPhotos.length / this.limit);
+      return Math.ceil(this.count / this.limit);
     },
   },
 
   created() {
     this.getAnimalsPaginated();
+    this.getCount();
   },
 };
 </script>
