@@ -20,9 +20,7 @@
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
         <label>Bio: </label><input type="text" v-model="animal.bio" />
         <br />
-        <button type="submit" @click.prevent="updateAnimalCard(animal)">
-          Submit
-        </button>
+        <button type="submit" @click="updateAnimalCard(animal)">Submit</button>
       </form>
     </div>
   </div>
