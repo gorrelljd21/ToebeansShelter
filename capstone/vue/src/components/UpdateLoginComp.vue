@@ -12,9 +12,7 @@
       >
         Thank you for registering, please sign in.
       </div>
-      <label for="username" class="sr-only"
-        >Please use the same username:
-      </label>
+      <label for="username" class="sr-only">Enter Current Username: </label>
       <input
         type="text"
         id="username"
@@ -26,17 +24,27 @@
       />
       <br />
       <br />
-      <label for="password" class="sr-only">Password: </label>
+      <label for="password" class="sr-only">New Password: </label>
       <input
         type="password"
         id="password"
         class="form-control"
-        placeholder="Password"
+        placeholder="New Password"
         v-model="user.password"
         required
       />
       <br />
       <br />
+      <label for="confirmPassword" class="sr-only">Confirm Password: </label>
+      <input
+        type="password"
+        id="confirmPassword"
+        class="form-control"
+        placeholder="New Password"
+        v-model="user.confirmPassword"
+        required
+      />
+      <br /><br />
       <!-- <router-link class="newAccount" :to="{ name: 'register' }"
         >Need an account?</router-link
       > -->
@@ -144,7 +152,7 @@ form {
   background-color: #f89670;
   box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
     rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  width: 300px;
+  width: 350px;
 }
 
 h2,
