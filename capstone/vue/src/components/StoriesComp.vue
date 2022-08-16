@@ -81,7 +81,7 @@ export default {
 
   border-style: solid;
   border-color: #44a1a0;
-  background-color: white;
+  background-color: aliceblue;
 }
 
 .story-title {
@@ -89,7 +89,7 @@ export default {
   padding-left: 15px;
   padding-right: 15px;
   font-size: 16px;
-  background-color: white;
+  background-color: aliceblue;
 }
 
 .story-content {
@@ -108,6 +108,6 @@ export default {
 }
 
 p {
-  background-color: white;
+  background-color: aliceblue;
 }
 </style>
