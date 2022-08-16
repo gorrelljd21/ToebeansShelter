@@ -37,6 +37,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    CLEAR_PASSWORD_REQUIRED(state) {
+      state.user.passwordNeedsChanged = false;
     }
   }
 })
