@@ -39,7 +39,9 @@
         >Need an account?</router-link
       >
       <p></p>
-      <button id="sign-in" type="submit">Sign in</button>
+      <button id="sign-in" type="submit" @click="changePassword()">
+        Sign in
+      </button>
       <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
       <button type="reset">Reset Form</button>
@@ -84,6 +86,11 @@ export default {
     goToHome() {
       this.$router.push("/");
     },
+    changePassword() {
+      if (this.user.password === "password") {
+        this.$router.push("/login/update");
+      }
+    },
   },
 };
 </script>
@@ -105,7 +112,7 @@ h2,
 }
 
 #password {
-  margin-left: 5px;
+  margin-left: 1px;
 }
 
 .sr-only,
