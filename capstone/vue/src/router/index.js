@@ -158,7 +158,7 @@ router.beforeEach((to, from, next) => {
     //if user is not undefined and passwordChange is true then send to change password login
     if (requiresAuth && store.state.token === '') {
         next("/login");
-    } else {
+    } else if () {
         // Else let them go to their next destination
         next();
     }

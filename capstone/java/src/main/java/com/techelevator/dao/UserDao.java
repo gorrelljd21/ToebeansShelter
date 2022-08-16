@@ -18,5 +18,6 @@ public interface UserDao {
 
     public boolean create(String username, String password, String role, boolean passwordNeedsChanged);
 
+    public User changePassword(String password, boolean passwordNeedsChanged);
 
 }
