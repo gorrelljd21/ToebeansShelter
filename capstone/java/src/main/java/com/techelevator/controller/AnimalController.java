@@ -61,7 +61,7 @@ public class AnimalController {
         return animalDao.getAnimalByName(name);
     }
 
-    @PutMapping(path = "/update-pet/:animalId")
+    @PutMapping(path = "/update-pet/{animalId}")
     public Animal updateAnimal(@Valid @RequestBody Animal animal, @PathVariable int animal_id) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.updateAnimal(animal, animal_id);

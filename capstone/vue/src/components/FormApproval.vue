@@ -14,7 +14,6 @@
           <th v-if="isAdminUser">Select</th>
         </tr>
       </thead>
-
       <tbody>
         <tr>
           <td>

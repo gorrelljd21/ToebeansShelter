@@ -15,7 +15,9 @@
       <label>Age: </label><input type="number" v-model="animal.age" /><br />
       <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
       <label>Bio: </label><input type="text" v-model="animal.bio" />
-      <button type="submit">Submit</button>
+      <button type="submit" @click.prevent="updateAnimalCard(animalId, animal)">
+        Submit
+      </button>
     </form>
   </div>
 </template>
@@ -56,6 +58,13 @@ export default {
     getPhotoById(animalId) {
       shelterService.getPhotoById(animalId).then((response) => {
         this.photo = response.data.photo_link;
+      });
+    },
+    updateAnimalCard(animalId, animal) {
+      shelterService.updateAnimalCard(animalId, animal).then((response) => {
+        if (response.status === 200) {
+          this.animal = response.data;
+        }
       });
     },
   },
