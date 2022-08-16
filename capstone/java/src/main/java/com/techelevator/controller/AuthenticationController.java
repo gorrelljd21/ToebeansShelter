@@ -78,6 +78,14 @@ public class AuthenticationController {
         threadSleepTryCatch.threadSleep();
     }
 
+//    @ResponseStatus(HttpStatus.CREATED)
+//    @RequestMapping(value = "/login/update", method = RequestMethod.PUT)
+//    public void updateLogin(@Valid @RequestBody LoginDTO loginDTO) {
+//        UsernamePasswordAuthenticationToken authenticationToken =
+//                new UsernamePasswordAuthenticationToken(loginDTO.getUsername(), loginDTO.getNewPassword());
+//
+//    }
+
     /**
      * Object to return as body in JWT Authentication.
      */

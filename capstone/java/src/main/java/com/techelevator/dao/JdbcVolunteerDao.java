@@ -35,6 +35,23 @@ public class JdbcVolunteerDao implements VolunteerDao {
     }
 
     @Override
+    public List<Volunteer> findApproved() {
+
+           String sql = " SELECT full_name, phone_number, email FROM volunteers " +
+                    " WHERE app_status = 'APPROVED'; ";
+           SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+           List<Volunteer> approvedList = new ArrayList<>();
+           while(result.next()) {
+               Volunteer volunteer = new Volunteer();
+               volunteer.setFull_name(result.getString("full_name"));
+               volunteer.setPhone_number(result.getString("phone_number"));
+               volunteer.setRef_email(result.getString("email"));
+               approvedList.add(volunteer);
+           }
+           return approvedList;
+    }
+
+    @Override
     public Volunteer findById(int volunteer_id) {
         Volunteer volunteer = null;
 
@@ -99,7 +116,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()){
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
 
@@ -118,7 +134,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         if(result.next()) {
             volunteer = mapRowToVolunteer(result);
         }
-
         return volunteer;
     }
 
@@ -148,7 +163,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
         return jdbcTemplate.update(sql, volunteer.getFull_name(), volunteer.getPhone_number(),
                 volunteer.getEmail(), volunteer.getBio(), volunteer.getRef_full_name(), volunteer.getRef_phone_number(),
                 volunteer.getRef_email(), volunteer.getApp_status(), volunteer_id) == 1;
-
     }
 
     @Override
@@ -157,8 +171,6 @@ public class JdbcVolunteerDao implements VolunteerDao {
                 "WHERE volunteer_id = ?; ";
         jdbcTemplate.update(sql, volunteer_id);
     }
-
-
 
     private Volunteer mapRowToVolunteer(SqlRowSet rs) {
       Volunteer volunteer = new Volunteer();

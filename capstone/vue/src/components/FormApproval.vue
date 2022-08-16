@@ -9,7 +9,7 @@
           <th>Name</th>
           <th>Email</th>
           <th>Phone</th>
-          <th v-if="isAdminUser">Volunteer Status</th>
+          <th>Volunteer Status</th>
           <th v-if="isAdminUser">Application Form</th>
           <th v-if="isAdminUser">Select</th>
         </tr>
@@ -28,12 +28,7 @@
           </td>
 
           <td>
-            <select id="statusFilter" v-model="filter.app_status">
-              <option v-if="isAdminUser" value="">Show all</option>
-              <option v-if="isAdminUser" value="PENDING">Pending</option>
-              <option value="APPROVED">Approved</option>
-              <option v-if="isAdminUser" value="DENIED">Denied</option>
-            </select>
+            <input type="text" id="appfilter" v-model="filter.app_status" />
           </td>
           <td>
             <input
@@ -52,16 +47,19 @@
             />
           </td>
         </tr>
-
         <tr
           v-for="volunteer in filteredList"
           v-bind:key="volunteer.volunteer_id"
         >
-          <!-- <td>{{ volunteer.volunteer_id }}</td> -->
+          <!-- <td v-if="isAdminUser">{{ volunteer.volunteer_id }}</td> -->
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
-          <td v-if="isAdminUser">{{ volunteer.app_status }}</td>
+          <td>{{ volunteer.app_status }}</td>
+          <!-- <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.email }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td> -->
+
           <td>
             <router-link
               v-if="isAdminUser"
@@ -164,6 +162,7 @@ export default {
         app_form: "",
         app_status: "",
       },
+
       selectedVolunteers: [],
       approved: "APPROVED",
       denied: "DENIED",
@@ -172,6 +171,7 @@ export default {
   },
   created() {
     this.getVolunteers();
+    this.getApproved();
   },
 
   methods: {
@@ -180,6 +180,11 @@ export default {
     },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
+        this.volunteers = response.data;
+      });
+    },
+    getApproved() {
+      ShelterService.getApproved().then((response) => {
         this.volunteers = response.data;
       });
     },
@@ -301,18 +306,25 @@ export default {
       return this.$store.state.user.authorities[0].name === "ROLE_VOLUNTEER";
     },
     filteredList() {
-      return this.volunteers.filter((volunteer) => {
-        return (
-          volunteer.full_name
-            .toLowerCase()
-            .includes(this.filter.full_name.toLowerCase()) &&
-          volunteer.email
-            .toLowerCase()
-            .includes(this.filter.email.toLowerCase()) &&
-          volunteer.phone_number.includes(this.filter.phone_number) &&
-          volunteer.app_status.includes(this.filter.app_status)
-        );
-      });
+      if (this.isVolunteerUser) {
+        return this.volunteers.filter((volunteer) => {
+          return (
+            volunteer.full_name.includes(this.filter.full_name) &&
+            volunteer.email.includes(this.filter.email) &&
+            volunteer.phone_number.includes(this.filter.phone_number) &&
+            volunteer.app_status === "APPROVED"
+          );
+        });
+      } else {
+        return this.volunteers.filter((volunteer) => {
+          return (
+            volunteer.full_name.includes(this.filter.full_name) &&
+            volunteer.email.includes(this.filter.email) &&
+            volunteer.phone_number.includes(this.filter.phone_number) &&
+            volunteer.app_status.includes(this.filter.app_status)
+          );
+        });
+      }
     },
     disableButtons() {
       return this.selectedVolunteers.length === 0;
@@ -398,8 +410,4 @@ button {
   border-width: 1px;
   border-radius: 4px;
 }
-
-/* #delete-app {
-  margin-left: 5%;
-} */
 </style>

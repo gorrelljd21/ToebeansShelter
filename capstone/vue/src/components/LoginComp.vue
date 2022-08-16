@@ -84,6 +84,11 @@ export default {
     goToHome() {
       this.$router.push("/");
     },
+    changePassword() {
+      if (this.user.password === "password") {
+        this.$router.push("/login/update");
+      }
+    },
   },
 };
 </script>
@@ -105,7 +110,7 @@ h2,
 }
 
 #password {
-  margin-left: 5px;
+  margin-left: 1px;
 }
 
 .sr-only,
