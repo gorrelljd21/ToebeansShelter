@@ -56,10 +56,6 @@
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td>{{ volunteer.app_status }}</td>
-          <!-- <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.email }}</td>
-          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td> -->
-
           <td>
             <router-link
               v-if="isAdminUser"
@@ -148,6 +144,7 @@ export default {
           app_status: "",
         },
       ],
+
       user: {
         username: "",
         password: "",
@@ -171,7 +168,6 @@ export default {
   },
   created() {
     this.getVolunteers();
-    this.getApproved();
   },
 
   methods: {
@@ -180,11 +176,6 @@ export default {
     },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
-        this.volunteers = response.data;
-      });
-    },
-    getApproved() {
-      ShelterService.getApproved().then((response) => {
         this.volunteers = response.data;
       });
     },
@@ -300,14 +291,10 @@ export default {
       if (this.isVolunteerUser) {
         return this.volunteers.filter((volunteer) => {
           return (
-            volunteer.full_name
-              .toLowerCase()
-              .includes(this.filter.full_name.toLowerCase()) &&
-            volunteer.email
-              .toLowerCase()
-              .includes(this.filter.email.toLowerCase()) &&
+            volunteer.full_name.includes(this.filter.full_name) &&
+            volunteer.email.includes(this.filter.email) &&
             volunteer.phone_number.includes(this.filter.phone_number) &&
-            volunteer.app_status.toUpperCase() === "APPROVED"
+            volunteer.app_status === "APPROVED"
           );
         });
       } else {
