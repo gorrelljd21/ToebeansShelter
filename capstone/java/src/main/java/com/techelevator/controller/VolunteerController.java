@@ -29,6 +29,11 @@ public class VolunteerController {
         return volunteerDao.findAll();
     }
 
+    @GetMapping(path = "/volunteers/status")
+    public List<Volunteer> findApproved() {
+        return volunteerDao.findApproved();
+    }
+
     //    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @GetMapping(path = "/volunteers/{volunteer_id}")
     public Volunteer findById(@PathVariable int volunteer_id) throws InterruptedException {

@@ -28,11 +28,23 @@
           </td>
 
           <td>
+<<<<<<< HEAD
+            <select
+              v-if="isAdminUser"
+              id="statusFilter"
+              v-model="filter.app_status"
+            >
+              <option value="">Show all</option>
+              <option value="PENDING">Pending</option>
+              <option value="APPROVED">Approved</option>
+              <option value="DENIED">Denied</option>
+=======
             <select id="statusFilter" v-model="filter.app_status">
               <option v-if="isAdminUser" value="">Show all</option>
               <option v-if="isAdminUser" value="PENDING">Pending</option>
-              <option value="APPROVED">Approved</option>
+              <option value="APPROVED" selected>Approved</option>
               <option v-if="isAdminUser" value="DENIED">Denied</option>
+>>>>>>> 18d58b7d38a086d0585be9559f02d63368c69cb5
             </select>
           </td>
           <td>
@@ -57,11 +69,15 @@
           v-for="volunteer in filteredList"
           v-bind:key="volunteer.volunteer_id"
         >
-          <!-- <td>{{ volunteer.volunteer_id }}</td> -->
+          <td v-if="isAdminUser">{{ volunteer.volunteer_id }}</td>
           <td>{{ volunteer.full_name }}</td>
           <td>{{ volunteer.email }}</td>
           <td>{{ volunteer.phone_number }}</td>
           <td v-if="isAdminUser">{{ volunteer.app_status }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.full_name }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.email }}</td>
+          <td v-if="isVolunteerUser">{{ volunteer.phone_number }}</td>
+
           <td>
             <router-link
               v-if="isAdminUser"
@@ -164,6 +180,7 @@ export default {
         app_form: "",
         app_status: "",
       },
+
       selectedVolunteers: [],
       approved: "APPROVED",
       denied: "DENIED",
@@ -172,6 +189,7 @@ export default {
   },
   created() {
     this.getVolunteers();
+    this.getApproved();
   },
 
   methods: {
@@ -180,6 +198,11 @@ export default {
     },
     getVolunteers() {
       ShelterService.getVolunteers().then((response) => {
+        this.volunteers = response.data;
+      });
+    },
+    getApproved() {
+      ShelterService.getApproved().then((response) => {
         this.volunteers = response.data;
       });
     },
@@ -398,8 +421,4 @@ button {
   border-width: 1px;
   border-radius: 4px;
 }
-
-/* #delete-app {
-  margin-left: 5%;
-} */
 </style>
