@@ -23,6 +23,9 @@ export default {
     getAnimalsPaginated(limit, offset) {
         return axios.get(`/animals/limit/${limit}/offset/${offset}`)
     },
+    getFullAnimalByTypePaginated(limit, offset, type) {
+        return axios.get(`/animals/type/${type}/limit/${limit}/offset/${offset}`)
+    },
     getPhotosPaginated(limit, offset) {
         return axios.get(`/photos/limit/${limit}/offset/${offset}`)
     },
@@ -62,5 +65,8 @@ export default {
     },
     updatePassword() {
         return axios.put('/login/update');
+    },
+    oneOfEach() {
+        return axios.get('/oneOfEach');
     }
 }

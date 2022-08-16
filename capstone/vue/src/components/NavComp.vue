@@ -42,9 +42,9 @@
       <!-- <br /> -->
       <p>
         <b
-          ><a id="link" href="default.asp" target="_blank"
-            >Success Stories</a
-          ></b
+          ><router-link id="link" to="/adoption-success">
+            Adoption Success
+          </router-link></b
         >
       </p>
       <!-- <br /> -->

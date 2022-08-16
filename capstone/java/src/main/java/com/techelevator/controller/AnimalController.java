@@ -81,11 +81,15 @@ public class AnimalController {
         }
     }
 
-    @PreAuthorize("premitAll")
+    @PreAuthorize("permitAll")
     @GetMapping("/oneOfEach")
     public List<FullAnimal> getOneOfEachType() {
         return animalDao.getOneOfEachType();
     }
 
-
+    @PreAuthorize("permitAll")
+    @GetMapping("/animals/type/{id}/limit/{limit}/offset/{offset}")
+    public List<FullAnimal> getPageByType(@PathVariable int id, @PathVariable int limit, @PathVariable int offset) {
+        return animalDao.getAnimalsByTypePage(limit, offset, id);
+    }
 }
