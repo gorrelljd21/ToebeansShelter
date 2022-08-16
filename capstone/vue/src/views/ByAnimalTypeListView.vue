@@ -14,7 +14,7 @@
         <nav-comp></nav-comp>
       </div>
       <div class="main">
-        <by-type />
+        <animal-list-by-type />
       </div>
       <div class="story">
         <stories-comp></stories-comp>
@@ -33,7 +33,7 @@ import FootView from "@/views/FootView.vue";
 import LogoComp from "@/components/LogoComp.vue";
 import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
-import ByType from "../components/ByType.vue";
+import AnimalListByType from "../components/AnimalListByType.vue";
 export default {
   components: {
     NavComp,
@@ -42,14 +42,10 @@ export default {
     LogoComp,
     TitleComp,
     LoginRegisterComp,
-    ByType,
+    AnimalListByType,
   },
 };
 </script>
 
-<style scoped>
-
-
-
-
+<style>
 </style>

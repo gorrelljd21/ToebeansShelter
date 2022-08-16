@@ -135,11 +135,36 @@ public class JdbcAnimalDao implements AnimalDao {
         List<FullAnimal> animals = new ArrayList<>();
         SqlRowSet result =  jdbctemplate.queryForRowSet(sql);
         while(result.next()){
-            FullAnimal animal = (FullAnimal) mapRowToAnimal(result);
-            animal.setPhoto_link(result.getString("photo_link"));
+            FullAnimal animal = mapRowToFullAnimal(result);
             animals.add(animal);
         }
         return animals;
+    }
+
+    public List<FullAnimal> getAnimalsByTypePage(int limit, int offset, int type) {
+        List<FullAnimal> animals = new ArrayList<>();
+        String sql = "SELECT animal_type_id, " +
+                "animals.animal_id, " +
+                "name, " +
+                "breed, " +
+                "age," +
+                "bio, " +
+                "photo_link " +
+                "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
+                "WHERE animal_type_id = ? " +
+                "limit ? offset ?";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql, type, limit, offset);
+        while(result.next()){
+            animals.add(mapRowToFullAnimal(result));
+        }
+        return animals;
+    }
+
+    public int getCountByType(int type) {
+        String sql = "SELECT COUNT(*) as num FROM animals WHERE animal_type_id = ?;";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql, type);
+        result.next();
+        return result.getInt("num");
     }
 
     private Animal mapRowToAnimal(SqlRowSet rs) {
@@ -150,6 +175,17 @@ public class JdbcAnimalDao implements AnimalDao {
         animal.setAge(rs.getInt("age"));
         animal.setBio(rs.getString("bio"));
         animal.setAnimal_type_id(rs.getInt("animal_type_id"));
+        return animal;
+    }
+    private FullAnimal mapRowToFullAnimal(SqlRowSet rs) {
+        FullAnimal animal = new FullAnimal();
+        animal.setAnimal_id(rs.getInt("animal_id"));
+        animal.setName(rs.getString("name"));
+        animal.setBreed(rs.getString("breed"));
+        animal.setAge(rs.getInt("age"));
+        animal.setBio(rs.getString("bio"));
+        animal.setAnimal_type_id(rs.getInt("animal_type_id"));
+        animal.setPhoto_link(rs.getString("photo_link"));
         return animal;
     }
 }

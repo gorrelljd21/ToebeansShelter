@@ -15,16 +15,8 @@
       <!-- <br /> -->
       <p>
         <b
-          ><a id="link" href="default.asp" target="_blank"
-            >All Animal Listings</a
-          ></b
-        >
-      </p>
-      <!-- <br /> -->
-      <p>
-        <b
-          ><a id="link" href="default.asp" target="_blank"
-            >Animals by Category</a
+          ><router-link id="link" to="/animals"
+            >Browse By Category</router-link
           ></b
         >
       </p>
@@ -42,9 +34,9 @@
       <!-- <br /> -->
       <p>
         <b
-          ><a id="link" href="default.asp" target="_blank"
-            >Success Stories</a
-          ></b
+          ><router-link id="link" to="/adoption-success">
+            Adoption Success
+          </router-link></b
         >
       </p>
       <!-- <br /> -->
@@ -65,6 +57,11 @@
         >
       </p>
     </nav>
+    <img
+      src="../assets/Untitled.jpg"
+      alt="Our Mascot, Jimbo!"
+      title="Our Mascot, Jimbo!"
+    />
   </div>
 </template>
 
@@ -87,8 +84,6 @@ export default {
 };
 </script>
 
-
-
 <style scoped>
 .navigation {
   position: relative left;
@@ -107,7 +102,7 @@ export default {
   border-style: solid;
   border-color: #313638;
   padding: 5% 20% 5% 20%;
-  background-color: white;
+  background-color: aliceblue;
   display: block;
   margin: -5% 10% 0% 10%;
   border-radius: 4px;
@@ -139,5 +134,12 @@ h1 {
     width: 70vw;
     margin-left: 60px;
   }
+}
+img {
+  max-width: 300px;
+  margin-left: 12%;
+  margin-top: 12%;
+  margin-bottom: 10%;
+  border: 1px solid black;
 }
 </style>

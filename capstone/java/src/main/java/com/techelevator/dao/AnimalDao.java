@@ -25,4 +25,8 @@ public interface AnimalDao {
 
     List<FullAnimal> getOneOfEachType();
 
+    List<FullAnimal> getAnimalsByTypePage(int limit, int offset, int type);
+
+    int getCountByType(int type);
+
 }
