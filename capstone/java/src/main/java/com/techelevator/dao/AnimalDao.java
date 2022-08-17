@@ -31,4 +31,6 @@ public interface AnimalDao {
 
     int getCountByType(int type);
 
+    List<FullAnimal> getAdopted();
+
 }

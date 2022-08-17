@@ -3,7 +3,7 @@
     <div class="footer-container">
       <h3>Contact Info and Other Fun Things:</h3>
       <ul>
-        <li>Landline: 1800-TOE-BEAN</li>
+        <li>Landline: PLEASE CALL 1800-TOE-BEAN TO SCHEDULE AN ADOPTION</li>
         <li>Email: contact@toebeanshelter.org</li>
         <li>Address: Not <em>that</em> Farm, Cincinnati, Oh</li>
       </ul>

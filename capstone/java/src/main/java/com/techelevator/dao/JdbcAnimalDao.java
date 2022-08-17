@@ -192,6 +192,23 @@ public class JdbcAnimalDao implements AnimalDao {
         return result.getInt("num");
     }
 
+    @Override
+    public List<FullAnimal> getAdopted() {
+        List<FullAnimal> animals = new ArrayList<>();
+        String sql = "SELECT photo_link, animals.animal_id, name, breed, age, bio, animal_type_id, adopted " +
+                "FROM animals " +
+                "JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
+                "WHERE adopted = true " +
+                "ORDER BY animal_id DESC " +
+                "limit 4";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql);
+        while (result.next()) {
+            animals.add(mapRowToFullAnimal(result));
+        }
+        return animals;
+    }
+
+
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();
         animal.setAnimal_id(rs.getInt("animal_id"));

@@ -68,5 +68,8 @@ export default {
     },
     getCount(type) {
         return axios.get(`count/${type}`)
+    },
+    getFourAdopted() {
+        return axios.get(`/adopted`)
     }
 }
