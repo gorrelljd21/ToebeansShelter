@@ -36,7 +36,7 @@ public class AnimalController {
 
     @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/limit/{limit}/offset/{offset}")
-    public List<Animal> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset) throws InterruptedException {
+    public List<FullAnimal> getAnimalsByPage(@PathVariable int limit, @PathVariable int offset) throws InterruptedException {
         threadSleepTryCatch.threadSleep();
         return animalDao.getAnimalPage(limit, offset);
     }
@@ -90,9 +90,17 @@ public class AnimalController {
     public List<FullAnimal> getPageByType(@PathVariable int id, @PathVariable int limit, @PathVariable int offset) {
         return animalDao.getAnimalsByTypePage(limit, offset, id);
     }
+
     @PreAuthorize("permitAll")
-    @GetMapping("/{type}")
+    @GetMapping("count/{type}")
     public int getCountByType(@PathVariable int type){
         return animalDao.getCountByType(type);
     }
+
+    @PreAuthorize("permitAll")
+    @GetMapping("/adopted")
+    public List<FullAnimal> getAdopted() {
+        return animalDao.getAdopted();
+    }
+
 }

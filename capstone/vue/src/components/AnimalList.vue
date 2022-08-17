@@ -9,7 +9,7 @@
         v-for="animal in currentAnimals"
         :key="animal.animal_id"
         :animal="animal"
-        :photo="animalPhotos.find((x) => x.animal_id == animal.animal_id)"
+        :photo="animal"
         v-show="!isLoading"
       >
       </animal-card>
@@ -21,7 +21,6 @@
           @click="
             page--;
             getAnimalsPaginated();
-            getPhotos();
           "
           v-show="page > 1"
         >
@@ -31,11 +30,9 @@
           id="next-btn"
           @click="
             page++;
-
-            getPhotos();
             getAnimalsPaginated();
           "
-          v-show="page < 4"
+          v-show="page < numberOfPages"
           v-if="!isLoading"
         >
           Next
@@ -58,22 +55,14 @@ export default {
     return {
       isLoading: true,
       errorMsg: "",
-      animalPhotos: [],
       limit: 15,
       page: 1,
       currentAnimals: [],
       isDisabled: false,
+      count: 0,
     };
   },
   methods: {
-    getPhotos() {
-      shelterService
-        .getPhotosPaginated(this.limit, (this.page - 1) * this.limit)
-        .then((r) => {
-          this.animalPhotos = r.data;
-          this.shuffleCards(this.animalPhotos);
-        });
-    },
     getAnimalsPaginated() {
       this.isLoading = true;
       shelterService
@@ -90,16 +79,21 @@ export default {
     goToDetailPage(id) {
       this.$router.push({ name: "animal-detail", params: { id: id } });
     },
+    getCount() {
+      shelterService.getCount(0).then((x) => {
+        this.count = x.data;
+      });
+    },
   },
   computed: {
     numberOfPages() {
-      return Math.ceil(this.animalPhotos.length / this.limit);
+      return Math.ceil(this.count / this.limit);
     },
   },
 
   created() {
     this.getAnimalsPaginated();
-    this.getPhotos();
+    this.getCount();
   },
 };
 </script>

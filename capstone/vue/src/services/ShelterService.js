@@ -2,6 +2,9 @@ import axios from 'axios';
 
 
 export default {
+    getAdoptedAnimals() {
+        return axios.get('/adopted-animals');
+    },
     getAnimals() {
         return axios.get('/animals');
     },
@@ -63,13 +66,13 @@ export default {
     updateAnimalCard(animal) {
         return axios.put(`/update-pet/${animal.animal_id}`, animal);
     },
-    // updatePassword(user) {
-    //     return axios.post('/login/update', user);
-    // },
     oneOfEach() {
         return axios.get('/oneOfEach');
     },
     getCount(type) {
-        return axios.get(`/${type}`)
+        return axios.get(`count/${type}`)
+    },
+    getFourAdopted() {
+        return axios.get(`/adopted`)
     }
 }

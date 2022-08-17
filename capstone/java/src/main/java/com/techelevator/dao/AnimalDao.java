@@ -19,7 +19,7 @@ public interface AnimalDao {
 
     Animal getAnimalByName(String name);
 
-    List<Animal> getAnimalPage(int limit, int offset);
+    List<FullAnimal> getAnimalPage(int limit, int offset);
 
     boolean addAnimal(AddAnimal animal);
 
@@ -30,5 +30,7 @@ public interface AnimalDao {
     List<FullAnimal> getAnimalsByTypePage(int limit, int offset, int type);
 
     int getCountByType(int type);
+
+    List<FullAnimal> getAdopted();
 
 }

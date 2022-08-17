@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="changePassword()">
+    <form class="form-signin" @submit.prevent="changePassword(user)">
       <h2 class="h3 mb-3 font-weight-normal">Please Change Your Password</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username or password!
@@ -36,10 +36,6 @@
         required
       />
       <br /><br />
-      <!-- <router-link class="newAccount" :to="{ name: 'register' }"
-        >Need an account?</router-link
-      > -->
-      <!-- <p></p> -->
       <button id="sign-in" type="submit">Change password</button>
       <br />
       <button type="reset">Reset Form</button>
@@ -64,6 +60,7 @@ export default {
     };
   },
   methods: {
+<<<<<<< HEAD
     changePassword() {
       authService
         .updatePassword(this.user)
@@ -81,11 +78,28 @@ export default {
         })
         .catch((error) => {
           const response = error.response;
+=======
+    changePassword(user) {
+      if (user.password !== user.confirmPassword) {
+        alert("Password and confirm must match");
+      } else
+        authService
+          .updatePassword(user)
+          .then((response) => {
+            if (response.status == 201) {
+              alert("Password changed!");
+              this.user = response.data;
+              this.$router.push("/");
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
+>>>>>>> 84e7960519027f31b733d3440bc4ae1ddf2973da
 
-          if (response.status === 403) {
-            this.invalidCredentials = true;
-          }
-        });
+            if (response.status === 403) {
+              this.invalidCredentials = true;
+            }
+          });
     },
     goToHome() {
       this.$router.push("/");

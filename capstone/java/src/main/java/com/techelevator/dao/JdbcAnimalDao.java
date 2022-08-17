@@ -92,8 +92,7 @@ public class JdbcAnimalDao implements AnimalDao {
         String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM " +
                 "animals " +
-                "WHERE " +
-                "name = ?; ";
+                "WHERE name = ?; ";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, name);
         if (result.next()) {
             animal = mapRowToAnimal(result);
@@ -102,15 +101,16 @@ public class JdbcAnimalDao implements AnimalDao {
     }
 
     @Override
-    public List<Animal> getAnimalPage(int limit, int offset) {
-        List<Animal> animals = new ArrayList<>();
-        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
-                "FROM animals " +
+    public List<FullAnimal> getAnimalPage(int limit, int offset) {
+        List<FullAnimal> animals = new ArrayList<>();
+        String sql = "SELECT animals.animal_id, name, breed, age, bio, animal_type_id, adopted, photo_link " +
+                "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
+                "WHERE adopted = false " +
                 "ORDER BY animal_id " +
                 "limit ? offset ?";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
         while(result.next()){
-            animals.add(mapRowToAnimal(result));
+            animals.add(mapRowToFullAnimal(result));
         }
 
         return animals;
@@ -145,9 +145,11 @@ public class JdbcAnimalDao implements AnimalDao {
                 "breed, " +
                 "age," +
                 "bio, " +
-                "photo_link " +
+                "photo_link, " +
+                "adopted " +
 
-                "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id;";
+                "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
+                "WHERE adopted = false;";
         List<FullAnimal> animals = new ArrayList<>();
         SqlRowSet result =  jdbctemplate.queryForRowSet(sql);
         while(result.next()){
@@ -165,10 +167,10 @@ public class JdbcAnimalDao implements AnimalDao {
                 "breed, " +
                 "age," +
                 "bio, " +
-                "photo_link " +
-                "adopted, " +
+                "photo_link, " +
+                "adopted " +
                 "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
-                "WHERE animal_type_id = ? " +
+                "WHERE animal_type_id = ? AND adopted = false " +
                 "limit ? offset ?";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, type, limit, offset);
         while(result.next()){
@@ -178,11 +180,34 @@ public class JdbcAnimalDao implements AnimalDao {
     }
 
     public int getCountByType(int type) {
-        String sql = "SELECT COUNT(*) as num FROM animals WHERE animal_type_id = ?;";
+        String sql = "SELECT COUNT(*) as num FROM animals WHERE animal_type_id = ? AND adopted = false;";
+        String all = "SELECT COUNT(*) as num FROM animals WHERE adopted = false;";
+        if(type == 0){
+            SqlRowSet result = jdbctemplate.queryForRowSet(all);
+            result.next();
+            return result.getInt("num");
+        }
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, type);
         result.next();
         return result.getInt("num");
     }
+
+    @Override
+    public List<FullAnimal> getAdopted() {
+        List<FullAnimal> animals = new ArrayList<>();
+        String sql = "SELECT photo_link, animals.animal_id, name, breed, age, bio, animal_type_id, adopted " +
+                "FROM animals " +
+                "JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
+                "WHERE adopted = true " +
+                "ORDER BY animal_id DESC " +
+                "limit 4";
+        SqlRowSet result = jdbctemplate.queryForRowSet(sql);
+        while (result.next()) {
+            animals.add(mapRowToFullAnimal(result));
+        }
+        return animals;
+    }
+
 
     private Animal mapRowToAnimal(SqlRowSet rs) {
         Animal animal = new Animal();
