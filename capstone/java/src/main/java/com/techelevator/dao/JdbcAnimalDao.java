@@ -104,7 +104,7 @@ public class JdbcAnimalDao implements AnimalDao {
         List<Animal> animals = new ArrayList<>();
         String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM animals " +
-                "WHERE adopted = false " +
+                "WHERE adopted = 'false' " +
                 "ORDER BY animal_id " +
                 "limit ? offset ?";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);

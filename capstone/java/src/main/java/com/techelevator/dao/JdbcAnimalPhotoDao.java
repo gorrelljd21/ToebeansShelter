@@ -67,7 +67,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
     @Override
     public List<AnimalPhoto> getPhotosPage(int limit, int offset) {
         String sql = "select animal_id, photo_id, photo_link" +
-                " From animal_photos" +
+                " From animal_photos " +
                 " ORDER BY animal_id, photo_link " +
                 " LIMIT ?" +
                 " OFFSET ?;";
