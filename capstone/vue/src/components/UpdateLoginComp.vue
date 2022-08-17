@@ -60,46 +60,32 @@ export default {
     };
   },
   methods: {
-<<<<<<< HEAD
     changePassword() {
-      authService
-        .updatePassword(this.user)
-        .then((response) => {
-          if (response.status == 201) {
-            alert("Password changed!");
-            swal({
-              title: "Welcome to our Team!",
-              text: "We are excited for you to join!",
-              button: "LETS GOOO",
-            });
-            this.user = response.data;
-            this.$router.push("/");
-          }
-        })
-        .catch((error) => {
-          const response = error.response;
-=======
-    changePassword(user) {
-      if (user.password !== user.confirmPassword) {
-        alert("Password and confirm must match");
-      } else
+      if (this.user.password !== this.user.confirmPassword) {
+        alert("Password mismatch, please ensure they're the same!");
+      } else {
         authService
-          .updatePassword(user)
+          .updatePassword(this.user)
           .then((response) => {
             if (response.status == 201) {
               alert("Password changed!");
+              swal({
+                title: "Welcome to our Team!",
+                text: "We are excited for you to join!",
+                button: "LETS GOOO",
+              });
               this.user = response.data;
               this.$router.push("/");
             }
           })
           .catch((error) => {
             const response = error.response;
->>>>>>> 84e7960519027f31b733d3440bc4ae1ddf2973da
 
             if (response.status === 403) {
               this.invalidCredentials = true;
             }
           });
+      }
     },
     goToHome() {
       this.$router.push("/");
