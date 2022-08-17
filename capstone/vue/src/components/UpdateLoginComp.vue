@@ -60,7 +60,6 @@ export default {
     };
   },
   methods: {
-<<<<<<< HEAD
     changePassword() {
       authService
         .updatePassword(this.user)
@@ -78,28 +77,11 @@ export default {
         })
         .catch((error) => {
           const response = error.response;
-=======
-    changePassword(user) {
-      if (user.password !== user.confirmPassword) {
-        alert("Password and confirm must match");
-      } else
-        authService
-          .updatePassword(user)
-          .then((response) => {
-            if (response.status == 201) {
-              alert("Password changed!");
-              this.user = response.data;
-              this.$router.push("/");
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
->>>>>>> 84e7960519027f31b733d3440bc4ae1ddf2973da
 
-            if (response.status === 403) {
-              this.invalidCredentials = true;
-            }
-          });
+          if (response.status === 403) {
+            this.invalidCredentials = true;
+          }
+        });
     },
     goToHome() {
       this.$router.push("/");
