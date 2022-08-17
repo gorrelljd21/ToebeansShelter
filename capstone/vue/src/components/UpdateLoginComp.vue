@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="changePassword()">
+    <form class="form-signin" @submit.prevent="changePassword(user)">
       <h2 class="h3 mb-3 font-weight-normal">Please Change Your Password</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username or password!
@@ -64,23 +64,26 @@ export default {
     };
   },
   methods: {
-    changePassword() {
-      authService
-        .updatePassword(this.user)
-        .then((response) => {
-          if (response.status == 201) {
-            alert("Password changed!");
-            this.user = response.data;
-            this.$router.push("/");
-          }
-        })
-        .catch((error) => {
-          const response = error.response;
+    changePassword(user) {
+      if (user.password !== user.confirmPassword) {
+        alert("Password and confirm must match");
+      } else
+        authService
+          .updatePassword(user)
+          .then((response) => {
+            if (response.status == 201) {
+              alert("Password changed!");
+              this.user = response.data;
+              this.$router.push("/");
+            }
+          })
+          .catch((error) => {
+            const response = error.response;
 
-          if (response.status === 403) {
-            this.invalidCredentials = true;
-          }
-        });
+            if (response.status === 403) {
+              this.invalidCredentials = true;
+            }
+          });
     },
     goToHome() {
       this.$router.push("/");
