@@ -70,6 +70,6 @@ export default {
         return axios.get('/oneOfEach');
     },
     getCount(type) {
-        return axios.get(`/${type}`)
+        return axios.get(`count/${type}`)
     }
 }
