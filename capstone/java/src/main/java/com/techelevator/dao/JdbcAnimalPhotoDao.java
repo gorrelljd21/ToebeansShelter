@@ -66,6 +66,7 @@ public class JdbcAnimalPhotoDao implements  AnimalPhotoDao {
 
     @Override
     public List<AnimalPhoto> getPhotosPage(int limit, int offset) {
+
         String sql = "select a.animal_id, photo_id, photo_link" +
                 " From animal_photos as ap " +
                 " JOIN animals as a" +

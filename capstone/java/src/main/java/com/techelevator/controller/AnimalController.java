@@ -41,6 +41,13 @@ public class AnimalController {
         return animalDao.getAnimalPage(limit, offset);
     }
 
+    @PreAuthorize(("permitAll"))
+    @GetMapping(path = "/adopted-animals")
+    public List<Animal> getAdoptedAnimals() {
+        return animalDao.adoptionStatus();
+    }
+
+
     @PreAuthorize("permitAll")
     @GetMapping(path = "/animals/type/{animal_type_id}")
     public List<Animal> findByType(@PathVariable int animal_type_id) throws InterruptedException {

@@ -9,7 +9,9 @@
       <li class="detailli">Age: {{ animal.age }} Years Old</li>
       <li class="detailli">Type: {{ animalType }} - {{ animal.breed }}</li>
       <li class="detailli">Bio: {{ animal.bio }}</li>
-      <li class="detailli">Adopted: {{ animal.adopted }}</li>
+      <li class="detailli">
+        Adopted: {{ !animal.adopted ? "Needs a home" : "Has a home" }}
+      </li>
       <br />
 
       <button
