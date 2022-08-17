@@ -1,7 +1,7 @@
 <template>
   <div id="whole">
     <form id="addPet">
-      <h2>Help us find your pet a new home</h2>
+      <h2>Add an animal to our database!</h2>
       <label for="pets-name">Animal name: </label>
       <input
         type="text"
@@ -69,6 +69,7 @@
       <button type="submit" @click.prevent="addAnimal">
         Place for Adoption
       </button>
+      <button @click.prevent="resetFrom">Reset</button>
     </form>
   </div>
 </template>
@@ -107,6 +108,16 @@ export default {
           }
           console.log(err);
         });
+    },
+    resetFrom() {
+      this.animal = {
+        age: "",
+        name: "",
+        breed: "",
+        link: "",
+        bio: "",
+        animal_type_id: "",
+      };
     },
   },
 };
