@@ -60,7 +60,6 @@ public class AuthenticationController {
         return new ResponseEntity<>(new LoginResponse(jwt, user), httpHeaders, HttpStatus.OK);
     }
 
-    //    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public void register(@Valid @RequestBody RegisterUserDTO newUser) throws InterruptedException {
@@ -82,10 +81,10 @@ public class AuthenticationController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/login/update")
-    public void changePassword(@RequestBody LoginDTO username, Principal principal) {
+    public void changePassword(@RequestBody LoginDTO user, Principal principal) {
         // this is a code smell. do not overwrite parameters
         User userFromDatabase = userDao.findByUsername(principal.getName());
-        userDao.changePassword(username.getPassword(), userFromDatabase.getId());
+        userDao.changePassword(user.getPassword(), userFromDatabase.getId());
     }
 
     /**

@@ -21,4 +21,7 @@ export default {
     getUserIdByVolunteerId(volunteerId) {
         return axios.get(`/volunteer-user/volunteer/${volunteerId}`);
     },
+    updatePassword(user) {
+        return axios.post('/login/update', user);
+    },
 }

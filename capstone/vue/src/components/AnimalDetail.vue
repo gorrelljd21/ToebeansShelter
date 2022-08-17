@@ -4,11 +4,12 @@
       <div id="imgcontainer">
         <img :src="photo" alt="Animal Photo Here" id="detail-photo" />
       </div>
-      <h1 id="detailname">{{ animal.name }}</h1>
+      <h1 id="detailname">Name: {{ animal.name }}</h1>
       <br />
-      <li class="detailli">{{ animal.age }} Years Old</li>
-      <li class="detailli">{{ animalType }} - {{ animal.breed }}</li>
-      <li class="detailli">{{ animal.bio }}</li>
+      <li class="detailli">Age: {{ animal.age }} Years Old</li>
+      <li class="detailli">Type: {{ animalType }} - {{ animal.breed }}</li>
+      <li class="detailli">Bio: {{ animal.bio }}</li>
+      <li class="detailli">Adopted: {{ animal.adopted }}</li>
       <br />
 
       <button
@@ -25,6 +26,8 @@
         ><input type="number" v-model.number="animal.age" /><br />
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
         <label>Bio: </label><input type="text" v-model="animal.bio" />
+        <label>Found a home: </label>
+        <input type="checkbox" v-model="animal.adopted" />
         <br />
         <button type="submit" @click="updateAnimalCard(animal)">Submit</button>
       </form>

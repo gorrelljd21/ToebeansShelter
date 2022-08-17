@@ -1,6 +1,6 @@
 <template>
   <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
+    <form class="form-signin" @submit.prevent="changePassword()">
       <h2 class="h3 mb-3 font-weight-normal">Please Change Your Password</h2>
       <div class="alert alert-danger" role="alert" v-if="invalidCredentials">
         Invalid username or password!
@@ -40,7 +40,7 @@
         >Need an account?</router-link
       > -->
       <!-- <p></p> -->
-      <button id="sign-in" type="submit">Sign in</button>
+      <button id="sign-in" type="submit">Change password</button>
       <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
       <button type="reset">Reset Form</button>
@@ -52,32 +52,32 @@
 import authService from "../services/AuthService";
 
 export default {
-  name: "login",
+  name: "loginUpdate",
   components: {},
   data() {
     return {
       user: {
         username: "",
-        password: "",
+        confirmPassword: "",
       },
       invalidCredentials: false,
     };
   },
   methods: {
-    login() {
+    changePassword() {
       authService
-        .login(this.user)
+        .updatePassword(this.user)
         .then((response) => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
+          if (response.status == 201) {
+            alert("Password changed!");
+            this.user = response.data;
             this.$router.push("/");
           }
         })
         .catch((error) => {
           const response = error.response;
 
-          if (response.status === 401) {
+          if (response.status === 403) {
             this.invalidCredentials = true;
           }
         });

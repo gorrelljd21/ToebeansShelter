@@ -24,9 +24,10 @@ public class JdbcAnimalDao implements AnimalDao {
     public List<Animal> findAll() {
         List<Animal> animals = new ArrayList<>();
 
-        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id " +
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 " FROM " +
-                " animals; ";
+                " animals " +
+                " WHERE adopted = 'false'; ";
 
         SqlRowSet results = jdbctemplate.queryForRowSet(sql);
         while(results.next()) {
@@ -36,12 +37,26 @@ public class JdbcAnimalDao implements AnimalDao {
         return animals;
     }
 
+    @Override
+    public List<Animal> adoptionStatus(boolean adopted) {
+        List<Animal> animals = new ArrayList<>();
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
+                "FROM animals " +
+                "WHERE adopted = ?; ";
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql, adopted);
+        while(results.next()) {
+            animals.add(mapRowToAnimal(results));
+        }
+
+        return animals;
+    }
+
 
     @Override
     public List<Animal> listAnimalByType(int animal_type_id) {
         List<Animal> animals = new ArrayList<>();
 
-        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id " +
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM " +
                 "animals " +
                 "WHERE " +
@@ -59,7 +74,7 @@ public class JdbcAnimalDao implements AnimalDao {
     @Override
     public Animal getAnimalById(int animal_id) {
         Animal animal = null;
-        String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id " +
+        String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM " +
                 "animals " +
                 "WHERE " +
@@ -74,7 +89,7 @@ public class JdbcAnimalDao implements AnimalDao {
     @Override
     public Animal getAnimalByName(String name) {
         Animal animal = null;
-        String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id " +
+        String sql = " SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM " +
                 "animals " +
                 "WHERE " +
@@ -89,7 +104,7 @@ public class JdbcAnimalDao implements AnimalDao {
     @Override
     public List<Animal> getAnimalPage(int limit, int offset) {
         List<Animal> animals = new ArrayList<>();
-        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id " +
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM animals " +
                 "ORDER BY animal_id " +
                 "limit ? offset ?";
@@ -117,8 +132,8 @@ public class JdbcAnimalDao implements AnimalDao {
 
     @Override
     public Animal updateAnimal(Animal animal, int animal_id) {
-        String sql = "update animals set name = ?, breed = ?, age = ?, bio = ?, animal_type_id = ? where animal_id = ?;";
-            jdbctemplate.update(sql, animal.getName(), animal.getBreed(), animal.getAge(), animal.getBio(), animal.getAnimal_type_id(), animal_id);
+        String sql = "update animals set name = ?, breed = ?, age = ?, bio = ?, animal_type_id = ?, adopted= ? where animal_id = ?;";
+            jdbctemplate.update(sql, animal.getName(), animal.getBreed(), animal.getAge(), animal.getBio(), animal.getAnimal_type_id(), animal.isAdopted(), animal_id);
             return animal;
     }
 
@@ -131,6 +146,7 @@ public class JdbcAnimalDao implements AnimalDao {
                 "age," +
                 "bio, " +
                 "photo_link " +
+
                 "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id;";
         List<FullAnimal> animals = new ArrayList<>();
         SqlRowSet result =  jdbctemplate.queryForRowSet(sql);
@@ -150,6 +166,7 @@ public class JdbcAnimalDao implements AnimalDao {
                 "age," +
                 "bio, " +
                 "photo_link " +
+                "adopted, " +
                 "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
                 "WHERE animal_type_id = ? " +
                 "limit ? offset ?";
@@ -176,6 +193,7 @@ public class JdbcAnimalDao implements AnimalDao {
         animal.setAge(rs.getInt("age"));
         animal.setBio(rs.getString("bio"));
         animal.setAnimal_type_id(rs.getInt("animal_type_id"));
+        animal.setAdopted(rs.getBoolean("adopted"));
         return animal;
     }
     private FullAnimal mapRowToFullAnimal(SqlRowSet rs) {
@@ -187,6 +205,7 @@ public class JdbcAnimalDao implements AnimalDao {
         animal.setBio(rs.getString("bio"));
         animal.setAnimal_type_id(rs.getInt("animal_type_id"));
         animal.setPhoto_link(rs.getString("photo_link"));
+        animal.setAdopted(rs.getBoolean("adopted"));
         return animal;
     }
 }
