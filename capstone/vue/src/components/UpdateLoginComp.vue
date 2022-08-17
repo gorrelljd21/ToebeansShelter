@@ -36,10 +36,6 @@
         required
       />
       <br /><br />
-      <!-- <router-link class="newAccount" :to="{ name: 'register' }"
-        >Need an account?</router-link
-      > -->
-      <!-- <p></p> -->
       <button id="sign-in" type="submit">Change password</button>
       <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
