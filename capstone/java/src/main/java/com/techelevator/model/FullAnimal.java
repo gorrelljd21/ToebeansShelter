@@ -9,16 +9,19 @@ public class FullAnimal extends Animal{
     private String bio;
     private int animal_type_id;
     private String photo_link;
+    private boolean adopted;
 
     public FullAnimal() {};
 
-    public FullAnimal(int animal_id, String name, String breed, int age, String bio, int animal_type_id) {
+    public FullAnimal(int animal_id, String name, String breed, int age, String bio, int animal_type_id, String photo_link, boolean adopted) {
         this.animal_id = animal_id;
         this.name = name;
         this.breed = breed;
         this.age = age;
         this.bio = bio;
         this.animal_type_id = animal_type_id;
+        this.photo_link = photo_link;
+        this.adopted = adopted;
     }
 
     public int getAnimal_id() {
@@ -75,5 +78,15 @@ public class FullAnimal extends Animal{
 
     public void setAnimal_type_id(int animal_type_id) {
         this.animal_type_id = animal_type_id;
+    }
+
+    @Override
+    public boolean isAdopted() {
+        return adopted;
+    }
+
+    @Override
+    public void setAdopted(boolean adopted) {
+        this.adopted = adopted;
     }
 }
