@@ -40,11 +40,11 @@
         >
       </p>
       <!-- <br /> -->
-      <p>
+      <!-- <p>
         <b>
           <a id="link" href="default.asp" target="_blank">Events</a>
         </b>
-      </p>
+      </p> -->
       <!-- <br /> -->
       <p>
         <b

@@ -7,7 +7,6 @@ import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -38,14 +37,14 @@ public class JdbcAnimalDao implements AnimalDao {
     }
 
     @Override
-    public List<Animal> adoptionStatus(boolean adopted) {
+    public List<Animal> adoptionStatus() {
         List<Animal> animals = new ArrayList<>();
         String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 "FROM animals " +
-                "WHERE adopted = ?; ";
-        SqlRowSet results = jdbctemplate.queryForRowSet(sql, adopted);
+                "WHERE adopted = 'true'; ";
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql);
         while(results.next()) {
-            animals.add(mapRowToAnimal(results));
+            animals.add(mapRowToFullAnimal(results));
         }
 
         return animals;
@@ -101,16 +100,17 @@ public class JdbcAnimalDao implements AnimalDao {
     }
 
     @Override
-    public List<Animal> getAnimalPage(int limit, int offset) {
-        List<Animal> animals = new ArrayList<>();
-        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
-                "FROM animals " +
+
+    public List<FullAnimal> getAnimalPage(int limit, int offset) {
+        List<FullAnimal> animals = new ArrayList<>();
+        String sql = "SELECT animals.animal_id, name, breed, age, bio, animal_type_id, adopted, photo_link " +
+                "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
                 "WHERE adopted = false " +
                 "ORDER BY animal_id " +
                 "limit ? offset ?";
         SqlRowSet result = jdbctemplate.queryForRowSet(sql, limit, offset);
         while(result.next()){
-            animals.add(mapRowToAnimal(result));
+            animals.add(mapRowToFullAnimal(result));
         }
 
         return animals;
@@ -147,7 +147,6 @@ public class JdbcAnimalDao implements AnimalDao {
                 "bio, " +
                 "photo_link, " +
                 "adopted " +
-
                 "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
                 "WHERE adopted = false;";
         List<FullAnimal> animals = new ArrayList<>();

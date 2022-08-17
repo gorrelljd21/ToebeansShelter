@@ -49,7 +49,7 @@ export default {
   methods: {
     getAdoptedAnimals() {
       shelterService.getFourAdopted().then((x) => {
-        this.adoptedAnimals = x.data;
+        this.adoptedAnimals = x.data; 
       });
     },
   },
