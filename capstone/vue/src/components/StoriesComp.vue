@@ -23,10 +23,10 @@
         <h3 class="story-title">ToeBeans to Host Adoptathon This Saturday</h3>
         <p class="story-content">
           By: ToeBeans Staff <br /><br />This Saturday, 8/20/22, ToeBeans
-          Shelter will be hosting an all-you-can-adopt Adoptathon! All adoptions
-          will be FREE! There will be food, drinks, prizes, and games! Come on
-          down to the shelter and bring your friends and family! We have plenty
-          of wonderful animals that would love to become a member of your
+          Shelter will be hosting an all-you-can-adopt Adopt-athon! All
+          adoptions will be FREE! There will be food, drinks, prizes, and games!
+          Come on down to the shelter and bring your friends and family! We have
+          plenty of wonderful animals that would love to become a member of your
           family. We will be set up at the old Glue Factory on Mill St. from 11
           am to 4 pm.
         </p>
@@ -34,14 +34,15 @@
       <div class="story-card">
         <h3 class="story-title">ToeBeans Wins "Comfiest Shelter 2022"</h3>
         <p class="story-content">
-          By: ToeBeans Staff <br /><br />The 4th annual Animal Wellness Awards
-          were held last weekend at Mitchell Convention Center. ToeBeans is
-          proud to have received the "Comfiest Shelter" award for the third year
-          in a row! We pride ourselves on providing the utmost comfort to our
-          fuzzy residents and believe that a happy home makes for happy animals.
-          Our amentities include a spa, an enormous pasture with ample space for
-          running and playing, and as of this year, a theater where the animals
-          can chill and watch their favorite netflix shows!
+          By: ToeBeans Staff <br /><br />
+          The 4th annual Animal Wellness Awards were held last weekend at
+          Mitchell Convention Center. ToeBeans is proud to have received the
+          "Comfiest Shelter" award for the third year in a row! We pride
+          ourselves on providing the utmost comfort to our fuzzy residents and
+          believe that a happy home makes for happy animals. Our amenities
+          include a spa, an enormous pasture with ample space for running and
+          playing, and as of this year, a theater where the animals can chill
+          and watch their favorite netflix shows!
         </p>
       </div>
     </div>
