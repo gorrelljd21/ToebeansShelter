@@ -2,6 +2,9 @@ import axios from 'axios';
 
 
 export default {
+    getAdoptedAnimals() {
+        return axios.get('/adopted-animals');
+    },
     getAnimals() {
         return axios.get('/animals');
     },
