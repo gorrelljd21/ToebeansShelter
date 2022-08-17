@@ -165,7 +165,8 @@ public class JdbcAnimalDao implements AnimalDao {
                 "breed, " +
                 "age," +
                 "bio, " +
-                "photo_link " +
+                "photo_link, " +
+                "adopted " +
                 "FROM animals JOIN animal_photos ON animal_photos.animal_id = animals.animal_id " +
                 "WHERE animal_type_id = ? AND adopted = false " +
                 "limit ? offset ?";
