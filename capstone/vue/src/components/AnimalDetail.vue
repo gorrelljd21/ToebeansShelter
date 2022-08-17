@@ -26,6 +26,8 @@
         ><input type="number" v-model.number="animal.age" /><br />
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
         <label>Bio: </label><input type="text" v-model="animal.bio" />
+        <label>Found a home: </label>
+        <input type="checkbox" v-model="animal.adopted" />
         <br />
         <button type="submit" @click="updateAnimalCard(animal)">Submit</button>
       </form>

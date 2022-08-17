@@ -81,10 +81,10 @@ public class AuthenticationController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(path = "/login/update")
-    public void changePassword(@RequestBody LoginDTO username, Principal principal) {
+    public void changePassword(@RequestBody LoginDTO user, Principal principal) {
         // this is a code smell. do not overwrite parameters
         User userFromDatabase = userDao.findByUsername(principal.getName());
-        userDao.changePassword(username.getPassword(), userFromDatabase.getId());
+        userDao.changePassword(user.getPassword(), userFromDatabase.getId());
     }
 
     /**

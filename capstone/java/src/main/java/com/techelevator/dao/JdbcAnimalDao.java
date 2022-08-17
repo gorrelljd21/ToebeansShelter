@@ -26,13 +26,28 @@ public class JdbcAnimalDao implements AnimalDao {
 
         String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
                 " FROM " +
-                " animals; ";
+                " animals " +
+                " WHERE adopted = 'false'; ";
 
         SqlRowSet results = jdbctemplate.queryForRowSet(sql);
         while(results.next()) {
             Animal animal = mapRowToAnimal(results);
             animals.add(animal);
         }
+        return animals;
+    }
+
+    @Override
+    public List<Animal> adoptionStatus(boolean adopted) {
+        List<Animal> animals = new ArrayList<>();
+        String sql = "SELECT animal_id, name, breed, age, bio, animal_type_id, adopted " +
+                "FROM animals " +
+                "WHERE adopted = ?; ";
+        SqlRowSet results = jdbctemplate.queryForRowSet(sql, adopted);
+        while(results.next()) {
+            animals.add(mapRowToAnimal(results));
+        }
+
         return animals;
     }
 

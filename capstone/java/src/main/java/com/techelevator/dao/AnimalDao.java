@@ -13,6 +13,8 @@ public interface AnimalDao {
 
     List<Animal> listAnimalByType(int animal_type_id);
 
+    List<Animal> adoptionStatus(boolean adopted);
+
     Animal getAnimalById(int animal_id);
 
     Animal getAnimalByName(String name);
