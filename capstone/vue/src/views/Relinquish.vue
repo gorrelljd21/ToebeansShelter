@@ -14,23 +14,9 @@
         <nav-comp></nav-comp>
       </div>
       <div class="main" id="relmain">
-        <add-animal-form
-          @submitted-animal="
-            emittedAnimal = $event;
-            photo = emittedAnimal;
-            photo.photo_link = photo.link;
-          "
-        />
+        <add-animal-form />
         <br />
-        <animal-card
-          :animal="emittedAnimal"
-          :photo="photo"
-          v-if="photo"
-          class="fade-in"
-          id="relinquish-card"
-        />
       </div>
-      <div></div>
       <div class="story">
         <stories-comp></stories-comp>
       </div>
@@ -50,7 +36,6 @@ import TitleComp from "@/components/TitleComp.vue";
 import LoginRegisterComp from "@/components/LoginRegisterComp.vue";
 // import RelinquishComp from "@/components/RelinquishComp.vue";
 import AddAnimalForm from "../components/AddAnimalForm.vue";
-import AnimalCard from "../components/AnimalCard.vue";
 
 export default {
   name: "addAnimal",
@@ -70,7 +55,6 @@ export default {
     TitleComp,
     LoginRegisterComp,
     AddAnimalForm,
-    AnimalCard,
   },
   methods: {
     handleView() {

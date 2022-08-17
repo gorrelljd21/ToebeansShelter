@@ -121,7 +121,7 @@ public class JdbcAnimalDao implements AnimalDao {
         String sql = "INSERT INTO animals (name, breed, age, bio, animal_type_id) VALUES (?,?,?,?,?); "+
                 "INSERT INTO animal_photos (animal_id, photo_link) VALUES ((SELECT animal_id FROM animals WHERE name = ? AND bio = ? AND animal_type_id = ?),?);";
         try {
-            jdbctemplate.update(sql, animal.getName(), animal.getBreed(), animal.getAge(), animal.getBio(), animal.getAnimal_type_id(), animal.getName(), animal.getBio(), animal.getAnimal_type_id(), animal.getLink());
+            jdbctemplate.update(sql, animal.getName(), animal.getBreed(), animal.getAge(), animal.getBio(), animal.getAnimal_type_id(), animal.getName(), animal.getBio(), animal.getAnimal_type_id(), animal.getPhoto_link());
             return true;
         }
         catch (DataAccessException e){

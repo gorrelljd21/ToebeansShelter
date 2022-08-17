@@ -6,19 +6,19 @@ public class AddAnimal {
     private int age;
     private String bio;
     private int animal_type_id;
-    private String link;
+    private String photo_link;
 
     public AddAnimal(){
 
     }
 
-    public AddAnimal(String name, String breed, int age, String bio, int animal_type_id, String link) {
+    public AddAnimal(String name, String breed, int age, String bio, int animal_type_id, String photo_link) {
         this.name = name;
         this.breed = breed;
         this.age = age;
         this.bio = bio;
         this.animal_type_id = animal_type_id;
-        this.link = link;
+        this.photo_link = photo_link;
     }
 
     public String getName() {
@@ -61,11 +61,11 @@ public class AddAnimal {
         this.animal_type_id = animal_type_id;
     }
 
-    public String getLink() {
-        return link;
+    public String getPhoto_link() {
+        return photo_link;
     }
 
-    public void setLink(String link) {
-        this.link = link;
+    public void setLink(String photo_link) {
+        this.photo_link = photo_link;
     }
 }

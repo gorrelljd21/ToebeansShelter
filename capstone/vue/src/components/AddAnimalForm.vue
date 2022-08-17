@@ -60,7 +60,7 @@
       <input
         type="text"
         name="photo"
-        v-model="animal.link"
+        v-model="animal.photo_link"
         placeholder=".png only"
         required
       />
@@ -71,6 +71,14 @@
       </button>
       <button @click.prevent="resetFrom">Reset</button>
     </form>
+    <br />
+    <animal-card
+      :animal="animal"
+      :photo="animal"
+      class="fade-in"
+      id="relinquish-card"
+      v-if="accepted"
+    />
   </div>
 </template>
 
@@ -83,7 +91,7 @@ export default {
         age: "",
         name: "",
         breed: "",
-        link: "",
+        photo_link: "",
         bio: "",
         animal_type_id: "",
       },
@@ -98,7 +106,6 @@ export default {
         .then((r) => {
           if (r.status == 201) {
             this.accepted = true;
-            this.$emit("submitted-animal", this.animal);
             alert("Successfully Added!");
           }
         })
@@ -116,6 +123,7 @@ export default {
         breed: "",
         link: "",
         bio: "",
+        photo_link: "",
         animal_type_id: "",
       };
     },
