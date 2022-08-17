@@ -66,9 +66,6 @@ export default {
     updateAnimalCard(animal) {
         return axios.put(`/update-pet/${animal.animal_id}`, animal);
     },
-    // updatePassword(user) {
-    //     return axios.post('/login/update', user);
-    // },
     oneOfEach() {
         return axios.get('/oneOfEach');
     },
