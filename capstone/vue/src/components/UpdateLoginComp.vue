@@ -41,7 +41,6 @@
       > -->
       <!-- <p></p> -->
       <button id="sign-in" type="submit">Change password</button>
-      <button v-on:click="goToHome()" id="cancel">Cancel</button>
       <br />
       <button type="reset">Reset Form</button>
     </form>
@@ -50,6 +49,7 @@
 
 <script>
 import authService from "../services/AuthService";
+import swal from "sweetalert";
 
 export default {
   name: "loginUpdate",
@@ -70,6 +70,11 @@ export default {
         .then((response) => {
           if (response.status == 201) {
             alert("Password changed!");
+            swal({
+              title: "Welcome to our Team!",
+              text: "We are excited for you to join!",
+              button: "LETS GOOO",
+            });
             this.user = response.data;
             this.$router.push("/");
           }
@@ -153,5 +158,48 @@ h3 {
 
 #cancel {
   margin-left: 5px;
+}
+</style>
+
+<style>
+.swal-modal {
+  background-color: #44a1a0;
+  border: 3px solid white;
+}
+
+.swal-title {
+  font-size: 30px;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.21);
+  margin-bottom: 28px;
+  background-color: #44a1a0;
+}
+
+.swal-text {
+  background-color: white;
+  padding: 17px;
+  border: 1px solid #313638;
+  display: block;
+  margin: 22px;
+  text-align: center;
+  color: #313638;
+  font-family: Calibri, Candara, Segoe, "Segoe UI", Optima, Arial, sans-serif;
+}
+
+.swal-footer {
+  background-color: #44a1a0;
+  margin-top: 32px;
+  border-top: 1px solid #e9eef1;
+  overflow: hidden;
+}
+
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #e8e9eb;
+  color: black;
+  font-size: 12px;
+  border: 1px solid #3e549a;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
 </style>
