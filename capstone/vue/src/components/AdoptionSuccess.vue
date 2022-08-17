@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul>
-      <animal-card v-for="animal in adoptedAnimals" :key="animal.animal_id">
+      <animal-card :animal="adoptedAnimals[0]" :photo="adoptedAnimals[0]">
       </animal-card>
     </ul>
   </div>
@@ -9,7 +9,7 @@
 
 <script>
 import AnimalCard from "@/components/AnimalCard";
-import shelterService from "@/services/ShelterService.js";
+import shelterService from "@/services/ShelterService";
 
 export default {
   components: {
@@ -23,10 +23,8 @@ export default {
   },
   methods: {
     getAdoptedAnimals() {
-      shelterService.getAdoptedAnimals().then((response) => {
-        if (response.status === 200) {
-          this.adoptedAnimals = response.data;
-        }
+      shelterService.getFourAdopted().then((x) => {
+        this.adoptedAnimals = x.data;
       });
     },
   },

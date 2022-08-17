@@ -25,11 +25,13 @@
         <label>Age: </label
         ><input type="number" v-model.number="animal.age" /><br />
         <label>Breed: </label><input type="text" v-model="animal.breed" /><br />
-        <label>Bio: </label><input type="text" v-model="animal.bio" />
+        <label>Bio: </label><input type="text" v-model="animal.bio" /><br />
         <label>Found a home: </label>
         <input type="checkbox" v-model="animal.adopted" />
         <br />
-        <button type="submit" @click="updateAnimalCard(animal)">Submit</button>
+        <button type="submit" id="submit" @click="updateAnimalCard(animal)">
+          Submit
+        </button>
       </form>
     </div>
   </div>
@@ -118,6 +120,9 @@ export default {
 .detailli {
   font-size: 20px;
 }
+#submit {
+  margin-bottom: 10px;
+}
 
 #detail-photo {
   object-fit: cover;
@@ -133,7 +138,7 @@ export default {
   margin-top: 2%;
   padding-top: 20px;
   width: 600px;
-  height: 800px;
+  /* height: 675px; */
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -97,9 +97,17 @@ public class AnimalController {
     public List<FullAnimal> getPageByType(@PathVariable int id, @PathVariable int limit, @PathVariable int offset) {
         return animalDao.getAnimalsByTypePage(limit, offset, id);
     }
+
     @PreAuthorize("permitAll")
     @GetMapping("count/{type}")
     public int getCountByType(@PathVariable int type){
         return animalDao.getCountByType(type);
     }
+
+    @PreAuthorize("permitAll")
+    @GetMapping("/adopted")
+    public List<FullAnimal> getAdopted() {
+        return animalDao.getAdopted();
+    }
+
 }
