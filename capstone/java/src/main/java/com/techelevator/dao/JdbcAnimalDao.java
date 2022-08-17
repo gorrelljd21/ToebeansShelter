@@ -44,7 +44,7 @@ public class JdbcAnimalDao implements AnimalDao {
                 "WHERE adopted = 'true'; ";
         SqlRowSet results = jdbctemplate.queryForRowSet(sql);
         while(results.next()) {
-            animals.add(mapRowToAnimal(results));
+            animals.add(mapRowToFullAnimal(results));
         }
 
         return animals;

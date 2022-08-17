@@ -9,6 +9,8 @@
 
 <script>
 import AnimalCard from "@/components/AnimalCard";
+import shelterService from "@/services/ShelterService.js";
+
 export default {
   components: {
     AnimalCard,
@@ -21,9 +23,11 @@ export default {
   },
   methods: {
     getAdoptedAnimals() {
-      // shelterService.then((x) => {
-      //   this.adoptedAnimals = x.data;
-      // });
+      shelterService.getAdoptedAnimals().then((response) => {
+        if (response.status === 200) {
+          this.adoptedAnimals = response.data;
+        }
+      });
     },
   },
   created() {
