@@ -69,6 +69,8 @@ CREATE TABLE stories (
 	CONSTRAINT FK_animals FOREIGN KEY (animal_id) REFERENCES animals (animal_id)
 );
 
+CREATE TABLE adoptee_info (
+)
 
 INSERT INTO animal_types (type) values('dog');
 INSERT INTO animal_types (type) values('cat');
