@@ -85,6 +85,8 @@ export default {
       shelterService.updateAnimalCard(animal).then((response) => {
         if (response.status === 200) {
           this.animal = response.data;
+          alert("Pet updated, thanks!");
+          this.$router.push("/");
         }
       });
     },
