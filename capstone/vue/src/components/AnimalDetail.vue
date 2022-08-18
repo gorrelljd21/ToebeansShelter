@@ -31,7 +31,11 @@
         <label>Found a home: </label>
         <input type="checkbox" v-model="animal.adopted" />
         <br />
-        <button type="submit" id="submit" @click="updateAnimalCard(animal)">
+        <button
+          type="submit"
+          id="submit"
+          @click.prevent="updateAnimalCard(animal)"
+        >
           Submit
         </button>
       </form>
