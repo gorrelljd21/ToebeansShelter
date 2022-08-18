@@ -61,33 +61,6 @@ export default {
   },
   methods: {
     changePassword() {
-<<<<<<< HEAD
-      if (this.user.password !== this.user.confirmPassword) {
-        alert("Password mismatch, please ensure they're the same!");
-      } else {
-        authService
-          .updatePassword(this.user)
-          .then((response) => {
-            if (response.status == 201) {
-              alert("Password changed!");
-              swal({
-                title: "Welcome to our Team!",
-                text: "We are excited for you to join!",
-                button: "LETS GOOO",
-              });
-              this.user = response.data;
-              this.$router.push("/");
-            }
-          })
-          .catch((error) => {
-            const response = error.response;
-
-            if (response.status === 403) {
-              this.invalidCredentials = true;
-            }
-          });
-      }
-=======
       authService
         .updatePassword(this.user)
         .then((response) => {
@@ -109,7 +82,6 @@ export default {
             this.invalidCredentials = true;
           }
         });
->>>>>>> 6fc925b6bf84e76c90d96720a2b101e8d4787d41
     },
     goToHome() {
       this.$router.push("/");

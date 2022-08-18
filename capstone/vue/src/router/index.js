@@ -176,7 +176,7 @@ router.beforeEach((to, from, next) => {
     // If it does and they are not logged in, send the user to "/login"
     if (requiresAuth && store.state.token === '') {
         next("/login");
-    } else if (store.state.user.passwordNeedsChanged === true) {
+    } else if (store.state.user.passwordNeedsChanged === true && to.name !== "loginUpdate") {
         store.commit('CLEAR_PASSWORD_REQUIRED');
         next("/login/update");
     } else {
