@@ -40,6 +40,7 @@ export default new Vuex.Store({
     },
     CLEAR_PASSWORD_REQUIRED(state) {
       state.user.passwordNeedsChanged = false;
+      localStorage.setItem('user', JSON.stringify(state.user));
     }
   }
 })
