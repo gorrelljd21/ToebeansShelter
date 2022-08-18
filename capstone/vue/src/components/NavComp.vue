@@ -23,7 +23,7 @@
       <p v-if="isAdminUser || isVolunteerUser">
         <b
           ><router-link id="link" to="/relinquish"
-            >Register A Pet</router-link
+            >Place for Adoption</router-link
           ></b
         >
       </p>
